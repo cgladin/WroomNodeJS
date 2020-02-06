@@ -9,6 +9,6 @@ module.exports.Repertoire = 	function(request, response){
             return;
         }
         response.listeLettre = result;
-        response.render('listeLettre', response);
+        response.render('repertoirePilotes', response);
     });
 } ;
