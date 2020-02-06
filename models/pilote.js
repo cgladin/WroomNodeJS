@@ -6,7 +6,7 @@ module.exports.getListeInitialPilote = function (callback) {
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-                let sql = "SELECT SUBSTR(PILNOM, 1, 1) as initial FROM pilote";
+                let sql = "SELECT DISTINCT SUBSTR(PILNOM, 1, 1) as initial FROM pilote ORDER BY initial";
             //console.log (sql);
             connexion.query(sql, callback);
 
