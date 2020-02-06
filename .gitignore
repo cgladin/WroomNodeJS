@@ -9,3 +9,5 @@ package-lock.json
 configDb.js
 
 package.json
+
+.DS_Store
