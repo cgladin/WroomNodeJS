@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="ddb75b33-1611-425a-8bcf-c9ca401e7ab7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/controllers/PiloteController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/PiloteController.js" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/configDb.js" beforeDir="false" afterPath="$PROJECT_DIR$/configDb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +26,11 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
+<<<<<<< Updated upstream
   <component name="ProjectId" id="1XL0FaEz5cBFJM3n9npQ2bkKuCz" />
+=======
+  <component name="ProjectId" id="1XQZ5EWZmCngZC50JL3qn8zUvN0" />
+>>>>>>> Stashed changes
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -32,9 +42,15 @@
     <property name="JavaScriptPreferStrict" value="true" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< Updated upstream
     <property name="javascript.nodejs.core.library.configured.version" value="12.13.1" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
+=======
+    <property name="javascript.nodejs.core.library.configured.version" value="12.14.1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
+>>>>>>> Stashed changes
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
@@ -52,14 +68,19 @@
       <workItem from="1518419261696" duration="9139000" />
       <workItem from="1518505253508" duration="7819000" />
       <workItem from="1519112323278" duration="8000" />
+<<<<<<< Updated upstream
       <workItem from="1580809967185" duration="189000" />
       <workItem from="1580810808002" duration="797000" />
+=======
+      <workItem from="1580980099016" duration="420000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+<<<<<<< Updated upstream
   <component name="WindowStateProjectService">
     <state width="1515" height="100" key="GridCell.Tab.0.bottom" timestamp="1580810155836">
       <screen x="0" y="40" width="1536" height="824" />
@@ -78,4 +99,6 @@
     </state>
     <state width="1515" height="100" key="GridCell.Tab.0.right/0.40.1536.824@0.40.1536.824" timestamp="1580810155836" />
   </component>
+=======
+>>>>>>> Stashed changes
 </project>
