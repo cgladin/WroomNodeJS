@@ -16,7 +16,8 @@ module.exports.getListeInitialPilote = function (callback) {
     });
 };
 
-module.exports.getPilote= function (initial, callback){
+module.exports.getNomImagePilote= function (initial, callback){
+    SELECT DISTINCT SUBSTR(PILNOM, 1, 1) as initiale, PILNOM, PILPRENOM, p.PILNUM, PHOADRESSE FROM PILOTE p JOIN PHOTO ph ON p.PILNUM = ph.PILNUM WHERE PHOSUJET = "Photo identité" HAVING initial = ':initial'
 
 
 };
