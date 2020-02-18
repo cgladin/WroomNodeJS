@@ -1,7 +1,6 @@
 let model = require('../models/pilote.js');
 let async=require("async");
 // ///////////////////////// R E P E R T O I R E    D E S    P I L O T E S
-
 module.exports.Repertoire = function (request, response) {
     response.title = 'Répertoire des pilotes';
     model.getListeInitialPilote(function (err, result) {
@@ -14,6 +13,7 @@ module.exports.Repertoire = function (request, response) {
     });
 };
 
+//module affiche recherche pilote
 module.exports.NomPilote = function (request, response) {
     let data = request.params.initial;
     response.title = 'Pilote dont le nom commence par ' + data;
@@ -42,3 +42,8 @@ module.exports.NomPilote = function (request, response) {
         }  // fin fonction
     );  // fin async
 };  // fin module
+
+// ////////////// Détail pilotes ////////////////////////
+module.exports.DetailPilote = function (request,response) {
+
+};
