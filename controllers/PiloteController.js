@@ -37,8 +37,8 @@ module.exports.NomPilote = function (request, response) {
                 return;
             }
             response.listeLettre = result[0]; // liste des premières lettres
-            response.data = result[1]; // les pilotes dont le nom
-            response.render('resultatRepertoirePilotes', response);
+            response.pilotes = result[1]; // les pilotes dont le nom
+            response.render('resultatRepertoirePilote', response);
         }  // fin fonction
     );  // fin async
 };  // fin module
