@@ -1,9 +1,9 @@
-<table class="tab">
+<table class="lettresRecherche">
     <tr>
         <td> Cliquez sur une lettre : </td>
         {{#each listeLettre}}
             <td>
-                <a href="/resultatRepertoirePilote/{{this.initial }}"> {{this.initial}}</a>
+                <a id="lettresRecherche" href="/resultatRepertoirePilote/{{this.initial }}"> {{this.initial}}</a>
             </td>
         {{/each}}
     </tr>
