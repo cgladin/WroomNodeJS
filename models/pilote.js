@@ -22,7 +22,7 @@ module.exports.getNomImagePilote= function (initial, callback){
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT DISTINCT SUBSTR(PILNOM, 1, 1) as initiale, PILNOM, PILPRENOM, p.PILNUM, PHOADRESSE FROM PILOTE p JOIN PHOTO ph ON p.PILNUM = ph.PILNUM WHERE PHOSUJET = 'Photo identité' HAVING initial = '" + initial + "'";
+            let sql = "SELECT DISTINCT SUBSTR(PILNOM, 1, 1) as initiale, PILNOM, PILPRENOM, p.PILNUM, PHOADRESSE FROM PILOTE p JOIN PHOTO ph ON p.PILNUM = ph.PILNUM WHERE PHONUM = '1' HAVING initial = '" + initial + "'";
             //console.log (sql);
             connexion.query(sql, callback);
 
