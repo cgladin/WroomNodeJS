@@ -2,26 +2,28 @@
 
 <div>
     <div>
-        <p><strong>Nom :</strong>{{detailPerso.PILNOM}}</p>
-        <p><strong>Date de naissance:</strong>{{detailPerso.PILDATENAIS}}</p>
-        <p><strong>Nationalité :</strong>{{detailPerso.PAYNAT}}</p>
-        <p><strong>Ecurie :</strong>{{detailPerso.ECUNOM}}</p>
+        <img src="/image/pilotes/{{detailPerso.PHOADRESSE}}" alt="Photo Officiel" >
     </div>
     <div>
-
+        <p><strong>Nom :</strong> {{detailPerso.PILNOM}} {{this.PILPRENOM}}</p>
+        <p><strong>Date de naissance:</strong> {{formatDate detailPerso.PILDATENAIS 'dddd D MMMM YYYY'}}</p>
+        <p><strong>Nationalité :</strong> {{detailPerso.PAYNAT}}</p>
+        <p><strong>Ecurie :</strong> {{detailPerso.ECUNOM}}</p>
     </div>
     <div>
-
+        <p><strong>Poids :</strong> {{detailPerso.PILPOIDS}} kg</p>
+        <p><strong>Taille :</strong> {{detailPerso.PILTAILLE}} cm</p>
     </div>
 </div>
 <div>
-
-</div>
-<div>
-
-</div>
-<div>
-    {{#each }}
-        <img src="">
+    <strong>Principaux sponsors:</strong>
+    {{#each detailSponsor}}
+        <p><strong>{{this.SPONOM}}</strong> ({{this.SPOSECTACTIVITE}})</p>
     {{/each}}
+</div>
+<div>
+
+</div>
+<div>
+
 </div>

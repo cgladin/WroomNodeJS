@@ -59,12 +59,12 @@ module.exports.DetailPilote = function (request,response) {
                 });
             },
             function (callback) {
-                model.getDetailPiloteSponsor(function (err,result) {
+                model.getDetailPiloteSponsor(pilnum,function (err,result) {
                     callback(null,result)
                 });
             },
             function (callback) {
-                model.getDetailPilotePhotos(function (err,result) {
+                model.getDetailPilotePhotos(pilnum,function (err,result) {
                     callback(null,result)
                 });
             }
@@ -76,7 +76,8 @@ module.exports.DetailPilote = function (request,response) {
                 return;
             }
             response.listeLettre=result[0];
-            response.detailPerso=result[1];
+            response.detailPerso=result[1][0];
+            console.log(response.detailPerso);
             response.detailSponsor=result[2];
             response.detailPhotos=result[3];
             response.render('pagePilote',response);
