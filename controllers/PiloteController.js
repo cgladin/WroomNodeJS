@@ -45,5 +45,41 @@ module.exports.NomPilote = function (request, response) {
 
 // ////////////// Détail pilotes ////////////////////////
 module.exports.DetailPilote = function (request,response) {
-
+    let pilnum = request.params.PILNUM;
+    response.title=' Détails du pilote';
+    async.parallel([
+            function(callback){
+                model.getListeInitialPilote(function (errPil, resultPil) {
+                    callback(null, resultPil)
+                });
+            },
+            function (callback) {
+                model.getDetailPilotePerso(pilnum, function (err,result) {
+                    callback(null,result)
+                });
+            },
+            function (callback) {
+                model.getDetailPiloteSponsor(function (err,result) {
+                    callback(null,result)
+                });
+            },
+            function (callback) {
+                model.getDetailPilotePhotos(function (err,result) {
+                    callback(null,result)
+                });
+            }
+        ],
+        function(err,result){
+            if(err){
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
+            response.listeLettre=result[0];
+            response.detailPerso=result[1];
+            response.detailSponsor=result[2];
+            response.detailPhotos=result[3];
+            response.render('pagePilote',response);
+        }
+    );
 };
