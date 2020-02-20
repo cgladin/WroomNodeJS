@@ -77,7 +77,6 @@ module.exports.DetailPilote = function (request,response) {
             }
             response.listeLettre=result[0];
             response.detailPerso=result[1][0];
-            console.log(response.detailPerso);
             response.detailSponsor=result[2];
             response.detailPhotos=result[3];
             response.render('pagePilote',response);
