@@ -2,7 +2,7 @@
 
 {{#each pilotes}}
     <a href="/pagePilote/{{this.PILNUM}}">
-    <img src="/image/pilote/{{this.PHOADRESSE}}" alt="image de  {{this.PILNOM}}" class="photoPiloteRecherche">
+    <img data-lightbox="image-1" src="/image/pilote/{{this.PHOADRESSE}}" alt="image de  {{this.PILNOM}}" class="photoPiloteRecherche">
         <strong>{{this.PILPRENOM}} {{this.PILNOM}}</strong>
     </a>
 {{/each}}
