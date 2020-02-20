@@ -54,7 +54,7 @@ module.exports.getDetailPiloteSponsor= function (pilnum, callback){
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT SPONOM, SPOSECTACTIVITE, FROM PILOTE p JOIN SPONSORISE s ON p.PILNUM = s.PILNUM JOIN SPONSOR sp ON s.SPONUM = sp.SPONUM WHERE PILNUM= " + pilnum + "";
+            let sql = "SELECT SPONOM, SPOSECTACTIVITE FROM PILOTE p JOIN SPONSORISE s ON p.PILNUM = s.PILNUM JOIN SPONSOR sp ON s.SPONUM = sp.SPONUM WHERE p.PILNUM= " + pilnum + "";
             //console.log (sql);
             connexion.query(sql, callback);
 
