@@ -91,7 +91,7 @@ module.exports.DetailPilote = function (request,response) {
             response.detailPerso=result[1][0];
             response.detailSponsor=result[2];
             response.photosNonOfficiel=result[3];
-            response.photoOfficiel=result[4];
+            response.photoOfficiel=result[4][0];
             response.nomEcurie=result[5];
             response.render('pagePilote',response);
         }

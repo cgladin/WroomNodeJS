@@ -9,8 +9,8 @@
         <p><strong>Date de naissance:</strong> {{formatDate detailPerso.PILDATENAIS 'dddd D MMMM YYYY'}}</p>
         <p><strong>Nationalité :</strong> {{detailPerso.PAYNAT}}</p>
         <p><strong>Ecurie :</strong>
-            {{#if detailPerso.ECUNOM}}
-                {{detailPerso.ECUNOM}}
+            {{#if nomEcurie.ECUNOM}}
+                {{nomEcurie.ECUNOM}}
             {{else}}
                 aucune écurie cette année
             {{/if}}
