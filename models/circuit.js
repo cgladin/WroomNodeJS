@@ -6,7 +6,7 @@ module.exports.getListeCircuit= function (callback){
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT CIRNUM, CIRNOM, PAYADRDRAP FROM circuit c JOIN pays p ON c.PAYNUM=p.PAYNUM" ;
+            let sql = "SELECT CIRNUM, CIRNOM, PAYADRDRAP FROM circuit c JOIN pays p ON c.PAYNUM=p.PAYNUM ORDER BY CIRNOM" ;
             //console.log (sql);
             connexion.query(sql, callback);
 

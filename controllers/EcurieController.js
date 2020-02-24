@@ -1,4 +1,5 @@
 let model = require('../models/ecurie.js');
+let async=require("async");
 
    // //////////////////////// L I S T E R  E C U R I E S
 
@@ -14,4 +15,4 @@ module.exports.ListerEcurie = function(request, response){
         //console.log(result);
 response.render('listerEcurie', response);
 });
-}
+};
