@@ -38,7 +38,7 @@ module.exports.getDetailPilotePerso= function (pilnum, callback){
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT PILNOM, PILPRENOM, PILDATENAIS, PILPOIDS, PILTAILLE, PILTEXTE, PAYNAT FROM PILOTE p JOIN PAYS pa ON p.PAYNUM = pa.PAYNUM WHERE p.PILNUM=" + pilnum + "";
+            let sql = "SELECT PILNOM, PILPRENOM, PILDATENAIS, PILPOIDS, PILTAILLE, PILTEXTE, PAYNAT FROM PILOTE p JOIN PAYS pa ON p.PAYNUM = pa.PAYNUM WHERE p.PILNUM=" + pilnum;
             //console.log (sql);
             connexion.query(sql, callback);
 
@@ -54,7 +54,7 @@ module.exports.getDetailPiloteSponsor= function (pilnum, callback){
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT SPONOM, SPOSECTACTIVITE FROM PILOTE p JOIN SPONSORISE s ON p.PILNUM = s.PILNUM JOIN SPONSOR sp ON s.SPONUM = sp.SPONUM WHERE p.PILNUM= " + pilnum + "";
+            let sql = "SELECT SPONOM, SPOSECTACTIVITE FROM PILOTE p JOIN SPONSORISE s ON p.PILNUM = s.PILNUM JOIN SPONSOR sp ON s.SPONUM = sp.SPONUM WHERE p.PILNUM= " + pilnum ;
             //console.log (sql);
             connexion.query(sql, callback);
 

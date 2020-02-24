@@ -22,7 +22,7 @@ module.exports.getDetailCircuit= function (cirnum, callback){
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT CIRNOM, CIRLONGUEUR, CIRNBSPECTATEURS, CIRADRESSEIMAGE, CIRTEXT, PAYNOM FROM circuit c JOIN pays p ON c.PAYNUM=p.PAYNUM WHERE CIRNUM="+cirnum+"" ;
+            let sql = "SELECT CIRNOM, CIRLONGUEUR, CIRNBSPECTATEURS, CIRADRESSEIMAGE, CIRTEXT, PAYNOM FROM circuit c JOIN pays p ON c.PAYNUM=p.PAYNUM WHERE CIRNUM="+cirnum;
             //console.log (sql);
             connexion.query(sql, callback);
 

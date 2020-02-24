@@ -1,5 +1,6 @@
 let model = require('../models/ecurie.js');
 let voitureModel = require('../models/voiture.js');
+let fournModel = require('../models/fourn_pneu.js');
 let async=require("async");
 
    // //////////////////////// L I S T E R  E C U R I E S
@@ -42,6 +43,11 @@ async.parallel([
                 callback(null, result)
             });
         },
+        function (callback) {
+            fournModel.getFourn(ecunum,function (err, result) {
+                callback(null, result)
+            });
+        }
     ],
     function (err, result) {
         if(err){
@@ -53,6 +59,7 @@ async.parallel([
         response.detailEcurie=result[1][0];
         response.ecuriePilote=result[2];
         response.photoVoiture=result[3];
+        response.fournPneu=result[4][0];
         response.render('detailEcurie',response);
     }
 );

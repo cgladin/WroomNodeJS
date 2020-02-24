@@ -5,6 +5,9 @@
     <p><strong>Directeur :</strong> {{detailEcurie.ECUNOMDIR}}</p>
     <p><strong>Adresse :</strong> {{detailEcurie.ECUADRSIEGE}}</p>
     <p><strong>Pays :</strong> {{detailEcurie.PAYNOM}}</p>
+    {{#if fournPneu}}
+        <p><strong>Fournisseur de pneumatiques :</strong> {{fournPneu.FPNOM}}</p>
+    {{/if}}
 </div>
 {{#if ecuriePilote }}
     <strong>Pilotes :</strong>
