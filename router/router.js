@@ -23,6 +23,7 @@ module.exports = function(app){
 
 // Ecuries
    app.get('/ecuries', EcurieController.ListerEcurie);
+   app.get('/detailEcurie/:ECUNUM', EcurieController.DetailEcurie);
 
  //Résultats
    app.get('/resultats', ResultatController.ListerResultat);

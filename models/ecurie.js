@@ -17,9 +17,9 @@ module.exports.getListeEcurie = function (callback) {
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requête SQL
-						let sql ="SELECT ecunum, payadrdrap, ecunom FROM " +
+						let sql ="SELECT ECUNUM, PAYADRDRAP, ECUNOM FROM " +
                             "ecurie e INNER JOIN pays p ";
-						sql= sql + "ON p.paynum=e.paynum ORDER BY ecunom";
+						sql= sql + "ON p.PAYNUM=e.PAYNUM ORDER BY ECUNOM";
 						//console.log (sql);
             connexion.query(sql, callback);
 
@@ -34,7 +34,7 @@ module.exports.getNomEcurie= function (pilnum, callback){
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT ECUNOM,FROM ecurie e JOIN pilote p ON e.ECUNUM=p.ECUNUM WHERE p.PILNUM= " + pilnum + "";
+            let sql = "SELECT ECUNOM FROM ecurie e JOIN pilote p ON e.ECUNUM=p.ECUNUM WHERE p.PILNUM= " + pilnum + "";
             //console.log (sql);
             connexion.query(sql, callback);
 
@@ -44,3 +44,33 @@ module.exports.getNomEcurie= function (pilnum, callback){
     });
 };
 
+module.exports.getDetailEcurie= function(ecunum, callback){
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql = "SELECT ECUNOM, ECUNOMDIR, ECUADRSIEGE,ECUADRESSEIMAGE, PAYNOM FROM ecurie e JOIN pays p ON e.PAYNUM=p.PAYNUM WHERE ECUNUM= " + ecunum + "";
+            //console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};
+module.exports.getEcuriePilote= function(ecunum, callback){
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql = "SELECT PILNOM, PILNUM, PILPRENOM FROM ecurie e JOIN pilote p ON e.ECUNUM=p.ECUNUM WHERE e.ECUNUM= " + ecunum + "";
+            //console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};
