@@ -2,13 +2,19 @@
 
 <div>
     <div>
-        <img src="/image/pilote/{{detailPerso.PHOADRESSE}}" alt="Photo Officiel" >
+        <img src="/image/pilote/{{photoOfficiel.PHOADRESSE}}" alt="Photo Officiel" >
     </div>
     <div>
         <p><strong>Nom :</strong> {{detailPerso.PILNOM}} {{this.PILPRENOM}}</p>
         <p><strong>Date de naissance:</strong> {{formatDate detailPerso.PILDATENAIS 'dddd D MMMM YYYY'}}</p>
         <p><strong>Nationalité :</strong> {{detailPerso.PAYNAT}}</p>
-        <p><strong>Ecurie :</strong> {{detailPerso.ECUNOM}}</p>
+        <p><strong>Ecurie :</strong>
+            {{#if detailPerso.ECUNOM}}
+                {{detailPerso.ECUNOM}}
+            {{else}}
+                aucune écurie cette année
+            {{/if}}
+            </p>
     </div>
     <div>
         <p><strong>Poids :</strong> {{detailPerso.PILPOIDS}} kg</p>
@@ -25,7 +31,7 @@
     <p><strong>Qui suis je ?</strong> {{detailPerso.PILTEXTE}}</p>
 </div>
 <div>
-    {{#each detailPhotos}}
+    {{#each photosNonOfficiel}}
         <img src="/image/pilote/{{this.PHOADRESSE}}" alt="image">
     {{/each}}
 </div>

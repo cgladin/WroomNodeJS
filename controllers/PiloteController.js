@@ -1,4 +1,6 @@
 let model = require('../models/pilote.js');
+let photoModel = require('../models/photo.js');
+let ecurieModel = require('../models/ecurie.js');
 let async=require("async");
 // ///////////////////////// R E P E R T O I R E    D E S    P I L O T E S
 module.exports.Repertoire = function (request, response) {
@@ -64,7 +66,17 @@ module.exports.DetailPilote = function (request,response) {
                 });
             },
             function (callback) {
-                model.getDetailPilotePhotos(pilnum,function (err,result) {
+                photoModel.getPhotoNonOfficiel(pilnum, function (err,result) {
+                    callback(null,result)
+                });
+            },
+            function (callback) {
+                photoModel.getPhotoOfficiel(pilnum, function (err,result) {
+                    callback(null,result)
+                });
+            },
+            function (callback) {
+                ecurieModel.getNomEcurie(pilnum, function (err,result) {
                     callback(null,result)
                 });
             }
@@ -78,7 +90,9 @@ module.exports.DetailPilote = function (request,response) {
             response.listeLettre=result[0];
             response.detailPerso=result[1][0];
             response.detailSponsor=result[2];
-            response.detailPhotos=result[3];
+            response.photosNonOfficiel=result[3];
+            response.photoOfficiel=result[4];
+            response.nomEcurie=result[5];
             response.render('pagePilote',response);
         }
     );

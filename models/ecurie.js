@@ -28,3 +28,19 @@ module.exports.getListeEcurie = function (callback) {
          }
       });
 };
+module.exports.getNomEcurie= function (pilnum, callback){
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql = "SELECT ECUNOM,FROM ecurie e JOIN pilote p ON e.ECUNUM=p.ECUNUM WHERE p.PILNUM= " + pilnum + "";
+            //console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};
+

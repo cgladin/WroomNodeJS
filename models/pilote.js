@@ -38,7 +38,7 @@ module.exports.getDetailPilotePerso= function (pilnum, callback){
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT PILNOM, PILPRENOM, PILDATENAIS, PILPOIDS, PILTAILLE, PILTEXTE, ECUNOM, PAYNAT, PHOADRESSE FROM PILOTE p JOIN PAYS pa ON p.PAYNUM = pa.PAYNUM JOIN ECURIE e ON p.ECUNUM = e.ECUNUM JOIN PHOTO ph on p.PILNUM = ph.PILNUM WHERE PHONUM = 1 AND p.PILNUM=" + pilnum + "";
+            let sql = "SELECT PILNOM, PILPRENOM, PILDATENAIS, PILPOIDS, PILTAILLE, PILTEXTE, PAYNAT FROM PILOTE p JOIN PAYS pa ON p.PAYNUM = pa.PAYNUM WHERE p.PILNUM=" + pilnum + "";
             //console.log (sql);
             connexion.query(sql, callback);
 
@@ -64,20 +64,5 @@ module.exports.getDetailPiloteSponsor= function (pilnum, callback){
     });
 };
 
-module.exports.getDetailPilotePhotos= function (pilnum, callback){
-    // connection à la base
-    db.getConnection(function(err, connexion){
-        if(!err){
-            // s'il n'y a pas d'erreur de connexion
-            // execution de la requête SQL
-            let sql = "SELECT PHOSUJET, PHOCOMMENTAIRE, PHOADRESSE FROM PILOTE p JOIN PHOTO ph ON p.PILNUM = ph.PILNUM WHERE PHONUM !=1 AND p.PILNUM=" + pilnum + "";
-            //console.log (sql);
-            connexion.query(sql, callback);
-
-            // la connexion retourne dans le pool
-            connexion.release();
-        }
-    });
-};
 
 
