@@ -84,3 +84,13 @@
 		flex-direction: row;
 		justify-content: center;
 	}
+
+	.flex-container-pagePilote {
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.photoNonOfficielPetit{
+		height: 200px;
+		width: 200px;
+	}

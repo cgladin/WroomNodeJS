@@ -1,8 +1,11 @@
 {{>listeRepPiloPartial}}
 
-<div>
+<div class="flex-container-pagePilote">
+
     <div>
-        <img src="/image/pilote/{{photoOfficiel.PHOADRESSE}}" alt="Photo Officiel" >
+        <a href="/image/pilote/{{photoOfficiel.PHOADRESSE}}" data-lightbox="photoPrincipale">
+            <img src="/image/pilote/{{photoOfficiel.PHOADRESSE}}" alt="Photo Officiel" >
+        </a>
     </div>
     <div>
         <p><strong>Nom :</strong> {{detailPerso.PILNOM}} {{this.PILPRENOM}}</p>
@@ -16,22 +19,32 @@
             {{/if}}
             </p>
     </div>
+
     <div>
         <p><strong>Poids :</strong> {{detailPerso.PILPOIDS}} kg</p>
         <p><strong>Taille :</strong> {{detailPerso.PILTAILLE}} cm</p>
     </div>
+
 </div>
+
 <div>
     <strong>Principaux sponsors:</strong>
+{{#if detailSponsor}}
     {{#each detailSponsor}}
         <p><strong>{{this.SPONOM}}</strong> ({{this.SPOSECTACTIVITE}})</p>
     {{/each}}
+{{else}}
+    <p>Pas de sponsor</p>
+{{/if}}
+
+
 </div>
 <div>
     <p><strong>Qui suis je ?</strong> {{detailPerso.PILTEXTE}}</p>
 </div>
 <div>
     {{#each photosNonOfficiel}}
-        <img src="/image/pilote/{{this.PHOADRESSE}}" alt="image">
+    <a  href="/image/pilote/{{this.PHOADRESSE}}" data-lightbox="photosNonOfficiel" data-title="{{this.PHOSUJET}} <br/> {{this.PHOCOMMENTAIRE}} ">
+        <img class="photoNonOfficielPetit" src="/image/pilote/{{this.PHOADRESSE}}" alt="Photo Officiel" >
     {{/each}}
 </div>
