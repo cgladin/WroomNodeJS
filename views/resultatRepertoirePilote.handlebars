@@ -1,8 +1,13 @@
 {{>listeRepPiloPartial}}
 
+<div class="flex-container">
 {{#each pilotes}}
-    <a href="/pagePilote/{{this.PILNUM}}">
-    <img data-lightbox="image-1" src="/image/pilote/{{this.PHOADRESSE}}" alt="image de  {{this.PILNOM}}" class="photoPiloteRecherche">
-        <strong>{{this.PILPRENOM}} {{this.PILNOM}}</strong>
-    </a>
+    <div>
+        <a href="/pagePilote/{{this.PILNUM}}">
+        <img src="/image/pilote/{{this.PHOADRESSE}}" alt="image de  {{this.PILNOM}}" class="photoPiloteRecherche">
+            <br/>
+            <strong style="color:black">{{this.PILPRENOM}} <br/> {{this.PILNOM}}</strong>
+        </a>
+    </div>
 {{/each}}
+</div>
