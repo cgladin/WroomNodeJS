@@ -93,7 +93,7 @@ module.exports.DetailPilote = function (request,response) {
             response.photosNonOfficiel=result[3];
             response.photoOfficiel=result[4][0];
             response.nomEcurie=result[5];
-            response.render('pagePilote',response);
+            response.render('detailPilote',response);
         }
     );
 };

@@ -15,7 +15,7 @@ module.exports = function(app){
 // pilotes
     app.get('/repertoirePilote', PiloteController.Repertoire);
     app.get('/resultatRepertoirePilote/:initial', PiloteController.NomPilote);
-    app.get('/pagePilote/:PILNUM',PiloteController.DetailPilote);
+    app.get('/detailPilote/:PILNUM',PiloteController.DetailPilote);
 
  // circuits
    app.get('/circuits', CircuitController.ListerCircuit);
@@ -27,6 +27,7 @@ module.exports = function(app){
 
  //Résultats
    app.get('/resultats', ResultatController.ListerResultat);
+   app.get('/detailGrandPrix/:GPNUM', ResultatController.DetailGrandPrix);
 
 
 // tout le reste
