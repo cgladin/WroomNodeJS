@@ -1,9 +1,22 @@
-{{>listeCircuitPartial}}
-<img src="/image/circuit/{{detailCircuit.CIRADRESSEIMAGE}}" alt="image du circuit">
-<div>
-    <p><strong>Nom :</strong> {{detailCircuit.CIRNOM}}</p>
-    <p><strong>Longueur :</strong> {{detailCircuit.CIRLONGUEUR}}</p>
-    <p><strong>Nombre de spectateurs :</strong> {{detailCircuit.CIRNBSPECTATEURS}}</p>
-    <p><strong>Pays :</strong> {{detailCircuit.PAYNOM}}</p>
+<div class="flex-container-detailCircuit">
+    <div>
+        {{>listeCircuitPartial}}
+    </div>
+
+    <div>
+        <p><strong>Nom :</strong> {{detailCircuit.CIRNOM}}</p>
+        <p><strong>Longueur :</strong> {{detailCircuit.CIRLONGUEUR}}</p>
+        <p><strong>Nombre de spectateurs :</strong> {{detailCircuit.CIRNBSPECTATEURS}}</p>
+        <p><strong>Pays :</strong> {{detailCircuit.PAYNOM}}</p>
+    </div>
+
+    <div>
+            <a href="/image/circuit/{{detailCircuit.CIRADRESSEIMAGE}}" data-lightbox="photoPrincipale">
+                <img class="imageCircuit" src="/image/circuit/{{detailCircuit.CIRADRESSEIMAGE}}" alt="image du circuit">
+            </a>
+    </div>
+
+
+
 </div>
-<p>{{detailCircuit.CIRTEXT}}</p>
+        <p>{{detailCircuit.CIRTEXT}}</p>
