@@ -1,24 +1,56 @@
-{{>listeEcuriePartials}}
-<img src="/image/ecurie/{{detailEcurie.ECUADRESSEIMAGE}}" alt="image écurie">
-<div>
-    <p><strong>Nom :</strong> {{detailEcurie.ECUNOM}}</p>
-    <p><strong>Directeur :</strong> {{detailEcurie.ECUNOMDIR}}</p>
-    <p><strong>Adresse :</strong> {{detailEcurie.ECUADRSIEGE}}</p>
-    <p><strong>Pays :</strong> {{detailEcurie.PAYNOM}}</p>
-    {{#if fournPneu}}
-        <p><strong>Fournisseur de pneumatiques :</strong> {{fournPneu.FPNOM}}</p>
-    {{/if}}
+<div class="flex-container-detailCircuit">
+
+    <div>
+        {{>listeEcuriePartials}}
+    </div>
+
+
+    <div class="flex-container-detailEcurie">
+
+        <div class="flex-container-detailCircuit">
+            <div>
+                <p><strong>Nom :</strong> {{detailEcurie.ECUNOM}}</p>
+                <p><strong>Directeur :</strong> {{detailEcurie.ECUNOMDIR}}</p>
+                <p><strong>Adresse :</strong> {{detailEcurie.ECUADRSIEGE}}</p>
+                <p><strong>Pays :</strong> {{detailEcurie.PAYNOM}}</p>
+                {{#if fournPneu}}
+                    <p><strong>Fournisseur de pneumatiques :</strong> {{fournPneu.FPNOM}}</p>
+                {{/if}}
+            </div>
+
+            <div>
+                <a href="/image/ecurie/{{detailEcurie.ECUADRESSEIMAGE}}" data-lightbox="photoPrincipale">
+                    <img class="logoEcurie" src="/image/ecurie/{{detailEcurie.ECUADRESSEIMAGE}}" alt="image écurie">
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <br>
+            {{#if ecuriePilote }}
+                <strong>Pilotes :</strong>
+                {{#each ecuriePilote}}
+                    <br>
+                    <a href="/pagePilote/{{this.PILNUM}}">{{this.PILPRENOM}} {{this.PILNOM}}</a>
+                {{/each}}
+                <br><br><br>
+                <div class="flex-container-detailCircuit">
+                {{#each photoVoiture}}
+                    <div>
+                        <a href="/image/ecurie/voiture/{{this.VOIADRESSEIMAGE}}" data-lightbox="photoPrincipale">
+                            <img class="voitureEcurie" src="/image/ecurie/voiture/{{this.VOIADRESSEIMAGE}}" alt="image de voiture">
+                        </a>
+
+                        <p>{{this.VOINOM}}</p>
+                        <p>{{this.TYPELIBELLE}}</p>
+                    </div>
+
+                {{/each}}
+            {{else}}
+                <p>Cette écurie ne participe pas au championnat cette année</p>
+            {{/if}}
+        </div>
+
+        </div>
+    </div>
 </div>
-{{#if ecuriePilote }}
-    <strong>Pilotes :</strong>
-    {{#each ecuriePilote}}
-        <a href="/pagePilote/{{this.PILNUM}}">{{this.PILPRENOM}} {{this.PILNOM}}</a>
-    {{/each}}
-    {{#each photoVoiture}}
-        <img src="/image/ecurie/voiture/{{this.VOIADRESSEIMAGE}}" alt="image de voiture">
-        <p>{{this.VOINOM}}</p>
-        <p>{{this.TYPELIBELLE}}</p>
-    {{/each}}
-{{else}}
-    <p>Cette écurie ne participe pas au championnat cette année</p>
-{{/if}}
