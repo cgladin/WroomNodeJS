@@ -64,3 +64,12 @@
    max-height: 40%;
    max-width: 40%;
 }
+ #connexion{
+	 background-color: black;
+	 color:white;
+	 display: flex;
+	 flex-direction: column;
+ }
+ #formConnexion{
+	 flex-direction: column;
+ }
