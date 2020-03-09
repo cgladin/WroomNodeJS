@@ -1,0 +1,9 @@
+# Les lignes commençant par '#' sont des commentaires.
+# Ignorer tous les fichiers nommés *.*~
+*.*~
+# Ignorer le repertoire node_modules
+node_modules/*
+
+.idea
+package-lock.json
+configDb.js
