@@ -9,8 +9,11 @@ let CircuitController = require('./../controllers/CircuitController');
 module.exports = function(app){
 
 // Main Routes
-    app.get('/', HomeController.Index);
-    app.get('/accueil', HomeController.Index);
+    app.get('/', verifLogin, HomeController.Index);
+    // Connexion
+    app.get('/login', AdminController.Connexion);
+    app.post('/login', AdminController.Authentification);
+    app.get('/logout', AdminController.Logout);
 
 // pilotes
     app.get('/repertoirePilote', PiloteController.Repertoire);
@@ -30,3 +33,10 @@ app.get('*', HomeController.NotFound);
 app.post('*', HomeController.NotFound);
 
 };
+function verifLogin(req, res, next) {
+    if (req.session.isConnected == undefined || req.session.isConnected == "") {
+        res.redirect('/login');
+        return;
+    }
+    next();
+}

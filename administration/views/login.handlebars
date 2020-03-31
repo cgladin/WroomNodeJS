@@ -1,0 +1,25 @@
+
+
+<img src="/image/user.png" alt="avatar">
+
+{{#if fail}}
+    <img src="/image/act_warning.png"><p id="erreur">{{this.fail}}</p>
+{{/if}}
+
+
+<form class="connexion" action="#" method="post">
+    <h1>Administration</h1>
+    <label for="login">
+        <b>Login</b>
+        <input type="text" id="login" name="login" required>
+    </label>
+    </br></br>
+    <label for="pwd">
+        <b>Mot de passe </b>
+        <input type="password" id="pwd" name="pwd" required>
+    </label>
+    </br></br>
+    <input type="submit" value="Connection">
+    <input type="reset" value="Annuler">
+    </br></br>
+</form>
