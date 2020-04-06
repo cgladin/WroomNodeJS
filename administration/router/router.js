@@ -1,4 +1,4 @@
-let AdminController = require('./../controllers/AdminController');
+let LoginController = require('../controllers/LoginController');
 let HomeController = require('./../controllers/HomeController');
 let ResultatController = require('./../controllers/ResultatController');
 let EcurieController = require('./../controllers/EcurieController');
@@ -11,9 +11,9 @@ module.exports = function(app){
 // Main Routes
     app.get('/', verifLogin, HomeController.Index);
     // Connexion
-    app.get('/login', AdminController.Connexion);
-    app.post('/login', AdminController.Authentification);
-    app.get('/logout', AdminController.Logout);
+    app.get('/login', LoginController.Connexion);
+    app.post('/login', LoginController.Authentification);
+    app.get('/logout', LoginController.Logout);
 
 // pilotes
     app.get('/repertoirePilote', verifLogin,PiloteController.Repertoire);

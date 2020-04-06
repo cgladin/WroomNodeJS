@@ -1,5 +1,5 @@
 "use strict";
-let model = require('../models/admin.js');
+let model = require('../models/login.js');
 let Cryptr = require('cryptr');
 let cryptr= new Cryptr('MaSuperCléDeChiffrementDeouF');
 
@@ -7,6 +7,7 @@ let cryptr= new Cryptr('MaSuperCléDeChiffrementDeouF');
 
 module.exports.Connexion = function(request, response) {
     response.title = 'Connexion';
+    // permet d'afficher la page de login
     response.render('login', response);
 };
 
@@ -14,6 +15,7 @@ module.exports.Connexion = function(request, response) {
 
 module.exports.Authentification = function(request, response) {
     response.title = 'Authentification';
+    // récupération du mot de passe et login dans le form
     let login = request.body.login;
     let pwd = request.body.pwd;
     model.login(login, function(err, res) {
@@ -21,10 +23,9 @@ module.exports.Authentification = function(request, response) {
             console.log(err);
             return;
         }
-    console.log(cryptr.decrypt(res[0].PASSWD));
 
-        if (res[0].LOGIN == 'admin') {
-            if(cryptr.decrypt(res[0].PASSWD) == pwd){
+        if (res[0].LOGIN == 'admin') { // vérification de login
+            if(cryptr.decrypt(res[0].PASSWD) == pwd){ //vérification de mot de passe avec la base de donnée
                 var session = request.session;
                 session.isConnected = true;
                 response.redirect("/");
