@@ -1,0 +1,34 @@
+<img src="/image/cat_pilote.png" alt="logo">
+<h1>Gestion des pilotes</h1>
+<a href="/ajoutPilote"><img src="/image/act_add.png" alt="logoAjout"> Ajouter un pilote</a>
+{{#if pilotes}}
+    <div id="tableauPilote">
+        <table>
+            <tr>
+                <th> Nom </th>
+                <th> Prénom </th>
+                <th> Date de naissance </th>
+                <th> Actions</th>
+            </tr>
+            {{#each pilotes}}
+                <tr>
+                    <td>
+                        {{ this.PILNOM }}
+                    </td>
+                    <td>
+                        {{ this.PILPRENOM}}
+                    </td>
+                    <td>
+                        {{formatDate this.PILDATENAIS "DD/MM/YYYY"}}
+                    </td>
+                    <td>
+                        <img class="image_lien" src="/image/act_edit.png" alt="Edit_image" /><a class="lien_modif" href="/pilotes/modifier/{{this.pilnum}}">MODIFIER</a>
+                        <img class="image_lien" src="/image/act_delete.png" alt="Edit_image" /><a class="lien_supp" href="/pilotes/supprimer/{{this.pilnum}}">SUPPRIMER</a>
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+{{else}}
+    <p>Aucun pilotes enregistré</p>
+{{/if}}

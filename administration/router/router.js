@@ -4,6 +4,7 @@ let ResultatController = require('./../controllers/ResultatController');
 let EcurieController = require('./../controllers/EcurieController');
 let PiloteController = require('./../controllers/PiloteController');
 let CircuitController = require('./../controllers/CircuitController');
+let SponsorController = require('./../controllers/SponsorController');
 
 // Routes
 module.exports = function(app){
@@ -16,17 +17,19 @@ module.exports = function(app){
     app.get('/logout', LoginController.Logout);
 
 // pilotes
-    app.get('/repertoirePilote', verifLogin,PiloteController.Repertoire);
+    app.get('/pilotes', verifLogin,PiloteController.ListerPilote);
 
  // circuits
    app.get('/circuits',verifLogin, CircuitController.ListerCircuit);
 
 // Ecuries
-   app.get('/ecuries',verifLogin, EcurieController.ListerEcurie);
+   app.get('/gestionEcuries',verifLogin, EcurieController.ListerEcurie);
 
  //Résultats
-   app.get('/resultats',verifLogin, ResultatController.ListerResultat);
+   app.get('/gestionResultats',verifLogin, ResultatController.ListerResultat);
 
+// Sponsors
+    app.get('/gestionSponsors',verifLogin, SponsorController.ListerSponsor);
 
 // tout le reste
 app.get('*', HomeController.NotFound);
