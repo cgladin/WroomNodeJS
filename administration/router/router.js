@@ -16,16 +16,16 @@ module.exports = function(app){
     app.get('/logout', AdminController.Logout);
 
 // pilotes
-    app.get('/repertoirePilote', PiloteController.Repertoire);
+    app.get('/repertoirePilote', verifLogin,PiloteController.Repertoire);
 
  // circuits
-   app.get('/circuits', CircuitController.ListerCircuit);
+   app.get('/circuits',verifLogin, CircuitController.ListerCircuit);
 
 // Ecuries
-   app.get('/ecuries', EcurieController.ListerEcurie);
+   app.get('/ecuries',verifLogin, EcurieController.ListerEcurie);
 
  //Résultats
-   app.get('/resultats', ResultatController.ListerResultat);
+   app.get('/resultats',verifLogin, ResultatController.ListerResultat);
 
 
 // tout le reste
@@ -34,7 +34,7 @@ app.post('*', HomeController.NotFound);
 
 };
 function verifLogin(req, res, next) {
-    if (req.session.isConnected == undefined || req.session.isConnected == "") {
+    if (req.session.isConnected === undefined || req.session.isConnected === "") {
         res.redirect('/login');
         return;
     }

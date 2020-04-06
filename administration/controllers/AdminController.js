@@ -13,23 +13,28 @@ module.exports.Connexion = function(request, response) {
 //////////////////// AUTHENTIFICATION DE L'UTILISATEUR //////////////////////////
 
 module.exports.Authentification = function(request, response) {
-    response.title = 'Connexion..';
+    response.title = 'Authentification';
     let login = request.body.login;
     let pwd = request.body.pwd;
-    let encryptedString = cryptr.encrypt(pwd);
-    model.login(login,encryptedString, function(err, res) {
+    model.login(login, function(err, res) {
         if (err) {
             console.log(err);
             return;
         }
-        if (res == '') {
-            response.fail = "Login ou mot de passe incorrect";
-            response.render('login', response);
-            return;
+    console.log(cryptr.decrypt(res[0].PASSWD));
+
+        if (res[0].LOGIN == 'admin') {
+            if(cryptr.decrypt(res[0].PASSWD) == pwd){
+                var session = request.session;
+                session.isConnected = true;
+                response.redirect("/");
+            } else {
+                response.fail = "Mot de passe incorrect";
+                response.render('login', response);
+            }
         } else {
-            var session = request.session;
-            session.isConnected = true;
-            response.redirect("/");
+            response.fail = "Login incorrect";
+            response.render('login', response);
         }
     });
 };

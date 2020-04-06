@@ -1,11 +1,7 @@
 
-
-<img src="/image/user.png" alt="avatar">
-
 {{#if fail}}
-    <img src="/image/act_warning.png"><p id="erreur">{{this.fail}}</p>
+    <p id="erreur"><img src="/image/act_warning.png">{{this.fail}}</p>
 {{/if}}
-
 
 <form class="connexion" action="#" method="post">
     <h1>Administration</h1>
@@ -19,7 +15,7 @@
         <input type="password" id="pwd" name="pwd" required>
     </label>
     </br></br>
-    <input type="submit" value="Connection">
+    <input type="submit" value="Connexion">
     <input type="reset" value="Annuler">
     </br></br>
 </form>
