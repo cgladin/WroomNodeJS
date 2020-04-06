@@ -1,6 +1,7 @@
 "use strict";
 let model = require('../models/admin.js');
-let sha1 = require('sha1');
+let Cryptr = require('cryptr');
+let cryptr= new Cryptr('MaSuperCléDeChiffrementDeouF');
 
 //////////////////// CONNEXION //////////////////////////
 
@@ -15,13 +16,14 @@ module.exports.Authentification = function(request, response) {
     response.title = 'Connexion..';
     let login = request.body.login;
     let pwd = request.body.pwd;
-    model.loginCorrect(login,sha1(pwd), function(err, res) {
+    let encryptedString = cryptr.encrypt(pwd);
+    model.login(login,encryptedString, function(err, res) {
         if (err) {
             console.log(err);
             return;
         }
         if (res == '') {
-            response.fail = "Login ou mot de passe incorrect !";
+            response.fail = "Login ou mot de passe incorrect";
             response.render('login', response);
             return;
         } else {

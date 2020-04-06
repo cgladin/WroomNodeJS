@@ -1,4 +1,4 @@
-
+let AdminController = require('./../controllers/AdminController');
 let HomeController = require('./../controllers/HomeController');
 let ResultatController = require('./../controllers/ResultatController');
 let EcurieController = require('./../controllers/EcurieController');
