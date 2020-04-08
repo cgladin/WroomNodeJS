@@ -18,6 +18,8 @@ module.exports = function(app){
 
 // pilotes
     app.get('/pilotes', verifLogin,PiloteController.ListerPilote);
+    app.get('/pilotes/ajoutPilote', verifLogin,PiloteController.AjoutPilote);
+    app.post('/pilotes/ajoutPilote', verifLogin,PiloteController.AjoutInfoPilote);
 
  // circuits
    app.get('/circuits',verifLogin, CircuitController.ListerCircuit);

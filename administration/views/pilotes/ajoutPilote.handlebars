@@ -1,0 +1,70 @@
+<form  action="#" method="post">
+    <h1> Ajouter un pilote</h1>
+    <label for="prenom">
+        <b>Prénom</b>
+        <input type="text" name="prenom" required>
+    </label>
+    </br></br>
+    <label for="nom">
+        <b>nom</b>
+        <input type="text" name="nom" required>
+    </label>
+    </br></br>
+    <label for="datenaissance">
+        <b>Date de naissance</b>
+        <input type="number" min="0" max="31" name="date" required>/
+        <input type="number" min="0" max="12" name="date" required>/
+        <input type="number" min="1800" max="" name="date" id="dateAnnee" required>
+    </label>
+    </br></br>
+    <label for="nationalite">
+        <b>Nationalité</b>
+        <select name="nationalite" required>
+            {{#each pays}}
+                <option value="{{this.paynum}}">{{this.paynom}}</option>
+            {{/each}}
+        </select>
+    </label>
+    </br></br>
+    <label for="ecurie">
+        <b>Ecurie</b>
+        <select name="ecurie" required>
+            {{#each ecuries}}
+                <option value="{{this.ecunum}}">{{this.ecunom}}</option>
+            {{/each}}
+        </select>
+    </label>
+    </br></br>
+    <label for="point">
+        <b>Points</b>
+        <input type="number" name="point" required> <p>pts</p>
+    </label>
+    </br></br>
+    <label for="poid">
+        <b>Poids</b>
+        <input type="number" max="200" name="poid" required> <p>Kg</p>
+    </label>
+    </br></br>
+    <label for="taille">
+        <b>Taille</b>
+        <input type="number" max="300" name="taille" required> <p>cm</p>
+    </label>
+    <label for="description">
+        <b>Description</b>
+        <textarea rows="4" cols="100" required></textarea>
+    </label>
+    </br></br>
+    <input type="submit" value="AJOUTER">
+    </br></br>
+</form>
+
+<script type="text/javascript">
+    function dateAnnee() {
+        let ladate=new Date();
+        let annee= ladate.getFullYear();
+        annee = annee - 18;
+        return annee;
+    }
+    let anneeMax= dateAnnee();
+    document.getElementById("dateAnnee").setAttribute("max",anneeMax);
+</script>

@@ -12,3 +12,13 @@ module.exports.ListerPilote = 	function(request, response){
         response.render('pilotes/gestionPilotes', response);
     });
   } ;
+module.exports.AjoutPilote = 	function(request, response){
+    model.getListePilote(function (err, result) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        response.pilotes = result;
+        response.render('pilotes/ajoutPilote', response);
+    });
+} ;
