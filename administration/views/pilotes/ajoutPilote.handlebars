@@ -20,8 +20,8 @@
     <label for="nationalite">
         <b>Nationalité</b>
         <select name="nationalite" required>
-            {{#each pays}}
-                <option value="{{this.paynum}}">{{this.paynom}}</option>
+            {{#each nationalites}}
+                <option value="{{this.PAYNUM}}">{{this.PAYNAT}}</option>
             {{/each}}
         </select>
     </label>
@@ -30,7 +30,7 @@
         <b>Ecurie</b>
         <select name="ecurie" required>
             {{#each ecuries}}
-                <option value="{{this.ecunum}}">{{this.ecunom}}</option>
+                <option value="{{this.ECUNUM}}">{{this.ECUNOM}}</option>
             {{/each}}
         </select>
     </label>
@@ -59,6 +59,7 @@
 </form>
 
 <script type="text/javascript">
+    //permet de mettre dynamiquement la date limite de naissance d'un pilote pour pas entrer un date trop courte
     function dateAnnee() {
         let ladate=new Date();
         let annee= ladate.getFullYear();
