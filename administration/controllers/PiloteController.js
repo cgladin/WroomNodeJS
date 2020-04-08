@@ -34,18 +34,37 @@ module.exports.AjoutPilote = 	function(request, response){
                 return;
             }
             response.nationalites = result[0]; // liste des nationnalites
+            result[1].push({ECUNUM:0,ECUNOM:"Aucune"}); //ajout de la possibilite de ne pas avoir d'écurie
             response.ecuries = result[1]; // liste des ecuries
+            console.log(response.ecuries);
             response.render('pilotes/ajoutPilote', response);
         }  // fin fonction
     );  // fin async
 } ;
 module.exports.AjoutInfoPilote = 	function(request, response){
-    model.getListePilote(function (err, result) {
+    //récupération des données insérées
+    prenom=request.body.prenom;
+    nom=request.body.nom;
+    date=request.body.date;
+    nationalite=request.body.nationalite;
+    ecurie=request.body.ecurie;
+    point=request.body.point;
+    poid=request.body.poid;
+    taille=request.body.taille;
+    description=request.body.description;
+    if(ecurie == 0){
+        ecurie = "NULL";
+    }
+    if(point == ""){
+        point = "NULL";
+    }
+
+    model.ajouterNouveauPilote(prenom,nom,date,nationalite,ecurie,point,poid,taille,description, function (err) {
         if (err) {
             console.log(err);
             return;
         }
-        response.pilotes = result;
-        response.render('pilotes/ajoutPilote', response);
+        response.redirect('pilotes/gestionPilotes');
     });
+
 } ;
