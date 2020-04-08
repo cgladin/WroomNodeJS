@@ -20,6 +20,7 @@ module.exports = function(app){
     app.get('/pilotes', verifLogin,PiloteController.ListerPilote);
     app.get('/pilotes/ajoutPilote', verifLogin,PiloteController.AjoutPilote);
     app.post('/pilotes/ajoutPilote', verifLogin,PiloteController.AjoutInfoPilote);
+    app.get('/pilotes/supprimer/:PILNUM', PiloteController.SupprimerPilote);
 
  // circuits
    app.get('/circuits',verifLogin, CircuitController.ListerCircuit);

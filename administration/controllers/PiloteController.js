@@ -2,6 +2,10 @@ var async = require('async');
 let model = require('../models/pilote.js');
 let modelPays = require('../models/pays.js');
 let modelEcurie = require('../models/ecurie.js');
+let modelEssais = require('../models/essais.js');
+let modelCourse = require('../models/course.js');
+let modelPhoto = require('../models/photo.js');
+let modelSponsorise = require('../models/sponsorise.js');
 // ///////////////////////// R E P E R T O I R E    D E S    P I L O T E S
 
 module.exports.ListerPilote = 	function(request, response){
@@ -52,10 +56,10 @@ module.exports.AjoutInfoPilote = 	function(request, response){
     poid=request.body.poid;
     taille=request.body.taille;
     description=request.body.description;
-    if(ecurie == 0){
+    if(ecurie == 0){ //met la valeur nulle si la valeur aucune ecurie est sélectionnée
         ecurie = "NULL";
     }
-    if(point == ""){
+    if(point == ""){ // met la valeur null si le pilote n'a pas de points
         point = "NULL";
     }
 
@@ -64,7 +68,46 @@ module.exports.AjoutInfoPilote = 	function(request, response){
             console.log(err);
             return;
         }
-        response.redirect('pilotes/gestionPilotes');
+        response.redirect('/pilotes');
     });
 
+} ;
+module.exports.SupprimerPilote = 	function(request, response){
+  num=request.params.PILNUM;
+async.parallel([
+    function (callback) {
+        model.deletePilote(num, function (err,result) {
+            callback(null,result)
+        })
+    },
+    function (callback) {
+        modelEssais.deleteEssaisPilote(num,function (err, result) {
+            callback(null,result)
+        })
+    },
+    function (callback) {
+        modelCourse.deleteCoursePilote(num,function (err, result) {
+            callback(null,result)
+        })
+    },
+    function (callback) {
+        modelPhoto.deletePhotoPilote(num,function (err, result) {
+            callback(null,result)
+        })
+    },
+    function (callback) {
+        modelSponsorise.deleteSponsorPilote(num,function (err, result) {
+            callback(null,result)
+        })
+    }
+    ],
+    function (err, result) {
+        if (err) {
+            // gestion de l'erreur
+            console.log(err);
+            return;
+        }
+        response.render('pilotes/supprimer');
+    }  // fin fonction
+    );//fin async
 } ;
