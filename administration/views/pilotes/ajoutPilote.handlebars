@@ -1,24 +1,24 @@
 <form  action="#" method="post">
     <h1> Ajouter un pilote</h1>
     <label for="prenom">
-        <b>Prénom</b>
+        <strong>Prénom</strong>
         <input type="text" name="prenom" required>
     </label>
     </br></br>
     <label for="nom">
-        <b>Nom</b>
+        <strong>Nom</strong>
         <input type="text" name="nom" required>
     </label>
     </br></br>
     <label for="datenaissance">
-        <b>Date de naissance</b>
+        <strong>Date de naissance</strong>
         <input type="number" min="0" max="31" name="date" required>/
         <input type="number" min="0" max="12" name="date" required>/
         <input type="number" min="1800" max="" name="date" id="dateAnnee" required>
     </label>
     </br></br>
     <label for="nationalite">
-        <b>Nationalité</b>
+        <strong>Nationalité</strong>
         <select name="nationalite" required>
             {{#each nationalites}}
                 <option value="{{this.PAYNUM}}">{{this.PAYNAT}}</option>
@@ -27,7 +27,7 @@
     </label>
     </br></br>
     <label for="ecurie">
-        <b>Ecurie</b>
+        <strong>Ecurie</strong>
         <select name="ecurie" required>
             {{#each ecuries}}
                 <option value="{{this.ECUNUM}}">{{this.ECUNOM}}</option>
@@ -36,21 +36,21 @@
     </label>
     </br></br>
     <label for="point">
-        <b>Points</b>
+        <strong>Points</strong>
         <input type="number" name="point"> <p>pts</p>
     </label>
     </br></br>
     <label for="poid">
-        <b>Poids</b>
+        <strong>Poids</strong>
         <input type="number" max="200" name="poid" required> <p>Kg</p>
     </label>
     </br></br>
     <label for="taille">
-        <b>Taille</b>
+        <strong>Taille</strong>
         <input type="number" max="300" name="taille" required> <p>cm</p>
     </label>
     <label for="description">
-        <b>Description</b>
+        <strong>Description</strong>
         <textarea name="description" rows="4" cols="100" required></textarea>
     </label>
     </br></br>

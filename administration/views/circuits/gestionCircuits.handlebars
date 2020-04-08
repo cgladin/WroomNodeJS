@@ -1,0 +1,36 @@
+
+    <img src="/image/cat_circuit.png" alt="Drapeau du circuit" />
+    <h1>Gestion des Circuits</h1>
+    <p><a href="/circuits/addCircuit"> <img class="image_lien" src="/image/act_add.png" alt="Ajout_image" />AJOUTER UN CIRCUIT</a></p>
+
+{{#if circuits}}
+    <div id="tableauPilote">
+        <table>
+            <tr>
+                <th> Nom </th>
+                <th> Longueur </th>
+                <th> Nombres de spectateurs </th>
+                <th> Actions </th>
+            </tr>
+            {{#each circuits}}
+                <tr>
+                    <td>
+                        {{ this.CIRNOM }}
+                    </td>
+                    <td>
+                        {{ this.CIRLONGUEUR}}
+                    </td>
+                    <td>
+                        {{this.CIRNBSPECTATEURS}}
+                    </td>
+                    <td>
+                        <img class="image_lien" src="/image/act_edit.png" alt="Edit_image" /><a class="lien_modif" href="/circuits/modifier/{{this.CIRNUM}}">MODIFIER</a>
+                        <img class="image_lien" src="/image/act_delete.png" alt="Edit_image" /><a class="lien_supp" href="/circuits/supprimer/{{this.CIRNUM}}">SUPPRIMER</a>
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+{{else}}
+    <p>Aucun circuit enregistré </p>
+{{/if}}
