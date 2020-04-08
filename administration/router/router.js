@@ -24,6 +24,8 @@ module.exports = function(app){
 
  // circuits
    app.get('/circuits',verifLogin, CircuitController.ListerCircuit);
+    app.get('/circuits/ajoutCircuit',verifLogin, CircuitController.ajoutCircuit);
+    app.post('/circuits/ajoutCircuit',verifLogin, CircuitController.ajoutInfoCircuit);
 
 // Ecuries
    app.get('/gestionEcuries',verifLogin, EcurieController.ListerEcurie);
