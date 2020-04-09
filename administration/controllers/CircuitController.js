@@ -27,7 +27,22 @@ module.exports.AjoutCircuit = function(request, response){
     });
 };
 module.exports.AjoutInfoCircuit = function (request,response) {
-    var image = request.files.image;
+    console.log(request.files);
+    let image = request.files.image;
+    image.mv('../public/image/ecurie/'+image.name);
+    let nom = request.body.nom;
+    let longueur = request.body.longueur;
+    let pays = request.body.pays;
+    let nbspectateur = request.body.nbspectateur;
+    let description = request.body.description;
+
+    model.ajouterNouveauCircuit(nom,longueur,pays,image.name,nbspectateur,description, function (err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        response.redirect('/circuits');
+    });
 
 };
 module.exports.SupprimerCircuit = function (request, response) {

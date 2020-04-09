@@ -1,0 +1,86 @@
+<form  action="#" method="post">
+    <h1> Modifier un pilote</h1>
+    <label for="prenom">
+        <strong>Prénom</strong>
+        <input type="text" name="prenom" value="{{pilote.PILPRENOM}}" required>
+    </label>
+    </br></br>
+    <label for="nom">
+        <strong>Nom</strong>
+        <input type="text" name="nom" value="{{pilote.PILNOM}}" required>
+    </label>
+    </br></br>
+    <label for="datenaissance">
+        <strong>Date de naissance</strong>
+        <input type="number" min="0" max="31" name="date" value="{{pilote.JOUR}}" required>/
+        <input type="number" min="0" max="12" name="date" value="{{pilote.MOIS}}" required>/
+        <input type="number" min="1800" max="" name="date" id="dateAnnee" value="{{pilote.ANNEE}}" required>
+    </label>
+    </br></br>
+    <label for="nationalite">
+        <strong>Nationalité</strong>
+        <select name="nationalite" required>
+            <option value="{{natPilote.PAYNUM}}">{{natPilote.PAYNAT}}</option>
+            {{#each nationalites}}
+                {{#ifCond this.PAYNUM '!=' natPilote.PAYNUM}}
+                    <option value="{{this.PAYNUM}}">{{this.PAYNAT}}</option>
+                {{/ifCond}}
+            {{/each}}
+        </select>
+    </label>
+    </br></br>
+    <label for="ecurie">
+        <strong>Ecurie</strong>
+        <select name="ecurie" required>
+            {{#if ecuriePilote}}
+                <option value="{{ecuriePilote.ECUNUM}}">{{ecuriePilote.ECUNOM}}</option>
+                {{#each ecuries}}
+                    {{#ifCond this.ECUNUM '!=' ecuriePilote.ECUNUM}}
+                        <option value="{{this.ECUNUM}}">{{this.ECUNOM}}</option>
+                    {{/ifCond}}
+                {{/each}}
+            {{else}}
+                <option value="0">Aucune</option>
+                {{#each ecuries}}
+                    {{#ifCond this.ECUNUM '!=' 0 }}
+                        <option value="{{this.ECUNUM}}">{{this.ECUNOM}}</option>
+                    {{/ifCond}}
+                {{/each}}
+            {{/if}}
+        </select>
+    </label>
+    </br></br>
+    <label for="point">
+        <strong>Points</strong>
+        <input type="number" name="point" value="{{pilote.PILPOINTS}}"> <p>pts</p>
+    </label>
+    </br></br>
+    <label for="poid">
+        <strong>Poids</strong>
+        <input type="number" max="200" name="poid" value="{{pilote.PILPOIDS}}" required> <p>Kg</p>
+    </label>
+    </br></br>
+    <label for="taille">
+        <strong>Taille</strong>
+        <input type="number" max="300" name="taille" value="{{pilote.PILTAILLE}}" required> <p>cm</p>
+    </label>
+    <label for="description">
+        <strong>Description</strong>
+        <textarea name="description" rows="4" cols="100" required>{{pilote.PILTEXTE}}</textarea>
+    </label>
+    </br></br>
+    <input type="submit" value="MODIFIER">
+    </br></br>
+</form>
+
+<script type="text/javascript">
+    //permet de mettre dynamiquement la date limite de naissance d'un pilote pour pas entrer un date trop courte
+    function dateAnnee() {
+        let ladate=new Date();
+        let annee= ladate.getFullYear();
+        annee = annee - 18;
+        return annee;
+    }
+    let anneeMax= dateAnnee();
+    document.getElementById("dateAnnee").setAttribute("max",anneeMax);
+</script>

@@ -40,22 +40,21 @@ module.exports.AjoutPilote = 	function(request, response){
             response.nationalites = result[0]; // liste des nationnalites
             result[1].push({ECUNUM:0,ECUNOM:"Aucune"}); //ajout de la possibilite de ne pas avoir d'écurie
             response.ecuries = result[1]; // liste des ecuries
-            console.log(response.ecuries);
             response.render('pilotes/ajoutPilote', response);
         }  // fin fonction
     );  // fin async
 } ;
 module.exports.AjoutInfoPilote = 	function(request, response){
     //récupération des données insérées
-    prenom=request.body.prenom;
-    nom=request.body.nom;
-    date=request.body.date;
-    nationalite=request.body.nationalite;
-    ecurie=request.body.ecurie;
-    point=request.body.point;
-    poid=request.body.poid;
-    taille=request.body.taille;
-    description=request.body.description;
+    let prenom=request.body.prenom;
+    let nom=request.body.nom;
+    let date=request.body.date;
+    let nationalite=request.body.nationalite;
+    let ecurie=request.body.ecurie;
+    let point=request.body.point;
+    let poid=request.body.poid;
+    let taille=request.body.taille;
+    let description=request.body.description;
     if(ecurie == 0){ //met la valeur nulle si la valeur aucune ecurie est sélectionnée
         ecurie = "NULL";
     }
@@ -111,3 +110,52 @@ async.parallel([
     }  // fin fonction
     );//fin async
 } ;
+module.exports.ModifierPilote = 	function(request, response){
+    num=request.params.PILNUM;
+    async.parallel([
+            function (callback) {
+                model.getPilote(num, function (err,result) {
+                    callback(null,result)
+                })
+            },
+            function (callback) {
+                modelPays.getNationalite( function (errPil, resultPil) {
+                    callback(null, resultPil)
+                });
+            },
+            function (callback) {
+                modelEcurie.getListeEcurie(function (err, result) {
+                    callback(null,result)
+                })
+            },
+            function (callback) {
+                modelPays.getNatPilote( num,function (errPil, resultPil) {
+                    callback(null, resultPil)
+                });
+            },
+            function (callback) {
+                modelEcurie.getEcuriePilote(num,function (err, result) {
+                    callback(null,result)
+                })
+            },
+        ],
+        function (err, result) {
+            if (err) {
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
+            response.pilote = result[0][0];
+            response.nationalites = result[1];
+            result[2].push({ECUNUM:0,ECUNOM:"Aucune"}); //ajout de la possibilite de ne pas avoir d'écurie
+            response.ecuries = result[2];
+            response.natPilote=result[3][0];
+            response.ecuriePilote=result[4][0];
+            response.render('pilotes/modifier', response);
+        }  // fin fonction
+    );//fin async
+} ;
+
+module.exports.ModifierInfoPilote = 	function(request, response){
+
+};

@@ -20,16 +20,18 @@ module.exports = function(app){
     app.get('/pilotes', verifLogin,PiloteController.ListerPilote);
     app.get('/pilotes/ajoutPilote', verifLogin,PiloteController.AjoutPilote);
     app.post('/pilotes/ajoutPilote', verifLogin,PiloteController.AjoutInfoPilote);
-    app.get('/pilotes/supprimer/:PILNUM', PiloteController.SupprimerPilote);
-
+    app.get('/pilotes/supprimer/:PILNUM',verifLogin, PiloteController.SupprimerPilote);
+    app.get('/pilotes/modifier/:PILNUM', verifLogin, PiloteController.ModifierPilote);
+    app.post('/pilotes/modifier', verifLogin,PiloteController.ModifierInfoPilote);
  // circuits
    app.get('/circuits',verifLogin, CircuitController.ListerCircuit);
     app.get('/circuits/ajoutCircuit',verifLogin, CircuitController.AjoutCircuit);
-    app.post('/circuits/ajoutCircuit',verifLogin, CircuitController.AjoutInfoCircuit);
+    app.post('/circuits/ajoutCircuit', CircuitController.AjoutInfoCircuit);
     app.get('/circuits/supprimer/:CIRNUM',verifLogin,CircuitController.SupprimerCircuit);
 
+
 // Ecuries
-   app.get('/gestionEcuries',verifLogin, EcurieController.ListerEcurie);
+   app.get('/ecuries',verifLogin, EcurieController.ListerEcurie);
 
  //Résultats
    app.get('/gestionResultats',verifLogin, ResultatController.ListerResultat);

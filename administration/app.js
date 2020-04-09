@@ -5,6 +5,8 @@ let express         = require('express'),
     http = require('http'),
     path = require('path');
 
+const fileUpload = require('express-fileupload');
+
 let app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -15,6 +17,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname+ '/public')));
 
 app.use(cookieParser());
+
+// enable files upload
+app.use(fileUpload({
+    createParentPath: true
+}));
 
 app.use(session({
     secret: 'nC0@#1pM/-0qA1+é',

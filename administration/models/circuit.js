@@ -31,3 +31,19 @@ module.exports.deleteCircuit= function (num,callback) {
         }
     });
 };
+module.exports.ajouterNouveauCircuit= function (nom,longueur,pays,image,nbspectateur,description,callback) {
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql = "INSERT INTO circuit (PAYNUM,CIRNOM,CIRLONGUEUR,CIRNBSPECTATEURS,CIRADRESSEIMAGE,CIRTEXT)";
+            sql = sql +" VALUES ("+pays+",'"+nom+"',"+longueur+","+nbspectateur+",'"+image+"','"+description+"')";
+            console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};
