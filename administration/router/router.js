@@ -24,8 +24,9 @@ module.exports = function(app){
 
  // circuits
    app.get('/circuits',verifLogin, CircuitController.ListerCircuit);
-    app.get('/circuits/ajoutCircuit',verifLogin, CircuitController.ajoutCircuit);
-    app.post('/circuits/ajoutCircuit',verifLogin, CircuitController.ajoutInfoCircuit);
+    app.get('/circuits/ajoutCircuit',verifLogin, CircuitController.AjoutCircuit);
+    app.post('/circuits/ajoutCircuit',verifLogin, CircuitController.AjoutInfoCircuit);
+    app.get('/circuits/supprimer/:CIRNUM',verifLogin,CircuitController.SupprimerCircuit);
 
 // Ecuries
    app.get('/gestionEcuries',verifLogin, EcurieController.ListerEcurie);

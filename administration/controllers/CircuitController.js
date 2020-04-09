@@ -15,7 +15,7 @@ module.exports.ListerCircuit = function(request, response){
         response.render('circuits/gestionCircuits', response);
     });
 };
-module.exports.ajoutCircuit = function(request, response){
+module.exports.AjoutCircuit = function(request, response){
     response.title = 'Liste des circuits';
     modelPays.getPays(function(err, result) {
         if (err) {
@@ -26,7 +26,17 @@ module.exports.ajoutCircuit = function(request, response){
         response.render('circuits/ajoutCircuit', response);
     });
 };
-module.exports.ajoutInfoCircuit = function (request,response) {
+module.exports.AjoutInfoCircuit = function (request,response) {
     var image = request.files.image;
 
+};
+module.exports.SupprimerCircuit = function (request, response) {
+    num=request.params.CIRNUM;
+    model.deleteCircuit(num, function (err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        response.render('circuits/supprimer');
+    });
 };
