@@ -24,7 +24,7 @@ module.exports.Authentification = function(request, response) {
             return;
         }
 
-        if (res[0].LOGIN == 'admin') { // vérification de login
+        if (res[0].LOGIN === 'admin') { // vérification de login
             if(cryptr.decrypt(res[0].PASSWD) == pwd){ //vérification de mot de passe avec la base de donnée
                 var session = request.session;
                 session.isConnected = true;

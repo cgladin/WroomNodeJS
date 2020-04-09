@@ -106,7 +106,7 @@ async.parallel([
             console.log(err);
             return;
         }
-        response.render('pilotes/supprimer');
+        response.render('pilotes/redirect');
     }  // fin fonction
     );//fin async
 } ;
@@ -180,7 +180,8 @@ module.exports.ModifierInfoPilote = 	function(request, response){
             return;
         }
         response.modif=1;
-        response.render('pilotes/supprimer', response);
+        console.log(response.modif);
+        response.render('pilotes/redirect', response);
     });
 
 };

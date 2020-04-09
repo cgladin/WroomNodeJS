@@ -2,6 +2,7 @@ let async = require('async');
 let model = require('../models/circuit.js');
 let modelPays = require('../models/pays.js');
 let formidable = require('formidable');
+var fs = require('fs');
 // ////////////////////// L I S T E R     C I R C U I T S
 
 module.exports.ListerCircuit = function(request, response){
@@ -27,9 +28,8 @@ module.exports.AjoutCircuit = function(request, response){
     });
 };
 module.exports.AjoutInfoCircuit = function (request,response) {
-    console.log(request.files);
     let image = request.files.image;
-    image.mv('../public/image/ecurie/'+image.name);
+    image.mv('./public/image/ecurie/'+image.name);
     let nom = request.body.nom;
     let longueur = request.body.longueur;
     let pays = request.body.pays;
@@ -47,11 +47,65 @@ module.exports.AjoutInfoCircuit = function (request,response) {
 };
 module.exports.SupprimerCircuit = function (request, response) {
     num=request.params.CIRNUM;
-    model.deleteCircuit(num, function (err) {
-        if (err) {
-            console.log(err);
-            return;
-        }
-        response.render('circuits/supprimer');
-    });
+    async.parallel([
+            function (callback) {
+                model.deleteCircuit(num, function (err,res) {
+                    callback(null)
+                });
+            },
+            function (callback) {
+                model.getImage( num,function (err, result) {
+                    callback(null, result)
+                });
+            },
+        ],
+        function (err, result) {
+            if (err) {
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
+            fs.unlink('./public/image/ecurie/'+result[1][0].CIRADRESSEIMAGE, function (err) {
+                if (err) throw err;
+            });
+            response.render('circuits/redirect', response);
+        }// fin fonction
+    );
+};
+
+module.exports.ModifierInfoCircuit = function (request,response) {
+    num=request.params.CIRNUM;
+    let image = request.files.image;
+    image.mv('./public/image/ecurie/'+image.name);
+    let nom = request.body.nom;
+    let longueur = request.body.longueur;
+    let pays = request.body.pays;
+    let nbspectateur = request.body.nbspectateur;
+    let description = request.body.description;
+
+    async.parallel([
+            function (callback) {
+                model.ModifierCircuit(num,nom,longueur,pays,image.name,nbspectateur,description, function (err) {
+                    callback(null)
+                });
+            },
+            function (callback) {
+                model.getImage( num,function (err, result) {
+                    callback(null, result)
+                });
+            },
+        ],
+        function (err, result) {
+            if (err) {
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
+            fs.unlink('./public/image/ecurie/'+result[1][0].CIRADRESSEIMAGE, function (err) {
+                if (err) throw err;
+            });
+            response.modif=1;
+            response.render('circuits/redirect', response);
+        }  // fin fonction
+    );//fin async
 };
