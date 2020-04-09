@@ -22,7 +22,7 @@ module.exports = function(app){
     app.post('/pilotes/ajoutPilote', verifLogin,PiloteController.AjoutInfoPilote);
     app.get('/pilotes/supprimer/:PILNUM',verifLogin, PiloteController.SupprimerPilote);
     app.get('/pilotes/modifier/:PILNUM', verifLogin, PiloteController.ModifierPilote);
-    app.post('/pilotes/modifier', verifLogin,PiloteController.ModifierInfoPilote);
+    app.post('/pilotes/modifier/:PILNUM', verifLogin,PiloteController.ModifierInfoPilote);
  // circuits
    app.get('/circuits',verifLogin, CircuitController.ListerCircuit);
     app.get('/circuits/ajoutCircuit',verifLogin, CircuitController.AjoutCircuit);

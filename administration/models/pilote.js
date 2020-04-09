@@ -63,3 +63,21 @@ module.exports.getPilote= function (num,callback) {
         }
     });
 };
+module.exports.ModifierPilote= function (num,prenom,nom,date,nationalite,ecurie,point,poid,taille,description,callback) {
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql = "UPDATE pilote " +
+                "SET PAYNUM="+nationalite+",PILNOM='"+nom+"',PILPRENOM='"+prenom+"',PILDATENAIS='"+date[2]+"-"+date[1]+"-"+date[0]+"'," +
+                "PILPOINTS="+point+",PILPOIDS="+poid+",PILTAILLE="+taille+",PILTEXTE='"+description+"',ECUNUM="+ecurie+
+                " WHERE PILNUM="+num;
+            //console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};

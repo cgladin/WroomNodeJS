@@ -157,5 +157,30 @@ module.exports.ModifierPilote = 	function(request, response){
 } ;
 
 module.exports.ModifierInfoPilote = 	function(request, response){
+    num=request.params.PILNUM;
+    //récupération des données insérées
+    let prenom=request.body.prenom;
+    let nom=request.body.nom;
+    let date=request.body.date;
+    let nationalite=request.body.nationalite;
+    let ecurie=request.body.ecurie;
+    let point=request.body.point;
+    let poid=request.body.poid;
+    let taille=request.body.taille;
+    let description=request.body.description;
+    if(ecurie == 0){ //met la valeur nulle si la valeur aucune ecurie est sélectionnée
+        ecurie = "NULL";
+    }
+    if(point == ""){ // met la valeur null si le pilote n'a pas de points
+        point = "NULL";
+    }
+    model.ModifierPilote(num,prenom,nom,date,nationalite,ecurie,point,poid,taille,description, function (err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        response.modif=1;
+        response.render('pilotes/supprimer', response);
+    });
 
 };
