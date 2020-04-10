@@ -6,6 +6,9 @@ let modelEssais = require('../models/essais.js');
 let modelCourse = require('../models/course.js');
 let modelPhoto = require('../models/photo.js');
 let modelSponsorise = require('../models/sponsorise.js');
+var fs = require('fs');
+let formidable = require('formidable');
+
 // ///////////////////////// R E P E R T O I R E    D E S    P I L O T E S
 
 module.exports.ListerPilote = 	function(request, response){

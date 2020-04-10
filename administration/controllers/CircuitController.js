@@ -56,7 +56,7 @@ module.exports.SupprimerCircuit = function (request, response) {
             },
             function (callback) {
                 model.deleteCircuit(num, function (err,res) {
-                    callback(null)
+                    callback(null,res)
                 },50);
             },
         ],

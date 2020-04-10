@@ -36,6 +36,7 @@ module.exports = function(app){
    app.get('/ecuries',verifLogin, EcurieController.ListerEcurie);
    app.get('/ecuries/ajoutEcurie',verifLogin,EcurieController.AjoutEcurie);
    app.post('/ecuries/ajoutEcurie',verifLogin,EcurieController.AjoutInfoEcurie);
+   app.get('/ecuries/supprimer/:ECUNUM',verifLogin,EcurieController.SupprimerEcurie);
 
  //Résultats
    app.get('/gestionResultats',verifLogin, ResultatController.ListerResultat);
