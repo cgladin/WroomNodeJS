@@ -1,0 +1,27 @@
+<form class="formulaire" action="#" method="post">
+    <h1>Ajouter un sponsor</h1>
+    </br>
+    <label for="nom">
+        <b>Nom</b>
+        <input type="text" name="nom" required>
+    </label>
+    </br>
+    </br>
+    <label for="sposectactivite">
+        <b>Secteur d'activité </b>
+        <input type="text" name="sposectactivite" required>
+    </label>
+    </br>
+    </br>
+
+    <label for="ecunum"> <b>Ecurie Sponsorisée </b>
+        <select id="ecunum" name="ecunum">
+            <option value="0">Aucune</option>
+            {{#each ecuries}}
+                <option value="{{this.ECUNUM}}">{{this.ECUNOM}}</option>
+            {{/each}}
+        </select>
+    </label>
+    </br></br>
+    <input type="submit" value="AJOUTER">
+</form>

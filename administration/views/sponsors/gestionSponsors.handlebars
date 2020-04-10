@@ -1,37 +1,31 @@
 
-    <img src="/image/cat_ecurie.png" alt="Voiture de l'écurie " />
-    <h1>Gestion des écuries</h1>
-
-    <p><a href="/ecuries/ajoutEcurie"> <img src="/image/act_add.png" alt="Ajout_image" />AJOUTER UNE ECURIE </a></p>
-
-{{#if ecuries}}
+    <img src="/image/cat_sponsor.png" alt="sponsor" />
+    <h1>Gestion des sponsors</h1>
+    <p><a href="sponsors/ajoutSponsor"> <img  src="/image/act_add.png" alt="Ajout_image" />AJOUTER UN SPONSOR</a></p>
+{{#if sponsors}}
     <div id="tableauPilote">
         <table>
             <tr>
                 <th> Nom </th>
                 <th> Directeur </th>
-                <th> Points </th>
                 <th> Actions</th>
             </tr>
-            {{#each ecuries}}
+            {{#each sponsors}}
                 <tr>
                     <td>
-                        {{ this.ecunom }}
+                        {{ this.SPONOM }}
                     </td>
                     <td>
-                        {{ this.ecunomdir}}
+                        {{ this.SPOSECTACTIVITE}}
                     </td>
                     <td>
-                        {{this.ecupoints}}
-                    </td>
-                    <td>
-                        <img src="/image/act_edit.png" alt="Edit_image" /><a class="lien_modif" href="/ecuries/modifier/{{this.ECUNUM}}">MODIFIER</a>
-                        <img src="/image/act_delete.png" alt="Edit_image" /><a class="lien_supp" href="/ecuries/supprimer/{{this.ECUNUM}}">SUPPRIMER</a>
+                        <img src="/image/act_edit.png" alt="Edit_image" /><a href="/sponsors/modifier/{{this.SPONUM}}">MODIFIER</a>
+                        <img src="/image/act_delete.png" alt="Edit_image" /><a  href="/sponsors/supprimer/{{this.SPONUM}}">SUPPRIMER</a>
                     </td>
                 </tr>
             {{/each}}
         </table>
     </div>
 {{else}}
-    <p>Aucune écurie enregistrée </p>
+    <p>Aucun sponsor enregistré </p>
 {{/if}}

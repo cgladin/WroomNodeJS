@@ -23,8 +23,8 @@ module.exports = function(app){
     app.get('/pilotes/supprimer/:PILNUM',verifLogin, PiloteController.SupprimerPilote);
     app.get('/pilotes/modifier/:PILNUM', verifLogin, PiloteController.ModifierPilote);
     app.post('/pilotes/modifier/:PILNUM', verifLogin,PiloteController.ModifierInfoPilote);
- // circuits
-   app.get('/circuits',verifLogin, CircuitController.ListerCircuit);
+    // circuits
+    app.get('/circuits',verifLogin, CircuitController.ListerCircuit);
     app.get('/circuits/ajoutCircuit',verifLogin, CircuitController.AjoutCircuit);
     app.post('/circuits/ajoutCircuit', CircuitController.AjoutInfoCircuit);
     app.get('/circuits/supprimer/:CIRNUM',verifLogin,CircuitController.SupprimerCircuit);
@@ -33,23 +33,23 @@ module.exports = function(app){
 
 
 // Ecuries
-   app.get('/ecuries',verifLogin, EcurieController.ListerEcurie);
-   app.get('/ecuries/ajoutEcurie',verifLogin,EcurieController.AjoutEcurie);
-   app.post('/ecuries/ajoutEcurie',verifLogin,EcurieController.AjoutInfoEcurie);
-   app.get('/ecuries/supprimer/:ECUNUM',verifLogin,EcurieController.SupprimerEcurie);
-   app.get('/ecuries/modifier/:ECUNUM',verifLogin,EcurieController.ModifierEcurie);
-   app.post('/ecuries/modifier/:ECUNUM',verifLogin,EcurieController.ModifierInfoEcurie);
+    app.get('/ecuries',verifLogin, EcurieController.ListerEcurie);
+    app.get('/ecuries/ajoutEcurie',verifLogin,EcurieController.AjoutEcurie);
+    app.post('/ecuries/ajoutEcurie',verifLogin,EcurieController.AjoutInfoEcurie);
+    app.get('/ecuries/supprimer/:ECUNUM',verifLogin,EcurieController.SupprimerEcurie);
+    app.get('/ecuries/modifier/:ECUNUM',verifLogin,EcurieController.ModifierEcurie);
+    app.post('/ecuries/modifier/:ECUNUM',verifLogin,EcurieController.ModifierInfoEcurie);
 
 
- //Résultats
-   app.get('/gestionResultats',verifLogin, ResultatController.ListerResultat);
+    //Résultats
+    app.get('/gestionResultats',verifLogin, ResultatController.ListerResultat);
 
 // Sponsors
-    app.get('/gestionSponsors',verifLogin, SponsorController.ListerSponsor);
-
+    app.get('/sponsors',verifLogin, SponsorController.ListerSponsor);
+    app.get('/sponsors/ajoutSponsor',verifLogin,SponsorController.AjoutSponsor);
 // tout le reste
-app.get('*', HomeController.NotFound);
-app.post('*', HomeController.NotFound);
+    app.get('*', HomeController.NotFound);
+    app.post('*', HomeController.NotFound);
 
 };
 function verifLogin(req, res, next) {
