@@ -25,6 +25,20 @@ module.exports.getEcuries = function (callback) { // selectionne juste le nom et
          }
       });
 };
+module.exports.getEcurie = function (num,callback) { // selectionne une écurie pas numéro
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql ="SELECT  ECUNOM, ECUNOMDIR,ECUADRSIEGE, ECUPOINTS FROM ecurie WHERE ECUNUM="+num;
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};
 module.exports.getEcuriePilote = function (num,callback) {
     // connection à la base
     db.getConnection(function(err, connexion){
@@ -99,4 +113,19 @@ module.exports.deleteEcurie= function (num,callback) {
         }
     });
 };
+module.exports.ModifierEcurie= function (num,nom,directeur,adresse,point,pays,fournPneu,image,callback) {
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql = "UPDATE ecurie SET FPNUM="+fournPneu+" ,ECUNOM='"+nom+"',ECUNOMDIR='"+adresse+"' ,ECUADRSIEGE='"+adresse+"',ECUPOINTS="+point+" ,PAYNUM="+pays+" ,ECUADRESSEIMAGE='"+image+
+                "' WHERE ECUNUM="+num;
+            console.log (sql);
+            connexion.query(sql, callback);
 
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};

@@ -139,8 +139,6 @@ module.exports.ModifierCircuit = function(request, response){
             }
             response.circuit=result[0][0];
             response.cirPays=result[1][0];
-            console.log(result[1][0]);
-            console.log(result[0]);
             response.pays=result[2];
             response.render('circuits/modifier', response);
         }  // fin fonction

@@ -115,3 +115,85 @@ module.exports.SupprimerEcurie = function (request, response) {
         }// fin fonction
     );
 };
+module.exports.ModifierEcurie = function(request, response){
+    num=request.params.ECUNUM;
+    async.parallel([
+            function (callback) {
+                model.getEcurie(num,function (err,result) {
+                    callback(null,result)
+                })
+            },
+            function (callback) {
+                modelPays.getPaysEcurie(num,function (err, result) {
+                    callback(null, result)
+                });
+            },
+            function (callback) {
+                modelPays.getPays(function (err, result) {
+                    callback(null,result)
+                })
+            },
+            function (callback) {
+                modelFP.getFournPneu(function (err, result) {
+                    callback(null,result)
+                });
+            },
+            function (callback) {
+                modelFP.getFournPneuEcurie(num,function (err, result) {
+                    callback(null,result)
+                });
+            }
+        ],
+        function (err, result) {
+            if (err) {
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
+            response.ecurie=result[0][0];
+            response.ecuPays=result[1][0];
+            response.pays=result[2];
+            response.fournPneu=result[3];
+            response.ecuFP=result[4][0];
+            response.render('ecuries/modifier', response);
+        }  // fin fonction
+    );//fin async
+} ;
+module.exports.ModifierInfoEcurie = function(request, response){
+    let nom = request.body.nom;
+    let directeur = request.body.directeur;
+    let adresse = request.body.adresse;
+    let point = request.body.point;
+    let pays = request.body.pays;
+    let fournPneu = request.body.fournPneu;
+    let image = request.files.image;
+    if(point == ""){ // met la valeur null si l'ecurie n'a pas de points
+        point = "NULL";
+    }
+    image.mv('../public/public/image/ecurie/'+image.name);
+    async.parallel([
+            function (callback) {
+                model.getImage( num,function (err, result) {
+                    callback(null, result)
+                });
+            },
+            function (callback) {
+                model.ModifierEcurie(num,nom,directeur,adresse,point,pays,fournPneu,image.name, function (err) {
+                    callback(null)
+                },50);
+            }
+        ],
+        function (err, result) {
+            if (err) {
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
+            fs.unlink('../public/public/image/ecurie/'+result[0][0].ECUADRESSEIMAGE, function (err) {
+                if (err) throw err;
+            });
+            response.modif=1;
+            response.render('ecuries/redirect', response);
+        }  // fin fonction
+    );//fin async
+};
