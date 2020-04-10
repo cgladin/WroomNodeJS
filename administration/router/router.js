@@ -28,6 +28,8 @@ module.exports = function(app){
     app.get('/circuits/ajoutCircuit',verifLogin, CircuitController.AjoutCircuit);
     app.post('/circuits/ajoutCircuit', CircuitController.AjoutInfoCircuit);
     app.get('/circuits/supprimer/:CIRNUM',verifLogin,CircuitController.SupprimerCircuit);
+    app.post('/circuits/modifier/:CIRNUM', verifLogin, CircuitController.ModifierInfoCircuit);
+    app.get('/circuits/modifier/:CIRNUM', verifLogin,CircuitController.ModifierCircuit);
 
 
 // Ecuries

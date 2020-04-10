@@ -29,7 +29,7 @@ module.exports.AjoutCircuit = function(request, response){
 };
 module.exports.AjoutInfoCircuit = function (request,response) {
     let image = request.files.image;
-    image.mv('./public/image/ecurie/'+image.name);
+    image.mv('../public/public/image/circuit/'+image.name);
     let nom = request.body.nom;
     let longueur = request.body.longueur;
     let pays = request.body.pays;
@@ -49,14 +49,14 @@ module.exports.SupprimerCircuit = function (request, response) {
     num=request.params.CIRNUM;
     async.parallel([
             function (callback) {
-                model.deleteCircuit(num, function (err,res) {
-                    callback(null)
-                });
-            },
-            function (callback) {
                 model.getImage( num,function (err, result) {
                     callback(null, result)
                 });
+            },
+            function (callback) {
+                model.deleteCircuit(num, function (err,res) {
+                    callback(null)
+                },50);
             },
         ],
         function (err, result) {
@@ -65,7 +65,7 @@ module.exports.SupprimerCircuit = function (request, response) {
                 console.log(err);
                 return;
             }
-            fs.unlink('./public/image/ecurie/'+result[1][0].CIRADRESSEIMAGE, function (err) {
+            fs.unlink('../public/public/image/circuit/'+result[0][0].CIRADRESSEIMAGE, function (err) {
                 if (err) throw err;
             });
             response.render('circuits/redirect', response);
@@ -76,7 +76,7 @@ module.exports.SupprimerCircuit = function (request, response) {
 module.exports.ModifierInfoCircuit = function (request,response) {
     num=request.params.CIRNUM;
     let image = request.files.image;
-    image.mv('./public/image/ecurie/'+image.name);
+    image.mv('../public/public/image/circuit/'+image.name);
     let nom = request.body.nom;
     let longueur = request.body.longueur;
     let pays = request.body.pays;
@@ -85,15 +85,15 @@ module.exports.ModifierInfoCircuit = function (request,response) {
 
     async.parallel([
             function (callback) {
-                model.ModifierCircuit(num,nom,longueur,pays,image.name,nbspectateur,description, function (err) {
-                    callback(null)
-                });
-            },
-            function (callback) {
                 model.getImage( num,function (err, result) {
                     callback(null, result)
                 });
             },
+            function (callback) {
+                model.ModifierCircuit(num,nom,longueur,pays,image.name,nbspectateur,description, function (err) {
+                    callback(null)
+                },50);
+            }
         ],
         function (err, result) {
             if (err) {
@@ -101,7 +101,7 @@ module.exports.ModifierInfoCircuit = function (request,response) {
                 console.log(err);
                 return;
             }
-            fs.unlink('./public/image/ecurie/'+result[1][0].CIRADRESSEIMAGE, function (err) {
+            fs.unlink('../public/public/image/circuit/'+result[0][0].CIRADRESSEIMAGE, function (err) {
                 if (err) throw err;
             });
             response.modif=1;
@@ -109,3 +109,38 @@ module.exports.ModifierInfoCircuit = function (request,response) {
         }  // fin fonction
     );//fin async
 };
+
+module.exports.ModifierCircuit = function(request, response){
+    num=request.params.CIRNUM;
+    async.parallel([
+            function (callback) {
+                model.getCircuit(num,function (err,result) {
+                    callback(null,result)
+                })
+            },
+            function (callback) {
+                modelPays.getPaysCircuit(num,function (err, result) {
+                    callback(null, result)
+                });
+            },
+            function (callback) {
+                modelPays.getPays(function (err, result) {
+                    callback(null,result)
+                })
+            }
+        ],
+        function (err, result) {
+            if (err) {
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
+            response.circuit=result[0][0];
+            response.cirPays=result[1][0];
+            console.log(result[1][0]);
+            console.log(result[0]);
+            response.pays=result[2];
+            response.render('circuits/modifier', response);
+        }  // fin fonction
+    );//fin async
+} ;

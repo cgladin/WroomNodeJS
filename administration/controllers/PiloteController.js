@@ -119,8 +119,8 @@ module.exports.ModifierPilote = 	function(request, response){
                 })
             },
             function (callback) {
-                modelPays.getNationalite( function (errPil, resultPil) {
-                    callback(null, resultPil)
+                modelPays.getNationalite( function (err, result) {
+                    callback(null, result)
                 });
             },
             function (callback) {
@@ -129,8 +129,8 @@ module.exports.ModifierPilote = 	function(request, response){
                 })
             },
             function (callback) {
-                modelPays.getNatPilote( num,function (errPil, resultPil) {
-                    callback(null, resultPil)
+                modelPays.getNatPilote( num,function (errPil, result) {
+                    callback(null, result)
                 });
             },
             function (callback) {
