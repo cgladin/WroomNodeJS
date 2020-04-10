@@ -1,4 +1,4 @@
-<form  action="#" method="post">
+<form  action="#" method="post" enctype="multipart/form-data">
     <h1> Modifier un pilote</h1>
     <label for="prenom">
         <strong>Prénom</strong>
@@ -64,6 +64,13 @@
         <strong>Taille</strong>
         <input type="number" max="300" name="taille" value="{{pilote.PILTAILLE}}" required> cm
     </label>
+    </br></br>
+    <label for="image">
+        <strong>Image</strong>
+        <input type="file" name="image" accept="image/png, image/jpeg"/>
+        <input type="hidden" value="{{image.PHOADRESSE}}" name="oldImage">
+    </label>
+    </br></br>
     <label for="description">
         <strong>Description</strong>
         <textarea name="description" rows="4" cols="100" required>{{pilote.PILTEXTE}}</textarea>
