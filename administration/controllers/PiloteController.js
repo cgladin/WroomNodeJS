@@ -26,7 +26,7 @@ module.exports.AjoutPilote = 	function(request, response){
                 });
             }, // fin callback1
             function (callback) {
-                modelEcurie.getListeEcurie(function (err, result) {
+                modelEcurie.getEcuries(function (err, result) {
                     callback(null,result)
                 })
             }
@@ -126,7 +126,7 @@ module.exports.ModifierPilote = 	function(request, response){
                 });
             },
             function (callback) {
-                modelEcurie.getListeEcurie(function (err, result) {
+                modelEcurie.getEcuries(function (err, result) {
                     callback(null,result)
                 })
             },

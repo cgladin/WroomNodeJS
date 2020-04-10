@@ -34,6 +34,8 @@ module.exports = function(app){
 
 // Ecuries
    app.get('/ecuries',verifLogin, EcurieController.ListerEcurie);
+   app.get('/ecuries/ajoutEcurie',verifLogin,EcurieController.AjoutEcurie);
+   app.post('/ecuries/ajoutEcurie',verifLogin,EcurieController.AjoutInfoEcurie);
 
  //Résultats
    app.get('/gestionResultats',verifLogin, ResultatController.ListerResultat);
