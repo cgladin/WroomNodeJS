@@ -142,6 +142,11 @@ module.exports.ModifierEcurie = function(request, response){
                 modelFP.getFournPneuEcurie(num,function (err, result) {
                     callback(null,result)
                 });
+            },
+            function (callback) {
+                model.getImage( num,function (err, result) {
+                    callback(null, result)
+                });
             }
         ],
         function (err, result) {
@@ -155,6 +160,7 @@ module.exports.ModifierEcurie = function(request, response){
             response.pays=result[2];
             response.fournPneu=result[3];
             response.ecuFP=result[4][0];
+            response.image=result[5][0];
             response.render('ecuries/modifier', response);
         }  // fin fonction
     );//fin async
@@ -166,11 +172,19 @@ module.exports.ModifierInfoEcurie = function(request, response){
     let point = request.body.point;
     let pays = request.body.pays;
     let fournPneu = request.body.fournPneu;
-    let image = request.files.image;
-    if(point == ""){ // met la valeur null si l'ecurie n'a pas de points
+    let oldImage = request.body.oldImage;
+    if(point === ""){ // met la valeur null si l'ecurie n'a pas de points
         point = "NULL";
     }
-    image.mv('../public/public/image/ecurie/'+image.name);
+    let image =request.files;
+    if(image == null){
+        image=oldImage;
+        oldImage=true;
+    }else {
+        image=request.files.image;
+        image.mv('../public/public/image/ecurie/'+image.name);
+        image= image.name;
+    }
     async.parallel([
             function (callback) {
                 model.getImage( num,function (err, result) {
@@ -178,7 +192,7 @@ module.exports.ModifierInfoEcurie = function(request, response){
                 });
             },
             function (callback) {
-                model.ModifierEcurie(num,nom,directeur,adresse,point,pays,fournPneu,image.name, function (err) {
+                model.ModifierEcurie(num,nom,directeur,adresse,point,pays,fournPneu,image, function (err) {
                     callback(null)
                 },50);
             }
@@ -189,9 +203,11 @@ module.exports.ModifierInfoEcurie = function(request, response){
                 console.log(err);
                 return;
             }
-            fs.unlink('../public/public/image/ecurie/'+result[0][0].ECUADRESSEIMAGE, function (err) {
-                if (err) throw err;
-            });
+            if(oldImage !== true){
+                fs.unlink('../public/public/image/ecurie/'+result[0][0].ECUADRESSEIMAGE, function (err) {
+                    if (err) throw err;
+                });
+            }
             response.modif=1;
             response.render('ecuries/redirect', response);
         }  // fin fonction

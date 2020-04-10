@@ -24,7 +24,8 @@
     </br></br>
     <label for="image">
         <strong>Image</strong>
-        <input type="file" name="image" accept="image/png, image/jpeg" required/>
+        <input type="file" name="image" accept="image/png, image/jpeg"/>
+        <input type="hidden" value="{{image.CIRADRESSEIMAGE}}" name="oldImage">
     </label>
     </br></br>
     <label for="nbspectateur">

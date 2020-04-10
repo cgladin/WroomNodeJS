@@ -121,7 +121,7 @@ module.exports.ModifierEcurie= function (num,nom,directeur,adresse,point,pays,fo
             // execution de la requête SQL
             let sql = "UPDATE ecurie SET FPNUM="+fournPneu+" ,ECUNOM='"+nom+"',ECUNOMDIR='"+adresse+"' ,ECUADRSIEGE='"+adresse+"',ECUPOINTS="+point+" ,PAYNUM="+pays+" ,ECUADRESSEIMAGE='"+image+
                 "' WHERE ECUNUM="+num;
-            console.log (sql);
+            //console.log (sql);
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool
