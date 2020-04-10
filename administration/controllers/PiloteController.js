@@ -67,7 +67,8 @@ module.exports.AjoutInfoPilote = 	function(request, response){
             console.log(err);
             return;
         }
-        response.redirect('/pilotes');
+        response.ajout=1;
+        response.render('pilotes/redirect');
     });
 
 } ;
@@ -106,6 +107,7 @@ async.parallel([
             console.log(err);
             return;
         }
+        response.supp=1;
         response.render('pilotes/redirect');
     }  // fin fonction
     );//fin async
@@ -180,7 +182,6 @@ module.exports.ModifierInfoPilote = 	function(request, response){
             return;
         }
         response.modif=1;
-        console.log(response.modif);
         response.render('pilotes/redirect', response);
     });
 

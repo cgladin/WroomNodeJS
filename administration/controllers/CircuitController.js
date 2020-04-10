@@ -41,7 +41,8 @@ module.exports.AjoutInfoCircuit = function (request,response) {
             console.log(err);
             return;
         }
-        response.redirect('/circuits');
+        response.ajout=1;
+        response.render('circuits/redirect', response);
     });
 
 };
@@ -68,6 +69,7 @@ module.exports.SupprimerCircuit = function (request, response) {
             fs.unlink('../public/public/image/circuit/'+result[0][0].CIRADRESSEIMAGE, function (err) {
                 if (err) throw err;
             });
+            response.supp=1;
             response.render('circuits/redirect', response);
         }// fin fonction
     );

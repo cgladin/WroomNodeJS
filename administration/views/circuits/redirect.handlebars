@@ -1,11 +1,17 @@
-<meta http-equiv="refresh" content="3; URL=/circuits" />
+<meta http-equiv="refresh" content="2; URL=/circuits" />
 <div >
     {{#if modif}}
         <h1>Le circuit a bien été modifier !
             Vous allez être redirigé …</h1>
-    {{else}}
+    {{/if}}
+    {{#if supp}}
         <h1>Le circuit a bien été supprimé !
             Vous allez être redirigé …</h1>
     {{/if}}
+    {{#if ajout}}
+        <h1>Le circuit a bien été ajouté !
+            Vous allez être redirigé …</h1>
+    {{/if}}
+
 
 </div>

@@ -1,10 +1,15 @@
-<meta http-equiv="refresh" content="3; URL=/pilotes" />
+<meta http-equiv="refresh" content="2; URL=/pilotes" />
 <div >
     {{#if modif}}
         <h1>Le pilote a bien été modifier !
             Vous allez être redirigé …</h1>
-    {{else}}
+    {{/if}}
+    {{#if supp}}
         <h1>Le pilote a bien été supprimé !
+            Vous allez être redirigé …</h1>
+    {{/if}}
+    {{#if ajout}}
+        <h1>Le pilote a bien été ajouté !
             Vous allez être redirigé …</h1>
     {{/if}}
 
