@@ -28,7 +28,6 @@ module.exports.AjoutInfoSponsor = function(request, response){
     let nom = request.body.nom;
     let sposectactivite = request.body.sposectactivite;
     let num = request.body.ecunum;
-    console.log("bim bam boum");
     async.waterfall([
             function (callback) {
                 model.ajouterSponsor( nom,sposectactivite,function (err, result) {
@@ -40,7 +39,6 @@ module.exports.AjoutInfoSponsor = function(request, response){
                 if(num !== undefined && num !== 'null' && num != 0){
                     modelFinance.ajoutSponsoriseEcurie(num,sponum, function (err, result) {
                         callback(err, result);
-                        console.log("paffff");
                     });
                 }else{
                     callback();
@@ -57,4 +55,30 @@ module.exports.AjoutInfoSponsor = function(request, response){
             response.render('sponsors/redirect', response);
         }
     );//fin async
+};
+module.exports.SupprimerSponsor = function (request, response) {
+    num=request.params.SPONUM;
+    async.parallel([
+            function (callback) {
+                modelFinance.supprimerSponsoriseEcurie(num, function (err,res) {
+                    callback(null,res)
+                });
+            },
+            function (callback) {
+                model.supprimerSponsor( num,function (err, result) {
+                    callback(null, result)
+                },50);
+            },
+
+        ],
+        function (err, result) {
+            if (err) {
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
+            response.supp=1;
+            response.render('sponsors/redirect', response);
+        }// fin fonction
+    );
 };

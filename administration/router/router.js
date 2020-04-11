@@ -48,6 +48,7 @@ module.exports = function(app){
     app.get('/sponsors',verifLogin, SponsorController.ListerSponsor);
     app.get('/sponsors/ajoutSponsor',verifLogin,SponsorController.AjoutSponsor);
     app.post('/sponsors/ajoutSponsor',verifLogin,SponsorController.AjoutInfoSponsor);
+    app.get('/sponsors/supprimer/:SPONUM',verifLogin,SponsorController.SupprimerSponsor);
 // tout le reste
     app.get('*', HomeController.NotFound);
     app.post('*', HomeController.NotFound);
