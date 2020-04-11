@@ -1,6 +1,7 @@
 let async = require('async');
 let model = require('../models/sponsors.js');
 let modelEcurie = require('../models/ecurie.js');
+let modelFinance = require('../models/finance.js');
 // //////////////////////////L I S T E R    R E S U L T A T S
 module.exports.ListerSponsor = function(request, response){
     response.title = 'Liste des résulats des grands prix';
@@ -22,4 +23,38 @@ module.exports.AjoutSponsor = function(request, response){
         response.ecuries= result;
         response.render('sponsors/ajoutSponsor', response);
     });
+};
+module.exports.AjoutInfoSponsor = function(request, response){
+    let nom = request.body.nom;
+    let sposectactivite = request.body.sposectactivite;
+    let num = request.body.ecunum;
+    console.log("bim bam boum");
+    async.waterfall([
+            function (callback) {
+                model.ajouterSponsor( nom,sposectactivite,function (err, result) {
+                    callback(err, result)
+                })
+            },
+            function(result, callback){
+            let sponum = result.insertId;
+                if(num !== undefined && num !== 'null' && num != 0){
+                    modelFinance.ajoutSponsoriseEcurie(num,sponum, function (err, result) {
+                        callback(err, result);
+                        console.log("paffff");
+                    });
+                }else{
+                    callback();
+                }
+            },
+    ],
+        function (err, result) {
+            if (err) {
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
+            response.ajout = 1;
+            response.render('sponsors/redirect', response);
+        }
+    );//fin async
 };
