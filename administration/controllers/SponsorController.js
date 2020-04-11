@@ -82,3 +82,66 @@ module.exports.SupprimerSponsor = function (request, response) {
         }// fin fonction
     );
 };
+module.exports.ModifierInfoSponsor = function(request, response){
+    sponum=request.params.SPONUM;
+    let nom = request.body.nom;
+    let sposectactivite = request.body.sposectactivite;
+    let num = request.body.ecunum;
+    async.parallel([
+            function(callback){
+                modelFinance.supprimerSponsoriseEcurie(sponum, function (err, result) {
+                    callback(err, result);
+                });
+            },
+            function(callback){
+                if(num !== undefined && num !== 'null' && num != 0){
+                    modelFinance.ajoutSponsoriseEcurie(num,sponum, function (err, result) {
+                        callback(err, result);
+                    });
+                }else{
+                    callback();
+                }
+            },
+            function (callback) {
+                model.modifierSponsor( nom,sposectactivite,sponum,function (err, result) {
+                    callback(err, result)
+                })
+            },
+        ],
+        function (err, result) {
+            if (err) {
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
+            response.modif = 1;
+            response.render('sponsors/redirect', response);
+        }
+    );//fin async
+};
+module.exports.ModifierSponsor= function(request, response){
+    num=request.params.SPONUM;
+    async.parallel([
+            function (callback) {
+                model.getSponsor(num,function (err,result) {
+                    callback(null,result)
+                })
+            },
+            function (callback) {
+                modelEcurie.getEcuries(function (err, result) {
+                    callback(null, result)
+                });
+            },
+        ],
+        function (err, result) {
+            if (err) {
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
+            response.sponsor=result[0][0];
+            response.ecuries=result[1];
+            response.render('sponsors/modifier', response);
+        }  // fin fonction
+    );//fin async
+} ;
