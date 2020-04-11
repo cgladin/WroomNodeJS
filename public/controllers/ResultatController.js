@@ -1,5 +1,6 @@
 let model = require('../models/grandprix.js');
 let courseModel = require('../models/course.js');
+let modelPoint = require('../models/points.js');
 let async=require("async");
   // //////////////////////////L I S T E R    R E S U L T A T S
 module.exports.ListerResultat = function(request, response){
@@ -22,12 +23,18 @@ module.exports.DetailGrandPrix= function (request, response) {
 				});
 			},
 			function (callback) {
-				model.getNomGrandPrix(gpnum,function (err, result) {
+				model.getDetailGrandPrix(gpnum,function (err, result) {
 					callback(null,result)
 				})
 			},
-			function(callback){
-				courseModel.getTempsCourse(gpnum, function (err,result) {
+			function (callback) {
+				model.getCommentaireGP(gpnum,function (err, result) {
+					callback(null,result)
+				})
+			},
+
+			function (callback) {
+				modelPoint.getPoints(function (err, result) {
 					callback(null,result)
 				})
 			}
@@ -38,9 +45,14 @@ module.exports.DetailGrandPrix= function (request, response) {
 				console.log(err);
 				return;
 			}
+			let table = result[1];
+			table.forEach(function(element, index){
+				element.NBPOINT=result[3][index]
+			}, this);
+			console.log(table);
 			response.listeGrandPrix = result[0];
-			response.nomGrandPrix = result[1];
-			response.listeResultat= result[2];
+			response.detailGrandPrix = table;
+			response.commentaire= result[2][0];
 			response.render('detailGrandPrix', response);
 		}  // fin fonction
 	);  // fin async

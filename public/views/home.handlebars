@@ -1,1 +1,8 @@
-<h1>Ecrire ici la page d'acceuil du site</h1>
+
+    <div>
+        <h1>Derniers résultats</h1>
+        <span><b>{{resultat.GPNOM}} du {{formatDate resultat.DATE 'DD/MM/YYYY'}}</b></span><br/>
+        <span>Mise à jour le  : {{formatDate resultat.DATEMAJ 'DD/MM/YYYY'}}</span><br />
+        <span><a href="detailGrandPrix/{{resultat.GPNUM}}">Voir les résultats</a></span>
+        <p>{{test}}</p>
+    </div>
