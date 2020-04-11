@@ -6,7 +6,7 @@ module.exports.getCircuits= function (callback) { //donne la liste des circuits
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT CIRNUM, CIRNOM, CIRLONGUEUR,CIRNBSPECTATEURS FROM circuit GROUP BY CIRNOM ASC";
+            let sql = "SELECT CIRNUM, CIRNOM, CIRLONGUEUR,CIRNBSPECTATEURS FROM circuit ORDER BY CIRNOM ASC";
             //console.log (sql);
             connexion.query(sql, callback);
 

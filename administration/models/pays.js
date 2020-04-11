@@ -6,7 +6,7 @@ module.exports.getNationalite= function (callback) {
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT PAYNUM, PAYNAT FROM pays GROUP BY PAYNAT ASC";
+            let sql = "SELECT PAYNUM, PAYNAT FROM pays ORDER BY PAYNAT ASC";
             //console.log (sql);
             connexion.query(sql, callback);
 
@@ -21,7 +21,7 @@ module.exports.getPays= function (callback) {
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT PAYNUM, PAYNOM FROM pays GROUP BY PAYNOM ASC";
+            let sql = "SELECT PAYNUM, PAYNOM FROM pays ORDER BY PAYNOM ASC";
             //console.log (sql);
             connexion.query(sql, callback);
 

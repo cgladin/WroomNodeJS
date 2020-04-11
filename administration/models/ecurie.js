@@ -17,7 +17,7 @@ module.exports.getEcuries = function (callback) { // selectionne juste le nom et
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requête SQL
-						let sql ="SELECT ECUNUM, ECUNOM FROM ecurie GROUP BY ECUNOM ASC";
+						let sql ="SELECT ECUNUM, ECUNOM FROM ecurie ORDER BY ECUNOM ASC";
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool
@@ -59,7 +59,7 @@ module.exports.getListeEcurie = function (callback) { // selectionne juste le no
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql ="SELECT ECUNUM, ECUNOM, ECUPOINTS FROM ecurie GROUP BY ECUNOM ASC";
+            let sql ="SELECT ECUNUM, ECUNOM, ECUPOINTS FROM ecurie ORDER BY ECUNOM ASC";
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool

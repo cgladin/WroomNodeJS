@@ -1,0 +1,46 @@
+
+    <img src="/image/cat_resultat.png" alt="Trophé du résultat" />
+    <h1>Saisie des resultats</h1>
+<table>
+<tr>
+    <th></th>
+    <th>Place</th>
+    <th>Pilotes</th>
+    <th>Temps</th>
+    <th>Points</th>
+    {{#each resultatsGP}}
+        <tr>
+            <td>
+                <form action="/resultats/supprimer/{{this.gpnum}}" method="post">
+                    <input type="hidden" name="gpnum" id="gpnum" value="{{this.gpnum}}">
+                    <input type="hidden" name="pilnum" id="pilnum" value="{{this.pilnum}}">
+                    <input id="bouton_supprimer" type="submit"  value='' alt="supprimer">
+                </form>
+            </td>
+
+            <td>{{inc @index }}</td>
+            <td>{{this.pilnom}}</td>
+            <td>{{this.tempscourse}}</td>
+
+            {{#if this.nbpoint.ptnbpointsplace}}
+                <td>{{this.nbpoint.ptnbpointsplace}}</td>
+            {{else}}
+                <td>0</td>
+            {{/if}}
+        </tr>
+    {{/each}}
+    <tr>
+        <td></td>
+        <form action="/resultats/{{this.GPNUM}}" method="post">
+            <td><select id="pilnum" name="pilnum">
+                {{#each listePilote}}
+                    <option value="{{this.PILNUM}}"> {{this.PILNOM}} </option>
+                {{/each}}
+            </select>
+            </td>
+            <td>  <input id="time" type="time" name="time" step="2">
+            </td>
+            <td><input class="bouton_ajout" type="submit" value="OK">
+        </form>
+    </tr>
+</table>
