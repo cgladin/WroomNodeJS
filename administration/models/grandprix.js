@@ -23,7 +23,7 @@ module.exports.getResultatGrandPrix= function (gpnum,callback){
             // execution de la requête SQL
             let sql = "SELECT PILNOM, PILPRENOM, TEMPSCOURSE,p.PILNUM FROM grandprix g JOIN course c ON g.GPNUM=c.GPNUM " +
                 "JOIN pilote p ON p.PILNUM = c.PILNUM " +
-                "WHERE g.GPNUM = " + gpnum +" ORDER BY TEMPSCOURSE ASC LIMIT 10";
+                "WHERE g.GPNUM = " + gpnum +" ORDER BY TEMPSCOURSE ASC";
             //console.log (sql);
             connexion.query(sql, callback);
             // la connexion retourne dans le pool

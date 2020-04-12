@@ -1,5 +1,5 @@
 <img src="/image/cat_resultat.png" alt="Trophé du résultat" />
-<h1>Saisie des resultats {{gpnum}}</h1>
+<h1>Saisie des resultats</h1>
 <table>
 <tr>
     <th></th>
@@ -10,9 +10,9 @@
     {{#each resultatsGP}}
         <tr>
             <td>
-                <form action="/resultats/supprimer/{{../gpnum}}" method="post">
-                    <input type="hidden" name="gpnum" value="{{../gpnum}}">
+                <form action="/resultats/supprimer/" method="post">
                     <input type="hidden" name="pilnum" value="{{this.PILNUM}}">
+                    <input type="hidden" name="pilnum" value="{{../gpnum}}">
                     <input type="image" src="/image/act_delete.png"  alt="supprimer">
                 </form>
             </td>
@@ -29,7 +29,7 @@
     {{/each}}
     <tr>
         <td></td>
-        <form action="/resultats/{{../gpnum}}" method="post">
+        <form action="/resultats/saisieResultats/{{gpnum}}" method="post">
             <td><select id="pilnum" name="pilnum">
                 {{#each pilotes}}
                     <option value="{{this.PILNUM}}"> {{this.PILNOM}} </option>
@@ -37,9 +37,9 @@
             </select>
             </td>
             <td>
-                <input type="number" name="temps" min="0" max="60"> :
-                <input type="number" name="temps" min="0" max="60"> :
-                <input type="number" name="temps" min="0" max="60">
+                <input type="number" name="temps" min="0" max="60" required> :
+                <input type="number" name="temps" min="0" max="60" required> :
+                <input type="number" name="temps" min="0" max="60" required>
             </td>
             <td><input type="submit" value="OK">
         </form>

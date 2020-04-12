@@ -2,7 +2,9 @@ let async = require('async');
 let modelGP = require('../models/grandprix.js');
 let modelPoint = require('../models/points.js');
 let modelPilote = require('../models/pilote.js');
-  // //////////////////////////L I S T E R    R E S U L T A T S
+let modelCourse = require('../models/course.js');
+let modelEcurie = require('../models/ecurie.js');
+// //////////////////////////L I S T E R    R E S U L T A T S
 module.exports.ListerGP = function(request, response){
 
 	response.title = 'Liste des résulats des grands prix';
@@ -16,8 +18,12 @@ module.exports.ListerGP = function(request, response){
 		response.render('resultats/listeGP', response);
 	});
 };
+module.exports.RedirectionSaisieResultat = function(request, response) {
+	let num = request.body.gpnum;
+	response.redirect("/resultats/saisieResultats/"+num);
+}
 module.exports.SaisieResultat = function(request, response){
-	var gpnum = request.body.gpnum;
+	let gpnum = request.params.GPNUM;
 	async.parallel([
 			function(callback){
 				modelGP.getResultatGrandPrix(gpnum, function(err, result){
@@ -51,6 +57,83 @@ module.exports.SaisieResultat = function(request, response){
 		});
 };
 module.exports.SaisieInfoResultat = function(request, response){
-	var num = request.params.GPNUM
+	let gpnum = request.params.GPNUM;
 
+	let pilnum = request.body.pilnum;
+	let temps = request.body.temps;
+
+	modelCourse.ajouterResultatPilote(gpnum,pilnum,temps, function(err, result){
+		async.waterfall([
+				function(callback){
+					modelGP.getResultatGrandPrix(gpnum, function(err, result){
+						callback(null, result);
+					});
+				},
+				function(resPil,callback){
+					modelPoint.getPoints(function(err, result){
+						callback(null, resPil,result);
+					});
+				},
+				function(resPil,points,callback){
+					let table= resPil;
+					table.forEach(function(element, index){
+						if(points[index] === undefined){
+							element.NBPOINT=0;
+						} else {
+							element.NBPOINT=points[index];
+						}
+					}, this);
+					let index = 0;
+					while(table[index].PILNUM != pilnum){
+						index = index+1;
+					}
+					callback(null,table,index);
+				},
+				function(table,index,callback){
+					if(index <= 9){ //verifie si c'est dans le temps des 10 premiers
+						modelEcurie.getPoints(pilnum, function(err, result){
+							let point =result[0].ECUPOINTS + table[index].NBPOINT.PTNBPOINTSPLACE;
+							let ecunum = result[0].ECUNUM;
+							modelEcurie.modifierPoints(point,ecunum,function(err, result){
+								callback(null,table,index);
+							});
+						});
+					}else{
+						callback(null,null,null);
+					}
+				},
+				function(table,index,callback){ // changement de points eventuel des autres ecuries dû à l'insertion
+					if(table != null && index != null && index < 9){
+						for(let i =index+1;i<10;i++){
+							modelEcurie.getPoints(table[i].PILNUM,function(err, result) {
+								if(result[0].ECUPOINTS) {//verifie que les points de l'écurie ne sont pas déjà de 0 (en principe impossible)
+									let point;
+									let ecunum = result[0].ECUNUM;
+									if(i<=9){// pour les pilotes de 1 à 10
+										point = result[0].ECUPOINTS - (table[i - 1].NBPOINT.PTNBPOINTSPLACE - table[i].NBPOINT.PTNBPOINTSPLACE);// recalcule les points de l'écurie
+									} else{// pour les pilotes à 11
+										point =result[0].ECUPOINTS - table[i - 1].NBPOINT.PTNBPOINTSPLACE;
+									}
+									modelEcurie.modifierPoints(point,ecunum);
+								}
+								console.log("laAAA");
+							});
+							console.log("la");
+						}
+						console.log("ici");
+					} else{
+						callback();
+					}
+				},
+			],
+			function (err, result){
+				if(err) {
+					console.log(err);
+					return;
+				}
+				response.redirect("/resultats/saisieResultats/"+gpnum);
+
+			}
+		)
+	});
 };

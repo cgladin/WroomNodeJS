@@ -129,3 +129,32 @@ module.exports.ModifierEcurie= function (num,nom,directeur,adresse,point,pays,fo
         }
     });
 };
+module.exports.getPoints = function (num,callback) { // selectionne juste le nom et numero ecurie pour les selects
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql ="SELECT ecurie.ECUNUM, ECUPOINTS FROM ecurie JOIN pilote ON pilote.ECUNUM=ecurie.ECUNUM WHERE PILNUM="+num;
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};
+module.exports.modifierPoints = function (num,ecunum,callback) { // selectionne juste le nom et numero ecurie pour les selects
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql ="UPDATE ecurie SET ECUPOINTS="+num+" WHERE ECUNUM="+ecunum;
+            console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};

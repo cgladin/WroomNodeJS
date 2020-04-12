@@ -102,7 +102,7 @@ module.exports.getPiloteSansResultat= function (num,callback) {
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT pilote.PILNUM, pilote.PILNOM FROM pilote WHERE pilote.PILNUM NOT IN (SELECT course.PILNUM from course WHERE course.GPNUM ="+num+")";
+            let sql = "SELECT pilote.PILNUM, pilote.PILNOM FROM pilote WHERE pilote.PILNUM NOT IN (SELECT course.PILNUM from course WHERE course.GPNUM ="+num+") AND pilote.ECUNUM IS NOT NULL";
             //console.log (sql);
             connexion.query(sql, callback);
 
