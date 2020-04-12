@@ -12,12 +12,12 @@
             <td>
                 <form action="/resultats/supprimer/" method="post">
                     <input type="hidden" name="pilnum" value="{{this.PILNUM}}">
-                    <input type="hidden" name="pilnum" value="{{../gpnum}}">
+                    <input type="hidden" name="gpnum" value="{{../gpnum}}">
                     <input type="image" src="/image/act_delete.png"  alt="supprimer">
                 </form>
             </td>
             <td>{{inc @index }}</td>
-            <td>{{this.PILNOM}}</td>
+            <td>{{this.PILNOM}} {{this.PILPRENOM}}</td>
             <td>{{this.TEMPSCOURSE}}</td>
 
             {{#if this.NBPOINT.PTNBPOINTSPLACE}}

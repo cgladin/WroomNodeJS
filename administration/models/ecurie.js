@@ -129,7 +129,7 @@ module.exports.ModifierEcurie= function (num,nom,directeur,adresse,point,pays,fo
         }
     });
 };
-module.exports.getPoints = function (num,callback) { // selectionne juste le nom et numero ecurie pour les selects
+module.exports.getPoints = function (num,callback) {
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -143,7 +143,7 @@ module.exports.getPoints = function (num,callback) { // selectionne juste le nom
         }
     });
 };
-module.exports.modifierPoints = function (num,ecunum,callback) { // selectionne juste le nom et numero ecurie pour les selects
+module.exports.modifierPoints = function (num,ecunum,callback) {
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -151,6 +151,22 @@ module.exports.modifierPoints = function (num,ecunum,callback) { // selectionne 
             // execution de la requête SQL
             let sql ="UPDATE ecurie SET ECUPOINTS="+num+" WHERE ECUNUM="+ecunum;
             console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};
+
+module.exports.getEcuriePiloteGP = function (num,callback) { // selectionne les ecurie des personne participant à un grandprix
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql ="SELECT ecurie.ECUNUM, pilote.PILNUM FROM ecurie RIGHT JOIN pilote ON pilote.ECUNUM=ecurie.ECUNUM JOIN course ON course.PILNUM=pilote.PILNUM " +
+                "JOIN grandprix ON grandprix.GPNUM=course.GPNUM WHERE  course.GPNUM ="+num+" ORDER BY TEMPSCOURSE ASC";
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool
