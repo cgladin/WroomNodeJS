@@ -114,14 +114,16 @@ module.exports.SaisieInfoResultat = function(request, response){
 							if(result[0] !== undefined) {//verifie qu'il y a un résultat de point
 								let point;
 								let ecunum = result[0].ECUNUM;
-								if(i<=10){
-									if(i<=9){// pour les pilotes de 1 à 10
-										point = result[0].ECUPOINTS - (table[i - 1].NBPOINT.PTNBPOINTSPLACE - table[i].NBPOINT.PTNBPOINTSPLACE);// recalcule les points de l'écurie
-									} else{// pour les pilotes à 11
-										point =result[0].ECUPOINTS - table[i - 1].NBPOINT.PTNBPOINTSPLACE;
+								if(i<=10 && result[0] !== undefined){// verif la position dans le tableau
+									if(result[0].ECUPOINTS > 0) {
+										if (i <= 9) {// pour les pilotes de 1 à 10
+											point = result[0].ECUPOINTS - (table[i - 1].NBPOINT.PTNBPOINTSPLACE - table[i].NBPOINT.PTNBPOINTSPLACE);// recalcule les points de l'écurie
+										} else {// pour les pilotes à 11
+											point = result[0].ECUPOINTS - table[i - 1].NBPOINT.PTNBPOINTSPLACE;
+										}
+										modelEcurie.modifierPoints(point, ecunum);
 									}
 								}
-								modelEcurie.modifierPoints(point,ecunum);
 							}
 						});
 					}
@@ -210,13 +212,15 @@ module.exports.SupprimerLigneResultat = function (request, response) {
 					if ( table[i].ECURIE.ECUNUM !== null) {// on vérifie qu'il y a une écuries avec le pilote
 					modelEcurie.getPoints(table[i].PILNUM, function (err, result) { // on prend les points de l'écuries
 							let point =result[0].ECUPOINTS;
-							if(result[0] !== undefined && i <=10) {
-								if (i <= 9) {// pour les pilotes de 1 à 10
-									point = point + (table[i - 1].NBPOINT.PTNBPOINTSPLACE - table[i].NBPOINT.PTNBPOINTSPLACE);// recalcule les points de l'écurie
-								} else {// pour les pilotes à 11
-									point = point + table[i - 1].NBPOINT.PTNBPOINTSPLACE;
+							if(result[0] !== undefined && i <=10) {// verif le resultat de la requete ainsi que la position dans le tableau
+								if(result[0].ECUPOINTS > 0) {
+									if (i <= 9) {// pour les pilotes de 1 à 10
+										point = point + (table[i - 1].NBPOINT.PTNBPOINTSPLACE - table[i].NBPOINT.PTNBPOINTSPLACE);// recalcule les points de l'écurie
+									} else {// pour les pilotes à 11
+										point = point + table[i - 1].NBPOINT.PTNBPOINTSPLACE;
+									}
+									modelEcurie.modifierPoints(point, table[i].ECURIE.ECUNUM);
 								}
-								modelEcurie.modifierPoints(point, table[i].ECURIE.ECUNUM);
 							}
 						});
 					}
