@@ -52,8 +52,8 @@ module.exports.ajouterNouveauCircuit= function (nom,longueur,pays,image,nbspecta
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = 'INSERT INTO circuit (PAYNUM,CIRNOM,CIRLONGUEUR,CIRNBSPECTATEURS,CIRADRESSEIMAGE,CIRTEXT)';
-            sql = sql +' VALUES ('+pays+',"'+nom+'",'+longueur+','+nbspectateur+',"'+image+'","'+description+'")';
+            let sql = 'INSERT INTO circuit (PAYNUM,CIRNOM,CIRLONGUEUR,CIRNBSPECTATEURS,CIRADRESSEIMAGE,CIRTEXT)'
+           +' VALUES ('+pays+',"'+nom+'",'+longueur+','+nbspectateur+',"'+image+'","'+description+'")';
             connexion.query(sql, callback);
             // la connexion retourne dans le pool
             connexion.release();

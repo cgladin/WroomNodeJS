@@ -43,8 +43,9 @@ module.exports = function(app){
 
     //Résultats
     app.get('/resultats',verifLogin, ResultatController.ListerGP);
-    app.post('/resultats',verifLogin, ResultatController.SaisieResultat);
-    app.post('/resultats/saisieResultats',verifLogin, ResultatController.SaisieInfoResultat);
+    app.post('/resultats',verifLogin, ResultatController.RedirectionSaisieResultat);
+    app.get('/resultats/saisieResultats/:GPNUM',verifLogin, ResultatController.SaisieResultat);
+    app.post('/resultats/saisieResultats/:GPNUM',verifLogin, ResultatController.SaisieInfoResultat);
 
     // Sponsors
     app.get('/sponsors',verifLogin, SponsorController.ListerSponsor);
