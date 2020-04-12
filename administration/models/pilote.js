@@ -21,8 +21,8 @@ module.exports.ajouterNouveauPilote= function (prenom,nom,date,nationalite,ecuri
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "INSERT INTO pilote (PAYNUM,PILNOM,PILPRENOM,PILDATENAIS,PILPOINTS,PILPOIDS,PILTAILLE,PILTEXTE,ECUNUM)";
-            sql = sql +" VALUES ("+nationalite+",'"+nom+"','"+prenom+"','"+date[2]+"-"+date[1]+"-"+date[0]+"',"+point+","+poid+","+taille+",'"+description+"',"+ecurie+")";
+            let sql = 'INSERT INTO pilote (PAYNUM,PILNOM,PILPRENOM,PILDATENAIS,PILPOINTS,PILPOIDS,PILTAILLE,PILTEXTE,ECUNUM)';
+            sql = sql +'VALUES ('+nationalite+',"'+nom+'","'+prenom+'","'+date[2]+'-'+date[1]+'-'+date[0]+'",'+point+','+poid+','+taille+',"'+description+'",'+ecurie+')';
             //console.log (sql);
             connexion.query(sql, callback);
 
@@ -69,10 +69,10 @@ module.exports.ModifierPilote= function (num,prenom,nom,date,nationalite,ecurie,
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "UPDATE pilote " +
-                "SET PAYNUM="+nationalite+",PILNOM='"+nom+"',PILPRENOM='"+prenom+"',PILDATENAIS='"+date[2]+"-"+date[1]+"-"+date[0]+"'," +
-                "PILPOINTS="+point+",PILPOIDS="+poid+",PILTAILLE="+taille+",PILTEXTE='"+description+"',ECUNUM="+ecurie+
-                " WHERE PILNUM="+num;
+            let sql = 'UPDATE pilote ' +
+                'SET PAYNUM='+nationalite+',PILNOM="'+nom+'",PILPRENOM="'+prenom+'",PILDATENAIS="'+date[2]+'-'+date[1]+'-'+date[0]+'",' +
+                'PILPOINTS='+point+',PILPOIDS='+poid+',PILTAILLE='+taille+',PILTEXTE="'+description+'",ECUNUM='+ecurie+
+                ' WHERE PILNUM='+num;
             //console.log (sql);
             connexion.query(sql, callback);
 

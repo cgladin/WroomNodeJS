@@ -73,8 +73,8 @@ module.exports.ajouterNouvelleEcurie= function (nom,directeur,adresse,point,pays
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "INSERT INTO ecurie (FPNUM,ECUNOM,ECUNOMDIR,ECUADRSIEGE,ECUPOINTS,PAYNUM,ECUADRESSEIMAGE)";
-            sql = sql +" VALUES ("+fournPneu+",'"+nom+"','"+directeur+"','"+adresse+"',"+point+","+pays+",'"+image+"')";
+            let sql = 'INSERT INTO ecurie (FPNUM,ECUNOM,ECUNOMDIR,ECUADRSIEGE,ECUPOINTS,PAYNUM,ECUADRESSEIMAGE)';
+            sql = sql +' VALUES ('+fournPneu+',"'+nom+'","'+directeur+'","'+adresse+'",'+point+','+pays+',"'+image+'")';
             //console.log (sql);
             connexion.query(sql, callback);
 
@@ -119,8 +119,8 @@ module.exports.ModifierEcurie= function (num,nom,directeur,adresse,point,pays,fo
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "UPDATE ecurie SET FPNUM="+fournPneu+" ,ECUNOM='"+nom+"',ECUNOMDIR='"+adresse+"' ,ECUADRSIEGE='"+adresse+"',ECUPOINTS="+point+" ,PAYNUM="+pays+" ,ECUADRESSEIMAGE='"+image+
-                "' WHERE ECUNUM="+num;
+            let sql = 'UPDATE ecurie SET FPNUM='+fournPneu+' ,ECUNOM="'+nom+'",ECUNOMDIR="'+adresse+'" ,ECUADRSIEGE="'+adresse+'",ECUPOINTS='+point+' ,PAYNUM='+pays+' ,ECUADRESSEIMAGE="'+image+
+                '" WHERE ECUNUM='+num;
             //console.log (sql);
             connexion.query(sql, callback);
 

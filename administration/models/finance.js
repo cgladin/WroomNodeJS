@@ -20,7 +20,7 @@ module.exports.ajoutSponsoriseEcurie= function (num,sponum, callback) {
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "INSERT INTO finance (ECUNUM,SPONUM) VALUES ("+num+","+sponum+")";
+            let sql = 'INSERT INTO finance (ECUNUM,SPONUM) VALUES ('+num+','+sponum+')';
             console.log (sql);
             connexion.query(sql, callback);
 

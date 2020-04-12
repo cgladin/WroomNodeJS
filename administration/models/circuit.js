@@ -9,7 +9,6 @@ module.exports.getCircuits= function (callback) { //donne la liste des circuits
             let sql = "SELECT CIRNUM, CIRNOM, CIRLONGUEUR,CIRNBSPECTATEURS FROM circuit ORDER BY CIRNOM ASC";
             //console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -53,11 +52,9 @@ module.exports.ajouterNouveauCircuit= function (nom,longueur,pays,image,nbspecta
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "INSERT INTO circuit (PAYNUM,CIRNOM,CIRLONGUEUR,CIRNBSPECTATEURS,CIRADRESSEIMAGE,CIRTEXT)";
-            sql = sql +" VALUES ("+pays+",'"+nom+"',"+longueur+","+nbspectateur+",'"+image+"','"+description+"')";
-            //console.log (sql);
+            let sql = 'INSERT INTO circuit (PAYNUM,CIRNOM,CIRLONGUEUR,CIRNBSPECTATEURS,CIRADRESSEIMAGE,CIRTEXT)';
+            sql = sql +' VALUES ('+pays+',"'+nom+'",'+longueur+','+nbspectateur+',"'+image+'","'+description+'")';
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -69,8 +66,8 @@ module.exports.ModifierCircuit= function (num,nom,longueur,pays,image,nbspectate
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "UPDATE circuit SET PAYNUM="+pays+",CIRNOM='"+nom+"',CIRLONGUEUR='"+longueur+"',CIRNBSPECTATEURS="+nbspectateur+",CIRADRESSEIMAGE='"+image+"',CIRTEXT='"+description+
-                "' WHERE CIRNUM="+num;
+            let sql = 'UPDATE circuit SET PAYNUM='+pays+',CIRNOM="'+nom+'",CIRLONGUEUR="'+longueur+'",CIRNBSPECTATEURS='+nbspectateur+',CIRADRESSEIMAGE="'+image+'",CIRTEXT="'+description+
+                '" WHERE CIRNUM='+num;
             //console.log (sql);
             connexion.query(sql, callback);
 

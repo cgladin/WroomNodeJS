@@ -21,8 +21,8 @@ module.exports.ajouterPhotoPilote = function(image,pilnum, callback) {
         if (!err) {
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "INSERT INTO photo (PHONUM,PILNUM,PHOSUJET,PHOCOMMENTAIRE,PHOADRESSE)" +
-                " VALUES(1,"+pilnum+",'Photo Identité','Photo Officielle','"+image+"')";
+            let sql = 'INSERT INTO photo (PHONUM,PILNUM,PHOSUJET,PHOCOMMENTAIRE,PHOADRESSE)'+
+                ' VALUES(1,'+pilnum+',"Photo Identité","Photo Officielle","'+image+'")';
             connexion.query(sql, callback);
             //console.log(sql);
             // la connexion retourne dans le pool
