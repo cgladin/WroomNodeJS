@@ -102,34 +102,28 @@ module.exports.SaisieInfoResultat = function(request, response){
 						callback(null,null,null);
 					}
 				},
-				function(table,index,callback){ // changement de points eventuel des autres ecuries dû à l'insertion
-					if(table != null && index != null && index < 9){
-						for(let i =index+1;i<10;i++){
-							modelEcurie.getPoints(table[i].PILNUM,function(err, result) {
-								if(result[0].ECUPOINTS) {//verifie que les points de l'écurie ne sont pas déjà de 0 (en principe impossible)
-									let point;
-									let ecunum = result[0].ECUNUM;
-									if(i<=9){// pour les pilotes de 1 à 10
-										point = result[0].ECUPOINTS - (table[i - 1].NBPOINT.PTNBPOINTSPLACE - table[i].NBPOINT.PTNBPOINTSPLACE);// recalcule les points de l'écurie
-									} else{// pour les pilotes à 11
-										point =result[0].ECUPOINTS - table[i - 1].NBPOINT.PTNBPOINTSPLACE;
-									}
-									modelEcurie.modifierPoints(point,ecunum);
-								}
-								console.log("laAAA");
-							});
-							console.log("la");
-						}
-						console.log("ici");
-					} else{
-						callback();
-					}
-				},
 			],
-			function (err, result){
+			function (err,table,index){
 				if(err) {
 					console.log(err);
 					return;
+				}
+				if(table != null && index != null && index < 9){ // Dans cette Partis on va mettre a jour les points des autres écuries en fonction du nouveau classement
+					for(let i =index+1;i<table.length;i++){
+						modelEcurie.getPoints(table[i].PILNUM,function(err, result) {
+							console.log(result[0]);
+							if(result[0] !== undefined) {//verifie qu'il y a un résultat de point
+								let point;
+								let ecunum = result[0].ECUNUM;
+								if(i<=9){// pour les pilotes de 1 à 10
+									point = result[0].ECUPOINTS - (table[i - 1].NBPOINT.PTNBPOINTSPLACE - table[i].NBPOINT.PTNBPOINTSPLACE);// recalcule les points de l'écurie
+								} else{// pour les pilotes à 11
+									point =result[0].ECUPOINTS - table[i - 1].NBPOINT.PTNBPOINTSPLACE;
+								}
+								modelEcurie.modifierPoints(point,ecunum);
+							}
+						});
+					}
 				}
 				response.redirect("/resultats/saisieResultats/"+gpnum);
 
