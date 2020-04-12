@@ -6,7 +6,7 @@ module.exports.getListePilote= function (callback) {
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT PILNOM, PILPRENOM, PILDATENAIS, PILNUM FROM pilote GROUP BY PILNOM ASC";
+            let sql = "SELECT PILNOM, PILPRENOM, PILDATENAIS, PILNUM FROM pilote ORDER BY PILNOM ASC";
             //console.log (sql);
             connexion.query(sql, callback);
 

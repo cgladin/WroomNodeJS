@@ -6,7 +6,7 @@ module.exports.getSponsors= function (callback) { // donne tous les sponsors
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT SPONUM,SPONOM,SPOSECTACTIVITE FROM sponsor GROUP BY SPONOM ASC";
+            let sql = "SELECT SPONUM,SPONOM,SPOSECTACTIVITE FROM sponsor ORDER BY SPONOM ASC";
             //console.log (sql);
             connexion.query(sql, callback);
 
