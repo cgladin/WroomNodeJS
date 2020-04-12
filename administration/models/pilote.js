@@ -96,3 +96,18 @@ module.exports.deleteEcuriePilote= function (num,callback) {
         }
     });
 };
+module.exports.getPiloteSansResultat= function (num,callback) {
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql = "SELECT pilote.PILNUM, pilote.PILNOM FROM pilote WHERE pilote.PILNUM NOT IN (SELECT course.PILNUM from course WHERE course.GPNUM ="+num+")";
+            //console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};

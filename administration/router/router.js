@@ -42,10 +42,11 @@ module.exports = function(app){
 
 
     //Résultats
-    app.get('/resultats',verifLogin, ResultatController.ListerResultat);
-    app.get('/resultats/saisieResultats/:GPNUM',verifLogin, ResultatController.SaisieResultat);
-    app.post('/resultats/saisieResultats/:GPNUM',verifLogin, ResultatController.SaisieInfoResultat);
-// Sponsors
+    app.get('/resultats',verifLogin, ResultatController.ListerGP);
+    app.post('/resultats',verifLogin, ResultatController.SaisieResultat);
+    app.post('/resultats/saisieResultats',verifLogin, ResultatController.SaisieInfoResultat);
+
+    // Sponsors
     app.get('/sponsors',verifLogin, SponsorController.ListerSponsor);
     app.get('/sponsors/ajoutSponsor',verifLogin,SponsorController.AjoutSponsor);
     app.post('/sponsors/ajoutSponsor',verifLogin,SponsorController.AjoutInfoSponsor);
@@ -53,7 +54,7 @@ module.exports = function(app){
     app.get('/sponsors/modifier/:SPONUM',verifLogin,SponsorController.ModifierSponsor);
     app.post('/sponsors/modifier/:SPONUM',verifLogin,SponsorController.ModifierInfoSponsor);
 
-// tout le reste
+    // tout le reste
     app.get('*', HomeController.NotFound);
     app.post('*', HomeController.NotFound);
 

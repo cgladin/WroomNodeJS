@@ -1,5 +1,5 @@
 <img src="/image/cat_resultat.png" alt="Trophé du résultat" />
-<h1>Saisie des resultats</h1>
+<h1>Saisie des resultats {{gpnum}}</h1>
 <table>
 <tr>
     <th></th>
@@ -10,10 +10,10 @@
     {{#each resultatsGP}}
         <tr>
             <td>
-                <form action="/resultats/supprimer/{{this.GPNUM}}" method="post">
-                    <input type="hidden" name="gpnum" value="{{this.GPNUM}}">
+                <form action="/resultats/supprimer/{{../gpnum}}" method="post">
+                    <input type="hidden" name="gpnum" value="{{../gpnum}}">
                     <input type="hidden" name="pilnum" value="{{this.PILNUM}}">
-                    <input type="submit"  value='' alt="supprimer">
+                    <input type="image" src="/image/act_delete.png"  alt="supprimer">
                 </form>
             </td>
             <td>{{inc @index }}</td>
@@ -29,9 +29,9 @@
     {{/each}}
     <tr>
         <td></td>
-        <form action="/resultats/{{this.GPNUM}}" method="post">
+        <form action="/resultats/{{../gpnum}}" method="post">
             <td><select id="pilnum" name="pilnum">
-                {{#each listePilote}}
+                {{#each pilotes}}
                     <option value="{{this.PILNUM}}"> {{this.PILNOM}} </option>
                 {{/each}}
             </select>
