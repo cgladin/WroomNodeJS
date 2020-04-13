@@ -1,26 +1,23 @@
 <form  action="#" method="post" enctype="multipart/form-data">
-    <h1> Ajouter un grand prix</h1>
+    <h1> Modifier un grand prix</h1>
     </br></br>
     <label for="nom">
         <strong>Nom</strong>
-        <input type="text" name="nom" required>
+        <input type="text" name="nom" value="{{gp.GPNOM}}" required>
     </label>
     </br></br>
     <label for="date">
         <strong>Date</strong>
-        <input type="number" min="0" max="31" name="date" required>/
-        <input type="number" min="0" max="12" name="date" required>/
-        <input type="number" min="1800" max="" id="dateAnnee" name="date" required>
+        <input type="number" min="0" max="31" name="date" value="{{gp.JOUR}}" required>/
+        <input type="number" min="0" max="12" name="date" value="{{gp.MOIS}}" required>/
+        <input type="number" min="1800" max="" id="dateAnnee" name="date"  value="{{gp.ANNEE}}" required>
     </label>
     </br></br>
     <label for="circuit">
         <strong>Circuit</strong>
         <select name="circuit" required>
-            <option value="{{cirGP.PAYNUM}}">{{cirGP.PAYNAT}}</option>
             {{#each circuits}}
-                {{#ifCond this.CIRNUM '!=' cirGP.CIRNUM}}
                 <option value="{{this.CIRNUM}}">{{this.CIRNOM}}</option>
-                {{/ifCond}}
             {{/each}}
         </select>
     </label>
@@ -29,12 +26,12 @@
     </br></br>
     <label for="tour">
         <strong>Nombre de tour</strong>
-        <input type="number" name="tour" min="0">
+        <input type="number" name="tour" value="{{gp.GPNBTOURS}}" min="0">
     </label>
     </br></br>
     <label for="commentaire">
         <strong>Commentaire</strong>
-        <textarea name="commentaire" rows="4" cols="100" required></textarea>
+        <textarea name="commentaire" rows="4" cols="100" required>{{gp.GPCOMMENTAIRE}}</textarea>
     </label>
     </br></br>
     <input type="submit" value="AJOUTER">
