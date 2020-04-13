@@ -173,3 +173,7 @@
 		border-radius: 5px;
 		text-align: center;
 	}
+
+	.tableauResultatGrandPrix table, .tableauResultatGrandPrix th, .tableauResultatGrandPrix td {
+		border: 1px solid black;
+	}
