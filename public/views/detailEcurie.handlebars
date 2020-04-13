@@ -41,10 +41,18 @@
                         </a>
 
                         <span class="tooltiptext">
-                  <img src="/image/pilote/{{this.PHOADRESSE}}" alt="imagePilote">
-                            {{this.PILNOM  }}
-                            {{this.PILPRENOM}} <br>
-                            {{this.PILTEXTE}} ...
+                            <div class="flex-container">
+                                <div>
+                                   <img src="/image/pilote/{{this.PHOADRESSE}}" alt="imagePilote" class="apercuImagePilote">
+                                </div>
+                                <div class = apercuDescriptionPilote>
+                                    <b>{{this.PILNOM  }} {{this.PILPRENOM}} </b>
+                                    <br>
+                                    {{this.PILTEXTE}}
+                                </div>
+
+                            </div>
+
                 </span>
                     </div>
 
