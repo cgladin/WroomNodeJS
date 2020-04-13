@@ -1,6 +1,7 @@
 let async = require('async');
 let model = require('../models/circuit.js');
 let modelPays = require('../models/pays.js');
+let modelGP = require('../models/grandprix.js');
 let formidable = require('formidable');
 var fs = require('fs');
 // ////////////////////// L I S T E R     C I R C U I T S
@@ -55,10 +56,10 @@ module.exports.SupprimerCircuit = function (request, response) {
                 });
             },
             function (callback) {
-                model.deleteCircuit(num, function (err,res) {
+                modelGP.getCirGP(num,function (err,res) {
                     callback(null,res)
-                },50);
-            },
+                });
+            }
         ],
         function (err, result) {
             if (err) {
@@ -66,6 +67,13 @@ module.exports.SupprimerCircuit = function (request, response) {
                 console.log(err);
                 return;
             }
+            if(result[1] !== undefined) {
+                for(let i=0;i<result[1].length;i++){
+                    let gpnum = result[1][i].GPNUM;
+                    modelGP.supprimerGP(gpnum);
+                }
+            }
+            model.deleteCircuit(num); //supprime le circuit après suppressions des grandprix
             fs.unlink('../public/public/image/circuit/'+result[0][0].CIRADRESSEIMAGE, function (err) {
                 if (err) throw err;
             });

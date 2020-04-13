@@ -110,3 +110,17 @@ module.exports.supprimerGP= function (num,callback){
         }
     });
 };
+module.exports.getCirGP= function (num,callback) { //donne le gpnum d'un circuits
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql = "SELECT GPNUM FROM grandprix JOIN circuit ON grandprix.CIRNUM=circuit.CIRNUM WHERE circuit.CIRNUM="+num;
+            //console.log (sql);
+            connexion.query(sql, callback);
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};

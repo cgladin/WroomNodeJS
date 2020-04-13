@@ -64,12 +64,7 @@ module.exports.ModifierGP = function (request, response) {
                 modelCircuit.getCircuits(function (err, result) {
                     callback(null, result)
                 });
-            },
-            function (callback) {
-                modelCircuit.getCircuitGP(num,function (err, result) {
-                    callback(null, result)
-                })
-            },
+            }
         ],
         function (err, result) {
             if (err) {
@@ -79,8 +74,6 @@ module.exports.ModifierGP = function (request, response) {
             }
             response.gp = result[0][0];
             response.circuits=result[1];
-            response.cirGP=result[2][0];
-            console.log(response.gp);
             response.render('grandprix/modifier', response);
         }  // fin fonction
     );//fin async

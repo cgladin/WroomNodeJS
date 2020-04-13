@@ -14,19 +14,15 @@
     </label>
     </br></br>
     <label for="circuit">
-        <strong>Circuit</strong>
-        <select name="circuit" required>
-            <option value="{{cirGP.PAYNUM}}">{{cirGP.PAYNAT}}</option>
-            {{#each circuits}}
-                {{#ifCond this.CIRNUM '!=' cirGP.CIRNUM}}
-                <option value="{{this.CIRNUM}}">{{this.CIRNOM}}</option>
-                {{/ifCond}}
-            {{/each}}
-        </select>
+    <strong>Circuit</strong>
+    <select name="circuit" required>
+        {{#each circuits}}
+            <option value="{{this.CIRNUM}}">{{this.CIRNOM}}</option>
+        {{/each}}
+    </select>
     </label>
     </br></br>
 
-    </br></br>
     <label for="tour">
         <strong>Nombre de tour</strong>
         <input type="number" name="tour" min="0">
