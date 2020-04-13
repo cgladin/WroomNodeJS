@@ -31,7 +31,23 @@
                 <strong>Pilotes :</strong>
                 {{#each ecuriePilote}}
                     <br>
-                    <a href="/detailPilote/{{this.PILNUM}}">{{this.PILPRENOM}} {{this.PILNOM}}</a>
+
+                    <div class="tooltip">
+                        <a href="/detailPilote/{{this.PILNUM}}" id="pilote"  class="tooltip">
+                            <p>
+                                {{this.PILPRENOM}}
+                                {{this.PILNOM  }}
+                            </p>
+                        </a>
+
+                        <span class="tooltiptext">
+                  <img src="/image/pilote/{{this.PHOADRESSE}}" alt="imagePilote">
+                            {{this.PILNOM  }}
+                            {{this.PILPRENOM}} <br>
+                            {{this.PILTEXTE}} ...
+            </span>
+                    </div>
+
                 {{/each}}
                 <br><br><br>
                 <div class="flex-container-detailCircuit">
