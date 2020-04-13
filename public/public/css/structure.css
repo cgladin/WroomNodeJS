@@ -158,3 +158,11 @@
 	.tooltip:hover .tooltiptext {
 		visibility: visible;
 	}
+
+	.inner-div-accueil {
+		margin: 0 auto;
+		width: 300px;
+		border: 2px solid black;
+		border-radius: 5px;
+		text-align: center;
+	}
