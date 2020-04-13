@@ -111,6 +111,13 @@
 		justify-content: space-between;
 	}
 
+	.flex-container-detailGrandPrix {
+		display: flex;
+		flex-direction: row-reverse;
+	}
+
+
+
 	.imageCircuit {
 		height: 200px;
 		width: auto;

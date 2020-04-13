@@ -1,4 +1,14 @@
+<div class="flex-container-detailGrandPrix">
+
+<div>
+
+
 {{>listeGrandPrixPartial}}
+
+</div>
+
+    <div>
+
 
 <h1>{{nomGrandPrix.GPNOM}} ({{formatDate nomGrandPrix.GPDATE 'DD/MM/YYYY'}})</h1>
 <table>
@@ -24,3 +34,6 @@
 {{#if commentaire}}
     <p>{{commentaire.GPCOMMENTAIRE}}</p>
 {{/if}}
+    </div>
+
+</div>
