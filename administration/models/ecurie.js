@@ -25,6 +25,20 @@ module.exports.getEcuries = function (callback) { // selectionne juste le nom et
          }
       });
 };
+module.exports.getListeEcurie = function (callback) { // Selectionne les écurie pour les lister dans /ecuries
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql ="SELECT ECUNUM, ECUNOM, ECUPOINTS FROM ecurie ORDER BY ECUNOM ASC";
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};
 module.exports.getEcurie = function (num,callback) { // selectionne une écurie pas numéro
     // connection à la base
     db.getConnection(function(err, connexion){
@@ -53,20 +67,7 @@ module.exports.getEcuriePilote = function (num,callback) {
         }
     });
 };
-module.exports.getListeEcurie = function (callback) { // selectionne juste le nom et numero ecurie pour les selects
-    // connection à la base
-    db.getConnection(function(err, connexion){
-        if(!err){
-            // s'il n'y a pas d'erreur de connexion
-            // execution de la requête SQL
-            let sql ="SELECT ECUNUM, ECUNOM, ECUPOINTS FROM ecurie ORDER BY ECUNOM ASC";
-            connexion.query(sql, callback);
 
-            // la connexion retourne dans le pool
-            connexion.release();
-        }
-    });
-};
 module.exports.ajouterNouvelleEcurie= function (nom,directeur,adresse,point,pays,fournPneu,image,callback) {
     // connection à la base
     db.getConnection(function(err, connexion){
