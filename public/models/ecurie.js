@@ -63,7 +63,8 @@ module.exports.getEcuriePilote= function(ecunum, callback){
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT PILNOM, PILNUM, PILPRENOM FROM ecurie e JOIN pilote p ON e.ECUNUM=p.ECUNUM WHERE e.ECUNUM= " + ecunum ;
+            let sql = "SELECT PILNOM, p.PILNUM, PILPRENOM,PILTEXTE,PHOADRESSE FROM ecurie e JOIN pilote p ON e.ECUNUM=p.ECUNUM  " +
+                "JOIN photo ON photo.PILNUM=p.PILNUM WHERE PHONUM=1 AND e.ECUNUM=" + ecunum ;
             //console.log (sql);
             connexion.query(sql, callback);
 

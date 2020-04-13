@@ -1,6 +1,7 @@
 let model = require('../models/ecurie.js');
 let voitureModel = require('../models/voiture.js');
 let fournModel = require('../models/fourn_pneu.js');
+let photoModel = require('../models/photo.js');
 let async=require("async");
 
    // //////////////////////// L I S T E R  E C U R I E S
@@ -35,7 +36,7 @@ async.parallel([
     },
         function (callback) {
             model.getEcuriePilote(ecunum,function (err, result) {
-                callback(null, result)
+                callback(null,result)
             });
         },
         function (callback) {
