@@ -2,7 +2,7 @@ let model = require('../models/pilote.js');
 let photoModel = require('../models/photo.js');
 let ecurieModel = require('../models/ecurie.js');
 let async=require("async");
-// ///////////////////////// R E P E R T O I R E    D E S    P I L O T E S
+/////////////////////////// R E P E R T O I R E    D E S    P I L O T E S ///////////////////////////////
 module.exports.Repertoire = function (request, response) {
     response.title = 'Répertoire des pilotes';
     model.getListeInitialPilote(function (err, result) {
@@ -15,20 +15,19 @@ module.exports.Repertoire = function (request, response) {
     });
 };
 
-//module affiche recherche pilote
+/////////////////////////////////// affiche la recherche des pilotes ///////////////////////////////////////
 module.exports.NomPilote = function (request, response) {
     let data = request.params.initial;
     response.title = 'Pilote dont le nom commence par ' + data;
     async.parallel([
             function (callback) {
-                model.getListeInitialPilote( function (errPil, resultPil) {
-                    callback(null, resultPil)
+                model.getListeInitialPilote( function (err, result) { // pour afficher à nouveau les premières lettres des pilotes
+                    callback(null, result) // result[0]
                 });
-                // pour afficher à nouveau les premières lettres des pilotes
-            }, // fin callback1
+            },
             function (callback) {
-                model.getNomImagePilote(data,function (err, result) {
-                    callback(null,result)
+                model.getNomImagePilote(data,function (err, result) { // Récupère les images des pilotes
+                    callback(null,result) // result[1]
                 })
             }
         ],
@@ -45,39 +44,39 @@ module.exports.NomPilote = function (request, response) {
     );  // fin async
 };  // fin module
 
-// ////////////// Détail pilotes ////////////////////////
+//////////////// Détail pilotes ////////////////////////
 module.exports.DetailPilote = function (request,response) {
     let pilnum = request.params.PILNUM;
     response.title=' Détails du pilote';
     async.parallel([
             function(callback){
-                model.getListeInitialPilote(function (errPil, resultPil) {
-                    callback(null, resultPil)
+                model.getListeInitialPilote(function (err, result) { //Récupère les initales des pilotes dans la bd pour la recherche
+                    callback(null, result) //result[0]
                 });
             },
             function (callback) {
-                model.getDetailPilotePerso(pilnum, function (err,result) {
-                    callback(null,result)
+                model.getDetailPilotePerso(pilnum, function (err,result) { // Récupère les infos d'un pilote
+                    callback(null,result) //result[1]
                 });
             },
             function (callback) {
-                model.getDetailPiloteSponsor(pilnum,function (err,result) {
-                    callback(null,result)
+                model.getDetailPiloteSponsor(pilnum,function (err,result) { // Récupère les info sur les sponsors du pilote
+                    callback(null,result)//result[2]
                 });
             },
             function (callback) {
-                photoModel.getPhotoNonOfficiel(pilnum, function (err,result) {
-                    callback(null,result)
+                photoModel.getPhotoNonOfficiel(pilnum, function (err,result) { // Récupère les images du pilote autre que ça photo officiel
+                    callback(null,result) // result[3]
                 });
             },
             function (callback) {
-                photoModel.getPhotoOfficiel(pilnum, function (err,result) {
-                    callback(null,result)
+                photoModel.getPhotoOfficiel(pilnum, function (err,result) { // Récupère l'image officiel du pilote
+                    callback(null,result) //result[4]
                 });
             },
             function (callback) {
-                ecurieModel.getNomEcurie(pilnum, function (err,result) {
-                    callback(null,result)
+                ecurieModel.getNomEcurie(pilnum, function (err,result) { // Récupère l'écurie du pilote
+                    callback(null,result) //result[5]
                 });
             }
         ],

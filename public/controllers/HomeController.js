@@ -1,8 +1,8 @@
 let modelGP = require('../models/grandprix.js');
-  // ////////////////////////////////////////////// A C C U E I L
+//////////////////////////////////////////////// A C C U E I L //////////////////////////////////////
 module.exports.Index = function(request, response){
     response.title = "Bienvenue sur le site de WROOM (IUT du Limousin).";
-    modelGP.getDernierResultat( function (err, result) {
+    modelGP.getDernierResultat( function (err, result) { // Récupère le dernier résultat insérer dans la bd
         if (err) {
             console.log(err);
             return;
