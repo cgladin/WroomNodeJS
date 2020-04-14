@@ -34,7 +34,7 @@ async.parallel([
         });
     },
         function (callback) {
-            model.getEcuriePilote(ecunum,function (err, result) {// récupere les écurie liées à un pilote
+            model.getEcuriePilote(ecunum,function (err, result) {// récupere les pilotes liée à l'écurie
                 callback(null,result) //result[2]
             });
         },

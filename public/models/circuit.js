@@ -1,6 +1,6 @@
 let db = require('../configDb');
 
-module.exports.getListeCircuit= function (callback){
+module.exports.getListeCircuit= function (callback){ // Récupère la liste des circuits
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -16,7 +16,7 @@ module.exports.getListeCircuit= function (callback){
     });
 };
 
-module.exports.getDetailCircuit= function (cirnum, callback){
+module.exports.getDetailCircuit= function (cirnum, callback){ // Récupère les infos d'un circuit
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){

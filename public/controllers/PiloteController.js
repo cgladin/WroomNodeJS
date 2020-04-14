@@ -15,7 +15,7 @@ module.exports.Repertoire = function (request, response) {
     });
 };
 
-/////////////////////////////////// affiche la recherche des pilotes ///////////////////////////////////////
+/////////////////////////////////// affiche le resultat de la recherche des pilotes ///////////////////////////////////////
 module.exports.NomPilote = function (request, response) {
     let data = request.params.initial;
     response.title = 'Pilote dont le nom commence par ' + data;
@@ -26,7 +26,7 @@ module.exports.NomPilote = function (request, response) {
                 });
             },
             function (callback) {
-                model.getNomImagePilote(data,function (err, result) { // Récupère les images des pilotes
+                model.getNomImagePilote(data,function (err, result) { // Récupère les images et nom des pilotes en fonction de la lettre selectionné
                     callback(null,result) // result[1]
                 })
             }
