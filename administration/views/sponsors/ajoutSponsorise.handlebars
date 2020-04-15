@@ -1,0 +1,20 @@
+<form class="formulaire" action="#" method="post">
+    <h1>Sponsorisé un pilote</h1>
+<label for="sponsor"> <b>Sponsors </b>
+    <select name="sponsor">
+        {{#each sponsors}}
+            <option value="{{this.SPONUM}}">{{this.SPONOM}}</option>
+        {{/each}}
+    </select>
+</label>
+</br></br>
+<label for="pilote"> <b>Pilote à sponsorisé</b>
+    <select  name="pilote">
+        {{#each pilotes}}
+            <option value="{{this.PILNUM}}">{{this.PILNOM}} {{this.PILPRENOM}}</option>
+        {{/each}}
+    </select>
+</label>
+</br></br>
+    <input type="submit" value="AJOUTER">
+</form>

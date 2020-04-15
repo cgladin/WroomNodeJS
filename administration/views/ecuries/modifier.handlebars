@@ -25,9 +25,7 @@
         <select name="pays" required>
             <option value="{{ecuPays.PAYNUM}}">{{ecuPays.PAYNOM}}</option>
             {{#each pays}}
-                {{#ifCond this.PAYNUM '!=' ../cirPays.PAYNUM}}
-                    <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
-                {{/ifCond}}
+                <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
             {{/each}}
         </select>
     </label>
@@ -35,11 +33,15 @@
     <label for="fournPneu">
         <strong>Fournisseur de pneu</strong>
         <select name="fournPneu" required>
-            <option value="{{ecuFP.FPNUM}}"> {{ecuFP.FPNOM}}</option>
+            {{#if ecuFP}}
+                <option value="{{ecuFP.FPNUM}}"> {{ecuFP.FPNOM}}</option>
+            {{/if}}
             {{#each fournPneu}}
-                {{#ifCond this.FPNUM '!=' ../ecuFP.FPNUM }}
-                 <option value="{{this.FPNUM}}"> {{this.FPNOM}}</option>
-                {{/ifCond}}
+                {{#if ecuFP}}
+                        <option value="{{this.FPNUM}}"> {{this.FPNOM}}</option>
+                {{else}}
+                    <option value="{{this.FPNUM}}"> {{this.FPNOM}}</option>
+                {{/if}}
             {{/each}}
         </select>
     </label>

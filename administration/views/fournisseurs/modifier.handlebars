@@ -17,9 +17,7 @@
         <select name="pays" required>
             <option value="{{fournPays.PAYNUM}}">{{fournPays.PAYNOM}}</option>
             {{#each pays}}
-                {{#ifCond this.PAYNUM '!=' ../fournPays.PAYNUM}}
-                    <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
-                {{/ifCond}}
+                <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
             {{/each}}
         </select>
 

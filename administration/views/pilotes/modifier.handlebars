@@ -22,9 +22,7 @@
         <select name="nationalite" required>
             <option value="{{natPilote.PAYNUM}}">{{natPilote.PAYNAT}}</option>
             {{#each nationalites}}
-                {{#ifCond this.PAYNUM '!=' ../natPilote.PAYNUM}}
-                    <option value="{{this.PAYNUM}}">{{this.PAYNAT}}</option>
-                {{/ifCond}}
+                <option value="{{this.PAYNUM}}">{{this.PAYNAT}}</option>
             {{/each}}
         </select>
     </label>
@@ -35,9 +33,7 @@
             {{#if ecuriePilote}}
                 <option value="{{ecuriePilote.ECUNUM}}">{{ecuriePilote.ECUNOM}}</option>
                 {{#each ecuries}}
-                    {{#ifCond this.ECUNUM '!=' ../ecuriePilote.ECUNUM}}
-                        <option value="{{this.ECUNUM}}">{{this.ECUNOM}}</option>
-                    {{/ifCond}}
+                    <option value="{{this.ECUNUM}}">{{this.ECUNOM}}</option>
                 {{/each}}
             {{else}}
                 <option value="0">Aucune</option>

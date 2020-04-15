@@ -56,6 +56,9 @@ module.exports = function(app){
     app.get('/sponsors/supprimer/:SPONUM',verifLogin,SponsorController.SupprimerSponsor);
     app.get('/sponsors/modifier/:SPONUM',verifLogin,SponsorController.ModifierSponsor);
     app.post('/sponsors/modifier/:SPONUM',verifLogin,SponsorController.ModifierInfoSponsor);
+    app.get('/sponsors/ajoutSponsorise',verifLogin,SponsorController.SponsorisePilote);
+    app.post('/sponsors/ajoutSponsorise',verifLogin,SponsorController.AjoutSponsorisePilote);
+
 
     //grandprix
     app.get('/grandprix',verifLogin,GrandprixController.ListerGP);

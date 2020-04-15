@@ -15,9 +15,7 @@
         <select name="pays" required>
             <option value="{{cirPays.PAYNUM}}">{{cirPays.PAYNOM}}</option>
             {{#each pays}}
-                {{#ifCond this.PAYNUM '!=' ../cirPays.PAYNUM}}
-                    <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
-                {{/ifCond}}
+                <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
             {{/each}}
         </select>
     </label>
