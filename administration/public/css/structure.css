@@ -43,6 +43,7 @@
       max-height: 20%;
       max-width: 20%;
   }
+
   .tabpayscir  {
  	  float:right;
  	  padding:10px;
@@ -73,3 +74,23 @@
  #formConnexion{
 	 flex-direction: column;
  }
+
+ .login {
+	 background-color: black;
+	 margin: 0% 20%;
+	 color: white;
+	 text-align: center
+ }
+
+	#tableauPilote {
+		margin: 0% 25%;
+	}
+
+	#presentationGestionPilotes {
+		text-align: center;
+	}
+
+	table, th, td {
+		border: 1px solid black;
+	}
+

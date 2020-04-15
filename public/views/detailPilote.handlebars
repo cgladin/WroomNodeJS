@@ -3,7 +3,7 @@
 <div class="flex-container-pagePilote">
 
     <div>
-        <a href="/image/pilote/{{photoOfficiel.PHOADRESSE}}" data-lightbox="photoPrincipale">
+        <a href="/image/pilote/{{photoOfficiel.PHOADRESSE}}" data-lightbox="apercuPilote">
             <img class="photoDetailPilote" src="/image/pilote/{{photoOfficiel.PHOADRESSE}}" alt="Photo Officiel" >
         </a>
     </div>
@@ -40,7 +40,7 @@
 
 </div>
 <div>
-    <p><strong>Qui suis je ?</strong> {{detailPerso.PILTEXTE}}</p>
+    <p class="justify" ><strong>Qui suis je ?</strong> {{detailPerso.PILTEXTE}}</p>
 </div>
 <div>
     {{#each photosNonOfficiel}}
