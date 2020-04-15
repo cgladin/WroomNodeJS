@@ -1,6 +1,6 @@
 let db = require('../../configDb');
 
-module.exports.deleteEssaisPilote= function (num,callback) {
+module.exports.deleteEssaisPilote= function (num,callback) { // supprime l'essai du pilote
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){

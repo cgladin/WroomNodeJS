@@ -53,7 +53,7 @@ module.exports.getEcurie = function (num,callback) { // selectionne une écurie 
         }
     });
 };
-module.exports.getEcuriePilote = function (num,callback) {
+module.exports.getEcuriePilote = function (num,callback) { // récupère l'écurie du pilote'
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -68,7 +68,7 @@ module.exports.getEcuriePilote = function (num,callback) {
     });
 };
 
-module.exports.ajouterNouvelleEcurie= function (nom,directeur,adresse,point,pays,fournPneu,image,callback) {
+module.exports.ajouterNouvelleEcurie= function (nom,directeur,adresse,point,pays,fournPneu,image,callback) { // ajoute une nouvelle écurie
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -84,7 +84,7 @@ module.exports.ajouterNouvelleEcurie= function (nom,directeur,adresse,point,pays
         }
     });
 };
-module.exports.getImage= function (num,callback) {
+module.exports.getImage= function (num,callback) { // récupère l'image de l'écurie
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -99,7 +99,7 @@ module.exports.getImage= function (num,callback) {
         }
     });
 };
-module.exports.deleteEcurie= function (num,callback) {
+module.exports.deleteEcurie = function (num,callback) { // supprime l'écurie
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -114,7 +114,7 @@ module.exports.deleteEcurie= function (num,callback) {
         }
     });
 };
-module.exports.ModifierEcurie= function (num,nom,directeur,adresse,point,pays,fournPneu,image,callback) {
+module.exports.ModifierEcurie= function (num,nom,directeur,adresse,point,pays,fournPneu,image,callback) { // modifie l'écurie
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -130,7 +130,7 @@ module.exports.ModifierEcurie= function (num,nom,directeur,adresse,point,pays,fo
         }
     });
 };
-module.exports.getPoints = function (num,callback) {
+module.exports.getPoints = function (num,callback) { // récupère les points de l'écurie
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -144,7 +144,7 @@ module.exports.getPoints = function (num,callback) {
         }
     });
 };
-module.exports.modifierPoints = function (num,ecunum,callback) {
+module.exports.modifierPoints = function (num,ecunum,callback) { // modifie les points de l'écurie
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -175,7 +175,7 @@ module.exports.getEcuriePiloteGP = function (num,callback) { // selectionne les 
         }
     });
 };
-module.exports.updateEcurieFourn= function (num,callback) {
+module.exports.updateEcurieFourn= function (num,callback) { // met fpnum à null
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){

@@ -31,7 +31,7 @@ module.exports.getCircuit= function (num, callback) { //donne les infos sur 1 se
     });
 };
 
-module.exports.deleteCircuit= function (num,callback) {
+module.exports.deleteCircuit= function (num,callback) { // Supprime un circuit
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -46,7 +46,7 @@ module.exports.deleteCircuit= function (num,callback) {
         }
     });
 };
-module.exports.ajouterNouveauCircuit= function (nom,longueur,pays,image,nbspectateur,description,callback) {
+module.exports.ajouterNouveauCircuit= function (nom,longueur,pays,image,nbspectateur,description,callback) { // Ajoute un circuit
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -60,7 +60,7 @@ module.exports.ajouterNouveauCircuit= function (nom,longueur,pays,image,nbspecta
         }
     });
 };
-module.exports.ModifierCircuit= function (num,nom,longueur,pays,image,nbspectateur,description,callback) {
+module.exports.ModifierCircuit= function (num,nom,longueur,pays,image,nbspectateur,description,callback) { // Modifie un circuit
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -76,7 +76,7 @@ module.exports.ModifierCircuit= function (num,nom,longueur,pays,image,nbspectate
         }
     });
 };
-module.exports.getImage= function (num,callback) {
+module.exports.getImage= function (num,callback) { // Récupère l'image du circuit
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
