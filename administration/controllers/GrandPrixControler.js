@@ -1,7 +1,7 @@
 let model = require('../models/grandprix.js');
 let async = require('async');
 let modelCircuit = require('../models/circuit.js');
-/////// AFICHER LES GRANDPRIX
+////////////////////////////// AFICHER LES GRANDPRIX ///////////////////////////////////////
 module.exports.ListerGP = function (request, response) {
     response.title = 'Liste des grand prix';
     model.listerGP(function (err, result) {
@@ -14,6 +14,8 @@ module.exports.ListerGP = function (request, response) {
         response.render('grandprix/gestionGP', response);
     });
 };
+///////////////////////////////AJOUTER GRANDPRIX ////////////////////////////////////////////////
+// affiche la page d'ajout
 module.exports.AjoutGP = function(request, response){
     modelCircuit.getCircuits(function(err, result) {
         if (err) {
@@ -24,6 +26,7 @@ module.exports.AjoutGP = function(request, response){
         response.render('grandprix/ajoutGP', response);
     });
 };
+// modifie les informations
 module.exports.AjoutInfoGP = function (request,response) {
     let nom = request.body.nom;
     let cirnum = request.body.circuit;
@@ -51,6 +54,8 @@ module.exports.AjoutInfoGP = function (request,response) {
     });
 
 };
+////////////////////////////////////////MODIFIER GP //////////////////////////////////////////////////
+// affiche la page de modification
 module.exports.ModifierGP = function (request, response) {
     num = request.params.GPNUM;
     async.parallel([
@@ -78,6 +83,7 @@ module.exports.ModifierGP = function (request, response) {
         }  // fin fonction
     );//fin async
 };
+// modifie les infos
 module.exports.ModifierInfoGP = function (request, response) {
     num = request.params.GPNUM;
     let nom = request.body.nom;
@@ -105,6 +111,7 @@ module.exports.ModifierInfoGP = function (request, response) {
         response.render('grandprix/redirect', response);
     });
 };
+/////////////////////////////// SUPPRIMER GP ///////////////////////////////////
 module.exports.SupprimerGP = function (request, response) {
     num = request.params.GPNUM;
     model.supprimerGP(num,function (err, result) {

@@ -10,7 +10,6 @@ var fs = require('fs');
 let formidable = require('formidable');
 
 // ///////////////////////// R E P E R T O I R E    D E S    P I L O T E S
-
 module.exports.ListerPilote = function (request, response) {
     model.getListePilote(function (err, result) {
         if (err) {
@@ -21,6 +20,8 @@ module.exports.ListerPilote = function (request, response) {
         response.render('pilotes/gestionPilotes', response);
     });
 };
+/////////////////////////////// AJOUTER PILOTE ////////////////////////////////////////////////
+// affiche la page d'ajout
 module.exports.AjoutPilote = function (request, response) {
     async.parallel([
             function (callback) {
@@ -47,6 +48,7 @@ module.exports.AjoutPilote = function (request, response) {
         }  // fin fonction
     );  // fin async
 };
+// modifie les informations
 module.exports.AjoutInfoPilote = function (request, response) {
     //récupération des données insérées
     let prenom = request.body.prenom;
@@ -93,7 +95,7 @@ module.exports.AjoutInfoPilote = function (request, response) {
         }// fin fonction
     );//fin async
 };
-
+//////////////////////////////////////SUPPRIMER PILOTE ///////////////////////////////////
 module.exports.SupprimerPilote = function (request, response) {
     num = request.params.PILNUM;
     async.parallel([
@@ -144,6 +146,8 @@ module.exports.SupprimerPilote = function (request, response) {
         }  // fin fonction
     );//fin async
 };
+///////////////////////////////////////////////////MODIFIER PILOTE ////////////////////////////////////////////
+// affiche la page de modification
 module.exports.ModifierPilote = function (request, response) {
     num = request.params.PILNUM;
     async.parallel([
@@ -195,7 +199,7 @@ module.exports.ModifierPilote = function (request, response) {
         }  // fin fonction
     );//fin async
 };
-
+// modifie les infos
 module.exports.ModifierInfoPilote = function (request, response) {
     num = request.params.PILNUM;
     //récupération des données insérées

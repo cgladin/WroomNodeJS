@@ -41,7 +41,6 @@ module.exports.Authentification = function(request, response) {
 };
 
 //////////////////// DECONNEXION //////////////////////////
-
 module.exports.Logout = function(request, response) {
     let session = request.session;
     session.isConnected = undefined;

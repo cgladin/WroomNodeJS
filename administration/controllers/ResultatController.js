@@ -4,7 +4,7 @@ let modelPoint = require('../models/points.js');
 let modelPilote = require('../models/pilote.js');
 let modelCourse = require('../models/course.js');
 let modelEcurie = require('../models/ecurie.js');
-// //////////////////////////L I S T E R    R E S U L T A T S
+////////////////////////////L I S T E R    R E S U L T A T S //////////////////////////////////////////
 module.exports.ListerGP = function(request, response){
 
 	response.title = 'Liste des résulats des grands prix';
@@ -18,10 +18,13 @@ module.exports.ListerGP = function(request, response){
 		response.render('resultats/listeGP', response);
 	});
 };
+// redirection vers une autre arborescence
 module.exports.RedirectionSaisieResultat = function(request, response) {
 	let num = request.body.gpnum;
 	response.redirect("/resultats/saisieResultats/"+num);
-}
+};
+////////////////////////////////////// SAISIE DES RESULTATS ////////////////////////////////
+// affiche la page de saisie
 module.exports.SaisieResultat = function(request, response){
 	let gpnum = request.params.GPNUM;
 	async.parallel([
@@ -56,6 +59,7 @@ module.exports.SaisieResultat = function(request, response){
 			response.render('resultats/saisieResultats', response);
 		});
 };
+// saisie des informations
 module.exports.SaisieInfoResultat = function(request, response){
 	let gpnum = request.params.GPNUM;
 
@@ -133,6 +137,8 @@ module.exports.SaisieInfoResultat = function(request, response){
 		)
 	});
 };
+
+/////////////////////////// SUPPRIMER RESULTAT /////////////////////////////////////////////////////////
 module.exports.SupprimerLigneResultat = function (request, response) {
 	let pilnum = request.body.pilnum;
 	let gpnum = request.body.gpnum;

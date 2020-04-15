@@ -2,7 +2,7 @@ let async = require('async');
 let model = require('../models/sponsors.js');
 let modelEcurie = require('../models/ecurie.js');
 let modelFinance = require('../models/finance.js');
-// //////////////////////////L I S T E R    R E S U L T A T S
+// //////////////////////////L I S T E R    R E S U L T A T S //////////////////////////////////////////
 module.exports.ListerSponsor = function(request, response){
     response.title = 'Liste des résulats des grands prix';
     model.getSponsors(function(err, result) {
@@ -14,6 +14,8 @@ module.exports.ListerSponsor = function(request, response){
         response.render('sponsors/gestionSponsors', response);
     });
 };
+/////////////////////////////////////// AJOUTER SPONSOR //////////////////////////////////////////////
+// affiche la page d'ajout
 module.exports.AjoutSponsor = function(request, response){
     modelEcurie.getEcuries(function(err, result) {
         if (err) {
@@ -24,6 +26,7 @@ module.exports.AjoutSponsor = function(request, response){
         response.render('sponsors/ajoutSponsor', response);
     });
 };
+// ajoute les infos
 module.exports.AjoutInfoSponsor = function(request, response){
     let nom = request.body.nom;
     let sposectactivite = request.body.sposectactivite;
@@ -56,6 +59,7 @@ module.exports.AjoutInfoSponsor = function(request, response){
         }
     );//fin async
 };
+/////////////////////////////////////SUPPRIMER SPONSOR ////////////////////////////////////////////
 module.exports.SupprimerSponsor = function (request, response) {
     num=request.params.SPONUM;
     async.parallel([
@@ -82,6 +86,8 @@ module.exports.SupprimerSponsor = function (request, response) {
         }// fin fonction
     );
 };
+/////////////////////////////////////////// MODIFIER SPONSOR ////////////////////////////////
+// modifie les infos
 module.exports.ModifierInfoSponsor = function(request, response){
     sponum=request.params.SPONUM;
     let nom = request.body.nom;
@@ -119,6 +125,7 @@ module.exports.ModifierInfoSponsor = function(request, response){
         }
     );//fin async
 };
+// affiche la page de modification
 module.exports.ModifierSponsor= function(request, response){
     num=request.params.SPONUM;
     async.parallel([

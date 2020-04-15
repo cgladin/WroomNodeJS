@@ -8,8 +8,7 @@ let async = require('async');
 let formidable = require('formidable');
 var fs = require('fs');
 
-// //////////////////////// L I S T E R  E C U R I E S
-
+////////////////////////// L I S T E R  E C U R I E S //////////////////
 module.exports.ListerEcurie = function (request, response) {
     response.title = 'Liste des écuries';
     model.getListeEcurie(function (err, result) {
@@ -22,6 +21,8 @@ module.exports.ListerEcurie = function (request, response) {
         response.render('ecuries/gestionEcuries', response);
     });
 };
+/////////////////////////////// AJOUTER ECURIE ///////////////////////////////////
+//affiche la page d'ajout
 module.exports.AjoutEcurie = function (request, response) {
     response.title = 'Liste des écuries';
     async.parallel([
@@ -48,6 +49,7 @@ module.exports.AjoutEcurie = function (request, response) {
         }
     );//fin async
 };
+//ajouter les infos insérées
 module.exports.AjoutInfoEcurie = function (request, response) {
     let nom = request.body.nom;
     let directeur = request.body.directeur;
@@ -71,6 +73,7 @@ module.exports.AjoutInfoEcurie = function (request, response) {
     });
 
 };
+///////////////////////////////////////// SUPPRIMER  ECURIE ////////////////////////////////////////
 module.exports.SupprimerEcurie = function (request, response) {
     num=request.params.ECUNUM;
     async.parallel([
@@ -99,7 +102,6 @@ module.exports.SupprimerEcurie = function (request, response) {
                     callback(null,res)
                 },50);
             },
-
         ],
         function (err, result) {
             if (err) {
@@ -115,6 +117,8 @@ module.exports.SupprimerEcurie = function (request, response) {
         }// fin fonction
     );
 };
+////////////////////////////////////// MODIFIER ECURIE////////////////////////////////////////////////////
+// affiche la page de modification
 module.exports.ModifierEcurie = function(request, response){
     num=request.params.ECUNUM;
     async.parallel([
@@ -165,6 +169,7 @@ module.exports.ModifierEcurie = function(request, response){
         }  // fin fonction
     );//fin async
 } ;
+// modifie les informations
 module.exports.ModifierInfoEcurie = function(request, response){
     let nom = request.body.nom;
     let directeur = request.body.directeur;

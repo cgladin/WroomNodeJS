@@ -135,7 +135,7 @@ module.exports.ModifierInfoCircuit = function (request,response) {
         }  // fin fonction
     );//fin async
 };
-
+// affiche la page de modification
 module.exports.ModifierCircuit = function(request, response){
     num=request.params.CIRNUM;
     async.parallel([
