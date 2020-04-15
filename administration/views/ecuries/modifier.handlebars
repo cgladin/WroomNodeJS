@@ -25,7 +25,7 @@
         <select name="pays" required>
             <option value="{{ecuPays.PAYNUM}}">{{ecuPays.PAYNOM}}</option>
             {{#each pays}}
-                {{#ifCond this.PAYNUM '!=' cirPays.PAYNUM}}
+                {{#ifCond this.PAYNUM '!=' ../cirPays.PAYNUM}}
                     <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
                 {{/ifCond}}
             {{/each}}
@@ -37,7 +37,7 @@
         <select name="fournPneu" required>
             <option value="{{ecuFP.FPNUM}}"> {{ecuFP.FPNOM}}</option>
             {{#each fournPneu}}
-                {{#ifCond this.FPNUM '!=' ecuFP.FPNUM }}
+                {{#ifCond this.FPNUM '!=' ../ecuFP.FPNUM }}
                  <option value="{{this.FPNUM}}"> {{this.FPNOM}}</option>
                 {{/ifCond}}
             {{/each}}
