@@ -1,212 +1,215 @@
-    body {
-    	font-family: "Segoe UI", "DejaVu Sans",Verdana, sans-serif;
-    	background: url('/image/fond.jpg') repeat;
-		  font-size:0.8em;
-    	margin: 0;
-    	padding: 0;
-    	text-align: center;
-    	color: #000000;
-    }
-    .monBody #container {
-    	width: 900px;
-    	margin: 0 auto;
-    	text-align: left;
-    	background:#ffffff;
-    }
-    .monBody #header {
-		    height:300px;
-    }
-	.monBody #menu {
-		height:22px;
-		color:#ffffff;
-		font-size:1.4em;
-		background:#000000;
-    }
-  .monBody #contenu {
-		 padding:20px;
-    }
-    .monBody #footer {
-    padding: 0 10px;
-		font-size:0.8em;
-		text-align:center;
-		height:150px;
-		background:url(/image/footer.jpg) no-repeat;
-    }
-	#menu a	{
-		color:#ffffff;
-		text-decoration:none;
-	}
-  #menu {
-    text-align: center;
-  }
-  #LogoNode {
-      max-height: 20%;
-      max-width: 20%;
-  }
-  .tabpayscir  {
- 	  float:right;
- 	  padding:10px;
- 	  border:1px solid black;
- 	  margin:10px
- 	  -moz-border-radius:15px;
- 	  border-radius:15px;
- }
-
- .myboth  {
- 	  clear:both;
- }
- a  {
- 	text-decoration:none;
- 	color:#0072ff;
- }
- .lienNotFound {align:center; style="background-color: #1d81b1;color: #FFFFFF;text-transform: uppercase;"}
- .photoNotFound {
-   max-height: 40%;
-   max-width: 40%;
+body {
+	font-family: "Segoe UI", "DejaVu Sans",Verdana, sans-serif;
+	background: url('/image/fond.jpg') repeat;
+	font-size:0.8em;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	color: #000000;
 }
-	.photoPiloteRecherche {
-		height: 100px;
-		width: 100px;
-	}
+.monBody #container {
+	width: 900px;
+	margin: 0 auto;
+	text-align: left;
+	background:#ffffff;
+}
+.monBody #header {
+	height:300px;
+}
+.monBody #menu {
+	height:22px;
+	color:#ffffff;
+	font-size:1.4em;
+	background:#000000;
+}
+.monBody #contenu {
+	padding:20px;
+}
+.monBody #footer {
+	padding: 0 10px;
+	font-size:0.8em;
+	text-align:center;
+	height:150px;
+	background:url(/image/footer.jpg) no-repeat;
+}
+#menu a	{
+	color:#ffffff;
+	text-decoration:none;
+}
+#menu {
+	text-align: center;
+}
+#LogoNode {
+	max-height: 20%;
+	max-width: 20%;
+}
+.tabpayscir  {
+	float:right;
+	padding:10px;
+	border:1px solid black;
+	margin:10px
+	-moz-border-radius:15px;
+	border-radius:15px;
+}
 
-	.lettresRecherche{
-		padding-left: 25%;
-		padding-right: 25%;
-	}
+.myboth  {
+	clear:both;
+}
+a  {
+	text-decoration:none;
+	color:#0072ff;
+}
+.lienNotFound {align:center; style="background-color: #1d81b1;color: #FFFFFF;text-transform: uppercase;"}
+.photoNotFound {
+	max-height: 40%;
+	max-width: 40%;
+}
+.photoPiloteRecherche {
+	height: 100px;
+	width: 100px;
+}
 
-	#lettresRecherche{
-		padding-left: 5px;
-		padding-right: 5px;
-	}
+.lettresRecherche{
+	padding-left: 25%;
+	padding-right: 25%;
+}
 
-	.flex-container {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-	}
+#lettresRecherche{
+	padding-left: 5px;
+	padding-right: 5px;
+}
 
-	.flex-container-pagePilote {
-		display: flex;
-		justify-content: space-between;
-	}
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
 
-	.photoNonOfficielPetit{
-		height: 200px;
-		width: 200px;
-	}
+.flex-container-pagePilote {
+	display: flex;
+	justify-content: space-between;
+}
 
-	.photoDetailPilote {
-		height: 100px;
-		width: 100px;
-	}
+.photoNonOfficielPetit{
+	height: 200px;
+	width: 200px;
+}
 
-	.drapeau {
-		height: auto;
-		width: 30px;
-	}
+.photoDetailPilote {
+	height: 100px;
+	width: 100px;
+}
 
-	.flex-container-detailCircuit {
-		display: flex;
-		flex-direction: row-reverse;
-		justify-content: space-between;
-	}
+.drapeau {
+	height: auto;
+	width: 30px;
+}
 
-	.flex-container-detailGrandPrix {
-		display: flex;
-		flex-direction: row-reverse;
-	}
+.flex-container-detailCircuit {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+.flex-container-detailGrandPrix {
+	display: flex;
+	flex-direction: row-reverse;
+}
 
 
 
-	.imageCircuit {
-		height: 200px;
-		width: auto;
-	}
+.imageCircuit {
+	height: 200px;
+	width: auto;
+}
 
-	.voitureEcurie {
-		height: 150px;
-		width: 150px;
-	}
+.voitureEcurie {
+	height: 150px;
+	width: 150px;
+}
 
-	.flex-container-detailEcurie {
-		display: flex;
-		flex-direction: column;
-	}
+.flex-container-detailEcurie {
+	display: flex;
+	flex-direction: column;
+}
 
-	.logoEcurie {
-		height: 200px;
-		width: 200px;
-	}
+.logoEcurie {
+	height: 200px;
+	width: 200px;
+}
 
-	/* Tooltip container */
-	.tooltip {
-		position: relative;
-		display: inline-block;
-	}
+/* Tooltip container */
+.tooltip {
+	position: relative;
+	display: inline-block;
+}
 
-	/* Tooltip text */
-	.tooltip .tooltiptext {
-		visibility: hidden;
-		width: 400px;
-		background-color: white;
-		color: black;
-		text-align: center;
-		padding: 5px 0;
-		border-radius: 6px;
-		border: 1px solid black;
-		/* Position the tooltip text - see examples below! */
-		position: absolute;
-		z-index: 1;
-		top: -5px;
-		left: 105%;
-	}
+/* Tooltip text */
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 400px;
+	background-color: white;
+	color: black;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	border: 1px solid black;
+	/* Position the tooltip text - see examples below! */
+	position: absolute;
+	z-index: 1;
+	top: -5px;
+	left: 105%;
+}
 
-	/* Show the tooltip text when you mouse over the tooltip container */
-	.tooltip:hover .tooltiptext {
-		visibility: visible;
-	}
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
 
-	.inner-div-accueil {
-		margin: 0 auto;
-		width: 300px;
-		border: 2px solid black;
-		border-radius: 5px;
-		text-align: center;
-	}
+.inner-div-accueil {
+	margin: 0 auto;
+	width: 300px;
+	border: 2px solid black;
+	border-radius: 5px;
+	text-align: center;
+}
 
-	.tableauResultatGrandPrix table, .tableauResultatGrandPrix th, .tableauResultatGrandPrix td {
-		border: 1px solid black;
-	}
+.tableauResultatGrandPrix table, .tableauResultatGrandPrix th, .tableauResultatGrandPrix td {
+	border: 1px solid black;
+}
 
-	.tabpayscir-test  {
-		float:right;
-		padding:10px;
-		border:1px solid black;
-		margin:10px
-		-moz-border-radius:15px;
-		border-radius:15px;
-		width: 200px;
-		height: auto;
-	}
+.tabpayscir-test  {
+	float:right;
+	padding:10px;
+	border:1px solid black;
+	margin:10px
+	-moz-border-radius:15px;
+	border-radius:15px;
+	width: 200px;
+	height: auto;
+}
 
-	.apercuImagePilote {
-		width: 100px;
-		height: 150px;
-	}
+.apercuImagePilote {
+	width: 100px;
+	height: 150px;
+}
 
-	.apercuDescriptionPilote {
+.apercuDescriptionPilote {
 
-		width: 150px;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
+	width: 150px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 
-	.justify {
-		text-align: justify;
-	}
+.justify {
+	text-align: justify;
+}
 
-	.noDecoration {
-		text-decoration: none;
-		color: black;
-	}
+.noDecoration {
+	text-decoration: none;
+	color: black;
+}
+table {
+	border-collapse: collapse;
+}

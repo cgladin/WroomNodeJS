@@ -66,7 +66,7 @@ module.exports.verifPiloteSponsorise= function (sponum,pilnum,callback) {
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = 'SELECT s.PILNUM FROM sponsorise s JOIN pilote p ON s.PILNUM=p.PILNUM WHERE SPONUM='+sponum+' AND s.PILNUM='+pilnum;
-            console.log (sql);
+            //console.log (sql);
             connexion.query(sql, callback);
             // la connexion retourne dans le pool
             connexion.release();

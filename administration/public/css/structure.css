@@ -1,129 +1,131 @@
-    body {
-    	font-family: "Segoe UI", "DejaVu Sans",Verdana, sans-serif;
-    	background: url('/image/fond.jpg') repeat;
-		  font-size:0.8em;
-    	margin: 0;
-    	padding: 0;
-    	text-align: center;
-    	color: #000000;
-    }
-    .monBody #container {
-    	width: 900px;
-    	margin: 0 auto;
-    	text-align: left;
-    	background:#ffffff;
-    }
-    .monBody #header {
-		    height:300px;
-    }
-	.monBody #menu {
-		height:22px;
-		color:#ffffff;
-		font-size:1.4em;
-		background:#000000;
-    }
-  .monBody #contenu {
-		 padding:20px;
-    }
-    .monBody #footer {
-    padding: 0 10px;
-		font-size:0.8em;
-		text-align:center;
-		height:150px;
-		background:url(/image/footer.jpg) no-repeat;
-    }
-	#menu a	{
-		color:#ffffff;
-		text-decoration:none;
-	}
-  #menu {
-    text-align: center;
-  }
-  #LogoNode {
-      max-height: 20%;
-      max-width: 20%;
-  }
-
-  .tabpayscir  {
- 	  float:right;
- 	  padding:10px;
- 	  border:1px solid black;
- 	  margin:10px
- 	  -moz-border-radius:15px;
- 	  border-radius:15px;
- }
-
- .myboth  {
- 	  clear:both;
- }
- a  {
- 	text-decoration:none;
- 	color:#0072ff;
- }
- .lienNotFound {align:center; style="background-color: #1d81b1;color: #FFFFFF;text-transform: uppercase;"}
- .photoNotFound {
-   max-height: 40%;
-   max-width: 40%;
+body {
+	font-family: "Segoe UI", "DejaVu Sans",Verdana, sans-serif;
+	background: url('/image/fond.jpg') repeat;
+	font-size:0.8em;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	color: #000000;
 }
- #connexion{
-	 background-color: black;
-	 color:white;
-	 display: flex;
-	 flex-direction: column;
- }
- #formConnexion{
-	 flex-direction: column;
- }
+.monBody #container {
+	width: 900px;
+	margin: 0 auto;
+	text-align: left;
+	background:#ffffff;
+}
+.monBody #header {
+	height:300px;
+}
+.monBody #menu {
+	height:22px;
+	color:#ffffff;
+	font-size:1.4em;
+	background:#000000;
+}
+.monBody #contenu {
+	padding:20px;
+}
+.monBody #footer {
+	padding: 0 10px;
+	font-size:0.8em;
+	text-align:center;
+	height:150px;
+	background:url(/image/footer.jpg) no-repeat;
+}
+#menu a	{
+	color:#ffffff;
+	text-decoration:none;
+}
+#menu {
+	text-align: center;
+}
+#LogoNode {
+	max-height: 20%;
+	max-width: 20%;
+}
 
- .login {
-	 background-color: black;
-	 margin: 0% 20%;
-	 color: white;
-	 text-align: center
- }
+.tabpayscir  {
+	float:right;
+	padding:10px;
+	border:1px solid black;
+	margin:10px
+	-moz-border-radius:15px;
+	border-radius:15px;
+}
 
-	#tableauPilote {
-		margin: 0% 25%;
-	}
+.myboth  {
+	clear:both;
+}
+a  {
+	text-decoration:none;
+	color:#0072ff;
+}
+.lienNotFound {align:center; style="background-color: #1d81b1;color: #FFFFFF;text-transform: uppercase;"}
+.photoNotFound {
+	max-height: 40%;
+	max-width: 40%;
+}
+#connexion{
+	background-color: black;
+	color:white;
+	display: flex;
+	flex-direction: column;
+}
+#formConnexion{
+	flex-direction: column;
+}
 
-	#presentationGestion {
-		text-align: center;
-	}
+.login {
+	background-color: black;
+	margin: 0% 20%;
+	color: white;
+	text-align: center
+}
 
-	table, th, td {
-		border: 1px solid black;
-	}
+#tableauPilote {
+	margin: 0% 25%;
+}
 
-	.ajout {
-		margin: 0% 10%;
-	}
+#presentationGestion {
+	text-align: center;
+}
 
-	.ajout input, textarea {
-		border-radius: 20px;
-	}
+table, th, td {
+	border: 1px solid black;
+}
 
-	.ajout h1, #valider {
-		text-align: center;
-	}
+.ajout {
+	margin: 0% 10%;
+}
 
-	#valider {
-		border-radius: 0px;
-		text-align: center;
-		color: white;
-		background: rgb(2,0,36);
-		background: linear-gradient(176deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 100%, rgba(0,212,255,1) 100%);
+.ajout input, textarea {
+	border-radius: 20px;
+}
 
-	}
+.ajout h1, #valider {
+	text-align: center;
+}
 
-	.saisieResultats {
-		margin: 0% 25%;
-		text-align: center;
-	}
+#valider {
+	border-radius: 0px;
+	text-align: center;
+	color: white;
+	background: rgb(2,0,36);
+	background: linear-gradient(176deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 100%, rgba(0,212,255,1) 100%);
 
-	.saisieResultats, input {
-		border-radius: 20px;
-	}
+}
 
+.saisieResultats {
+	margin: 0% 25%;
+	text-align: center;
+}
 
+.saisieResultats, input {
+	border-radius: 20px;
+}
+
+table {
+	border-collapse: collapse;
+}
 
 
