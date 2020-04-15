@@ -20,7 +20,6 @@ module.exports.ListerCircuit = function(request, response){
 /////////////////////////////AJOUT CIRCUIT ////////////////////////////////////////////
 // affichage de la page
 module.exports.AjoutCircuit = function(request, response){
-    response.title = 'Liste des circuits';
     modelPays.getPays(function(err, result) {
         if (err) {
             console.log(err);

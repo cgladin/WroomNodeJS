@@ -74,3 +74,17 @@ module.exports.getPaysEcurie = function (num,callback) { // selectionne une écu
         }
     });
 };
+module.exports.getFournPays = function (num,callback) { // selectionne une écurie pas numéro
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql = "SELECT pays.PAYNUM, PAYNOM FROM pays JOIN fourn_pneu ON pays.PAYNUM=fourn_pneu.PAYNUM WHERE FPNUM="+num;
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};

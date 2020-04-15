@@ -67,6 +67,12 @@ module.exports = function(app){
 
     //fournisseurs
     app.get('/fournisseurs',verifLogin,FournisseurController.ListerFournisseur);
+    app.get('/fournisseurs/ajoutFourn',verifLogin,FournisseurController.AjoutFourn);
+    app.post('/fournisseurs/ajoutFourn',verifLogin,FournisseurController.AjoutInfoFourn);
+    app.get('/fournisseurs/supprimer/:FPNUM',verifLogin,FournisseurController.SupprimerFournisseur);
+    app.get('/fournisseurs/modifier/:FPNUM',verifLogin,FournisseurController.ModifierFournisseur);
+    app.post('/fournisseurs/modifier/:FPNUM',verifLogin,FournisseurController.ModifierInfoFournisseur);
+
     // tout le reste
     app.get('*', HomeController.NotFound);
     app.post('*', HomeController.NotFound);
