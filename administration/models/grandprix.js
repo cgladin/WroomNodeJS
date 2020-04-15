@@ -1,6 +1,6 @@
 let db = require('../../configDb');
 
-module.exports.getListeGrandPrix= function (callback){
+module.exports.getListeGrandPrix= function (callback){ // récupère la liste des grands prix
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -15,7 +15,7 @@ module.exports.getListeGrandPrix= function (callback){
         }
     });
 };
-module.exports.getResultatGrandPrix= function (gpnum,callback){
+module.exports.getResultatGrandPrix= function (gpnum,callback){ // récupère les résultats d'un grand prix
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -31,7 +31,7 @@ module.exports.getResultatGrandPrix= function (gpnum,callback){
         }
     });
 };
-module.exports.listerGP= function (callback){
+module.exports.listerGP= function (callback){ // liste les différents grands prix
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -46,7 +46,7 @@ module.exports.listerGP= function (callback){
         }
     });
 };
-module.exports.ajouterNouveauGP= function (nom,cirnum,date,tour,datemaj,commentaire,callback) {
+module.exports.ajouterNouveauGP= function (nom,cirnum,date,tour,datemaj,commentaire,callback) { // ajoute un nouveau grand prix
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -61,7 +61,7 @@ module.exports.ajouterNouveauGP= function (nom,cirnum,date,tour,datemaj,commenta
         }
     });
 };
-module.exports.getGP= function (num,callback){
+module.exports.getGP= function (num,callback){ // sélectionne les infos d'un grand prix
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -77,7 +77,7 @@ module.exports.getGP= function (num,callback){
         }
     });
 };
-module.exports.modifierGP= function (num,nom,cirnum,date,tour,datemaj,commentaire,callback) {
+module.exports.modifierGP= function (num,nom,cirnum,date,tour,datemaj,commentaire,callback) { // modifie les infos d'un grand prix
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -95,7 +95,8 @@ module.exports.modifierGP= function (num,nom,cirnum,date,tour,datemaj,commentair
         }
     });
 };
-module.exports.supprimerGP= function (num,callback){
+
+module.exports.supprimerGP= function (num,callback){ // supprime un grand prix
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -110,7 +111,7 @@ module.exports.supprimerGP= function (num,callback){
         }
     });
 };
-module.exports.getCirGP= function (num,callback) { //donne le gpnum d'un circuits
+module.exports.getCirGP= function (num,callback) { // donne le gpnum d'un circuits
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){

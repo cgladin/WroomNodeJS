@@ -30,7 +30,7 @@ module.exports.getSponsor= function (num,callback) { // donne 1 sponsor avec un 
         }
     });
 };
-module.exports.ajouterSponsor= function (nom,sposectactivite, callback) {
+module.exports.ajouterSponsor= function (nom,sposectactivite, callback) { // ajoute un sponsor
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -45,7 +45,7 @@ module.exports.ajouterSponsor= function (nom,sposectactivite, callback) {
         }
     });
 };
-module.exports.supprimerSponsor= function (num, callback) {
+module.exports.supprimerSponsor= function (num, callback) { // supprime un sponsor
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -58,7 +58,7 @@ module.exports.supprimerSponsor= function (num, callback) {
         }
     });
 };
-module.exports.modifierSponsor = function(sponom,sposectactivite,sponum, callback) {
+module.exports.modifierSponsor = function(sponom,sposectactivite,sponum, callback) { // modifie les infos d'un sponsor
     // connection à la base
     db.getConnection(function(err, connexion) {
         if (!err) {

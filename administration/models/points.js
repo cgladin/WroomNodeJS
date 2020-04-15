@@ -1,6 +1,6 @@
 let db = require('../../configDb');
 
-module.exports.getPoints=function (callback) {
+module.exports.getPoints=function (callback) { // récupère les points
 // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){

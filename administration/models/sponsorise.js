@@ -1,6 +1,6 @@
 let db = require('../../configDb');
 
-module.exports.deleteSponsorPilote= function (num,callback) {
+module.exports.deleteSponsorPilote= function (num,callback) { // supprime le sponsor d'un pilote
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -15,7 +15,7 @@ module.exports.deleteSponsorPilote= function (num,callback) {
         }
     });
 };
-module.exports.deletePiloteSponsor= function (num,sponum,callback) {
+module.exports.deletePiloteSponsor= function (num,sponum,callback) { // supprime une ligne précise de la table sponsorise
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -30,7 +30,7 @@ module.exports.deletePiloteSponsor= function (num,sponum,callback) {
         }
     });
 };
-module.exports.ajoutSponsorisePilote= function (pilnum,sponsor,callback) {
+module.exports.ajoutSponsorisePilote= function (pilnum,sponsor,callback) { // ajoute un sponsor à un pilote
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -45,7 +45,7 @@ module.exports.ajoutSponsorisePilote= function (pilnum,sponsor,callback) {
         }
     });
 };
-module.exports.getPiloteSponsorise= function (num,callback) {
+module.exports.getPiloteSponsorise= function (num,callback) { // récupère le pilote d'un sponsor
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -59,7 +59,7 @@ module.exports.getPiloteSponsorise= function (num,callback) {
         }
     });
 }
-module.exports.verifPiloteSponsorise= function (sponum,pilnum,callback) {
+module.exports.verifPiloteSponsorise= function (sponum,pilnum,callback) { // vérifie qu'un pilote a un sponsor
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){

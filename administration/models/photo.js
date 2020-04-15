@@ -1,6 +1,6 @@
 let db = require('../../configDb');
 
-module.exports.deletePhotoPilote= function (num,callback) {
+module.exports.deletePhotoPilote= function (num,callback) { // supprime la photo d'un pilote
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -15,7 +15,7 @@ module.exports.deletePhotoPilote= function (num,callback) {
         }
     });
 };
-module.exports.ajouterPhotoPilote = function(image,pilnum, callback) {
+module.exports.ajouterPhotoPilote = function(image,pilnum, callback) { // ajoute une photo au pilote
     // connection à la base
     db.getConnection(function(err, connexion) {
         if (!err) {
@@ -30,7 +30,7 @@ module.exports.ajouterPhotoPilote = function(image,pilnum, callback) {
         }
     });
 };
-module.exports.getImage= function (num,callback) {
+module.exports.getImage= function (num,callback) { // récupère la photo officielle d'un pilote
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -46,7 +46,7 @@ module.exports.getImage= function (num,callback) {
     });
 };
 
-module.exports.ModifierPhotoPilote= function (num,image,callback) {
+module.exports.ModifierPhotoPilote= function (num,image,callback) { // remplacer la photo officielle d'un pilote
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){

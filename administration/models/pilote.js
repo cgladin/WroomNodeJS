@@ -1,6 +1,6 @@
 let db = require('../../configDb');
 
-module.exports.getListePilote= function (callback) {
+module.exports.getListePilote= function (callback) { // récupère la liste des pilotes
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -15,7 +15,7 @@ module.exports.getListePilote= function (callback) {
         }
     });
 };
-module.exports.ajouterNouveauPilote= function (prenom,nom,date,nationalite,ecurie,point,poid,taille,description,callback) {
+module.exports.ajouterNouveauPilote= function (prenom,nom,date,nationalite,ecurie,point,poid,taille,description,callback) { // ajouter un nouveau pilote
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -31,7 +31,7 @@ module.exports.ajouterNouveauPilote= function (prenom,nom,date,nationalite,ecuri
         }
     });
 };
-module.exports.deletePilote= function (num,callback) {
+module.exports.deletePilote= function (num,callback) { // supprimer un pilote
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -46,7 +46,7 @@ module.exports.deletePilote= function (num,callback) {
         }
     });
 };
-module.exports.getPilote= function (num,callback) {
+module.exports.getPilote= function (num,callback) { // récupère les informations du pilote
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -63,7 +63,7 @@ module.exports.getPilote= function (num,callback) {
         }
     });
 };
-module.exports.ModifierPilote= function (num,prenom,nom,date,nationalite,ecurie,point,poid,taille,description,callback) {
+module.exports.ModifierPilote= function (num,prenom,nom,date,nationalite,ecurie,point,poid,taille,description,callback) { // modifie les infoirmations d'un pilote
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -81,7 +81,7 @@ module.exports.ModifierPilote= function (num,prenom,nom,date,nationalite,ecurie,
         }
     });
 };
-module.exports.deleteEcuriePilote= function (num,callback) {
+module.exports.deleteEcuriePilote= function (num,callback) { // supprime un pilote d'une écurie
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){

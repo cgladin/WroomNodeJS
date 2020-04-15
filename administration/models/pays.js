@@ -1,6 +1,6 @@
 let db = require('../../configDb');
 
-module.exports.getNationalite= function (callback) {
+module.exports.getNationalite= function (callback) { // sélectionne toutes les nationalités
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -15,7 +15,7 @@ module.exports.getNationalite= function (callback) {
         }
     });
 };
-module.exports.getPays= function (callback) {
+module.exports.getPays= function (callback) { // sélectionne tous les pays
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -30,7 +30,7 @@ module.exports.getPays= function (callback) {
         }
     });
 };
-module.exports.getNatPilote= function (num,callback) {
+module.exports.getNatPilote= function (num,callback) { // récupère la nationnalité d'un pilote
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -45,7 +45,7 @@ module.exports.getNatPilote= function (num,callback) {
         }
     });
 };
-module.exports.getPaysCircuit= function (num,callback) {
+module.exports.getPaysCircuit= function (num,callback) { // récupère le pays d'un circuit
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -60,7 +60,7 @@ module.exports.getPaysCircuit= function (num,callback) {
         }
     });
 };
-module.exports.getPaysEcurie = function (num,callback) { // selectionne une écurie pas numéro
+module.exports.getPaysEcurie = function (num,callback) { // récupère le pays de l'écurie
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -74,7 +74,7 @@ module.exports.getPaysEcurie = function (num,callback) { // selectionne une écu
         }
     });
 };
-module.exports.getFournPays = function (num,callback) { // selectionne une écurie pas numéro
+module.exports.getFournPays = function (num,callback) { // récupère le pays d'un fournisseur
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){

@@ -1,6 +1,6 @@
 let db = require('../../configDb');
 
-module.exports.deleteEcurieVoiture= function (num,callback) {
+module.exports.deleteEcurieVoiture= function (num,callback) {  // met l'écurie de la voiture à null
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
