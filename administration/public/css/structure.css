@@ -113,8 +113,17 @@
 		background: rgb(2,0,36);
 		background: linear-gradient(176deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 100%, rgba(0,212,255,1) 100%);
 
-
 	}
+
+	.saisieResultats {
+		margin: 0% 25%;
+		text-align: center;
+	}
+
+	.saisieResultats, input {
+		border-radius: 20px;
+	}
+
 
 
 

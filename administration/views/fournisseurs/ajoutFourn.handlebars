@@ -1,25 +1,27 @@
-<form class="formulaire" action="#" method="post">
-    <h1>Ajouter un fournisseur</h1>
-    </br>
-    <label for="nom">
-        <b>Nom</b>
-        <input type="text" name="nom" required>
-    </label>
-    </br>
-    </br>
-    <label for="adresse">
-        <strong>Adresse</strong>
-        <textarea name="adresse" rows="2" cols="60" required></textarea>
-    </label>
-    </br></br>
-    <label for="pays">
-        <strong>Pays</strong>
-        <select name="pays" required>
-            {{#each pays}}
-                <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
-            {{/each}}
-        </select>
-    </label>
-    </br></br>
-    <input type="submit" value="AJOUTER">
-</form>
+<div class="ajout">
+    <form class="formulaire" action="#" method="post">
+        <h1>Ajouter un fournisseur</h1>
+        </br>
+        <label for="nom">
+            <b>Nom</b>
+            <input type="text" name="nom" required>
+        </label>
+        </br>
+        </br>
+        <label for="adresse">
+            <strong>Adresse</strong>
+            <textarea name="adresse" rows="2" cols="60" required></textarea>
+        </label>
+        </br></br>
+        <label for="pays">
+            <strong>Pays</strong>
+            <select name="pays" required>
+                {{#each pays}}
+                    <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
+                {{/each}}
+            </select>
+        </label>
+        </br></br>
+        <input id="valider" type="submit" value="AJOUTER">
+    </form>
+</div>

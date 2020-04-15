@@ -1,41 +1,45 @@
-<form  action="#" method="post" enctype="multipart/form-data">
-    <h1> Ajouter un grand prix</h1>
-    </br></br>
-    <label for="nom">
-        <strong>Nom</strong>
-        <input type="text" name="nom" required>
-    </label>
-    </br></br>
-    <label for="date">
-        <strong>Date</strong>
-        <input type="number" min="0" max="31" name="date" required>/
-        <input type="number" min="0" max="12" name="date" required>/
-        <input type="number" min="1800" max="" id="dateAnnee" name="date" required>
-    </label>
-    </br></br>
-    <label for="circuit">
-    <strong>Circuit</strong>
-    <select name="circuit" required>
-        {{#each circuits}}
-            <option value="{{this.CIRNUM}}">{{this.CIRNOM}}</option>
-        {{/each}}
-    </select>
-    </label>
-    </br></br>
+<div class="ajout">
 
-    <label for="tour">
-        <strong>Nombre de tour</strong>
-        <input type="number" name="tour" min="0">
-    </label>
-    </br></br>
-    <label for="commentaire">
-        <strong>Commentaire</strong>
-        <textarea name="commentaire" rows="4" cols="100" required></textarea>
-    </label>
-    </br></br>
-    <input type="submit" value="AJOUTER">
-    </br></br>
-</form>
+    <form  action="#" method="post" enctype="multipart/form-data">
+        <h1> Ajouter un grand prix</h1>
+        </br></br>
+        <label for="nom">
+            <strong>Nom</strong>
+            <input type="text" name="nom" required>
+        </label>
+        </br></br>
+        <label for="date">
+            <strong>Date</strong>
+            <input type="number" min="0" max="31" name="date" required>/
+            <input type="number" min="0" max="12" name="date" required>/
+            <input type="number" min="1800" max="" id="dateAnnee" name="date" required>
+        </label>
+        </br></br>
+        <label for="circuit">
+        <strong>Circuit</strong>
+        <select name="circuit" required>
+            {{#each circuits}}
+                <option value="{{this.CIRNUM}}">{{this.CIRNOM}}</option>
+            {{/each}}
+        </select>
+        </label>
+        </br></br>
+
+        <label for="tour">
+            <strong>Nombre de tour</strong>
+            <input type="number" name="tour" min="0">
+        </label>
+        </br></br>
+        <label for="commentaire">
+            <strong>Commentaire</strong>
+            <textarea name="commentaire" rows="4" cols="100" required></textarea>
+        </label>
+        </br></br>
+        <input id="valider" type="submit" value="AJOUTER">
+        </br></br>
+    </form>
+
+</div>
 <script type="text/javascript">
     //permet de mettre dynamiquement la date limite de naissance d'un pilote pour pas entrer un date trop courte
     function dateAnnee() {
