@@ -51,6 +51,7 @@ body {
 	margin:10px
 	-moz-border-radius:15px;
 	border-radius:15px;
+	border-collapse: initial;
 }
 
 .myboth  {
