@@ -1,38 +1,42 @@
-<h1>Ajouter un circuit</h1>
-<form action="#" method="post" enctype="multipart/form-data">
-        <label for="nom">
-            <strong>Nom </strong>
-        <input type="text" name="nom" required>
+<div class="ajout">
+
+    <h1>Ajouter un circuit</h1>
+    <form action="#" method="post" enctype="multipart/form-data">
+            <label for="nom">
+                <strong>Nom </strong>
+            <input type="text" name="nom" required>
+            </label>
+        </br></br>
+            <label for="longueur">
+                <strong>Longueur</strong>
+            <input type="number" name="longueur" required>
+            </label>
+        </br></br>
+            <label for="pays">
+                <strong>Pays</strong>
+            <select name="pays" required>
+                {{#each pays}}
+                    <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
+                {{/each}}
+            </select>
         </label>
-    </br></br>
-        <label for="longueur">
-            <strong>Longueur</strong>
-        <input type="number" name="longueur" required>
+        </br></br>
+        <label for="image">
+            <strong>Image</strong>
+            <input type="file" name="image" accept="image/png, image/jpeg" required/>
         </label>
-    </br></br>
-        <label for="pays">
-            <strong>Pays</strong>
-        <select name="pays" required>
-            {{#each pays}}
-                <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
-            {{/each}}
-        </select>
-    </label>
-    </br></br>
-    <label for="image">
-        <strong>Image</strong>
-        <input type="file" name="image" accept="image/png, image/jpeg" required/>
-    </label>
-    </br></br>
-        <label for="nbspectateur">
-            <strong>Nombre de spectateur</strong>
-            <input type="number" name="nbspectateur" required>
-        </label>
-    </br></br>
-        <label for="description">
-            <strong>Description</strong>
-            <textarea name="description" rows="4" cols="100" required></textarea>
-        </label>
-    </br></br>
-    <input type="submit" value="AJOUTER">
-</form>
+        </br></br>
+            <label for="nbspectateur">
+                <strong>Nombre de spectateur</strong>
+                <input type="number" name="nbspectateur" required>
+            </label>
+        </br></br>
+            <label for="description">
+                <strong>Description</strong>
+                <textarea name="description" rows="4" cols="100" required></textarea>
+            </label>
+        </br></br>
+        <input id="valider" type="submit" value="AJOUTER">
+    </form>
+
+    <div>

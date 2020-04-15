@@ -94,3 +94,27 @@
 		border: 1px solid black;
 	}
 
+	.ajout {
+		margin: 0% 10%;
+	}
+
+	.ajout input, textarea {
+		border-radius: 20px;
+	}
+
+	.ajout h1, #valider {
+		text-align: center;
+	}
+
+	#valider {
+		border-radius: 0px;
+		text-align: center;
+		color: white;
+		background: rgb(2,0,36);
+		background: linear-gradient(176deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 100%, rgba(0,212,255,1) 100%);
+
+
+	}
+
+
+

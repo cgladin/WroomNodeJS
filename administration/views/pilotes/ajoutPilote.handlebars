@@ -1,68 +1,71 @@
-<form  action="#" method="post" enctype="multipart/form-data">
-    <h1> Ajouter un pilote</h1>
-    <label for="prenom">
-        <strong>Prénom</strong>
-        <input type="text" name="prenom" required>
-    </label>
-    </br></br>
-    <label for="nom">
-        <strong>Nom</strong>
-        <input type="text" name="nom" required>
-    </label>
-    </br></br>
-    <label for="datenaissance">
-        <strong>Date de naissance</strong>
-        <input type="number" min="0" max="31" name="date" required>/
-        <input type="number" min="0" max="12" name="date" required>/
-        <input type="number" min="1800" max="" name="date" id="dateAnnee" required>
-    </label>
-    </br></br>
-    <label for="nationalite">
-        <strong>Nationalité</strong>
-        <select name="nationalite" required>
-            {{#each nationalites}}
-                <option value="{{this.PAYNUM}}">{{this.PAYNAT}}</option>
-            {{/each}}
-        </select>
-    </label>
-    </br></br>
-    <label for="ecurie">
-        <strong>Ecurie</strong>
-        <select name="ecurie" required>
-            {{#each ecuries}}
-                <option value="{{this.ECUNUM}}">{{this.ECUNOM}}</option>
-            {{/each}}
-        </select>
-    </label>
-    </br></br>
-    <label for="point">
-        <strong>Points</strong>
-        <input type="number" name="point"> pts
-    </label>
-    </br></br>
-    <label for="poid">
-        <strong>Poids</strong>
-        <input type="number" max="200" name="poid" required> Kg
-    </label>
-    </br></br>
-    <label for="taille">
-        <strong>Taille</strong>
-        <input type="number" max="300" name="taille" required> cm
-    </label>
-    </br></br>
-    <label for="image">
-        <strong>Image</strong>
-        <input type="file" name="image" accept="image/png, image/jpeg" required/>
-    </label>
-    </br></br>
-    <label for="description">
-        <strong>Description</strong>
-        <textarea name="description" rows="4" cols="100" required></textarea>
-    </label>
-    </br></br>
-    <input type="submit" value="AJOUTER">
-    </br></br>
-</form>
+<div class="ajout">
+
+    <form  action="#" method="post" enctype="multipart/form-data">
+        <h1> Ajouter un pilote</h1>
+        <label for="prenom">
+            <strong>Prénom</strong>
+            <input type="text" name="prenom" required>
+        </label>
+        </br></br>
+        <label for="nom">
+            <strong>Nom</strong>
+            <input type="text" name="nom" required>
+        </label>
+        </br></br>
+        <label for="datenaissance">
+            <strong>Date de naissance</strong>
+            <input type="number" min="0" max="31" name="date" required>/
+            <input type="number" min="0" max="12" name="date" required>/
+            <input type="number" min="1800" max="" name="date" id="dateAnnee" required>
+        </label>
+        </br></br>
+        <label for="nationalite">
+            <strong>Nationalité</strong>
+            <select name="nationalite" required>
+                {{#each nationalites}}
+                    <option value="{{this.PAYNUM}}">{{this.PAYNAT}}</option>
+                {{/each}}
+            </select>
+        </label>
+        </br></br>
+        <label for="ecurie">
+            <strong>Ecurie</strong>
+            <select name="ecurie" required>
+                {{#each ecuries}}
+                    <option value="{{this.ECUNUM}}">{{this.ECUNOM}}</option>
+                {{/each}}
+            </select>
+        </label>
+        </br></br>
+        <label for="point">
+            <strong>Points</strong>
+            <input type="number" name="point"> pts
+        </label>
+        </br></br>
+        <label for="poid">
+            <strong>Poids</strong>
+            <input type="number" max="200" name="poid" required> Kg
+        </label>
+        </br></br>
+        <label for="taille">
+            <strong>Taille</strong>
+            <input type="number" max="300" name="taille" required> cm
+        </label>
+        </br></br>
+        <label for="image">
+            <strong>Image</strong>
+            <input type="file" name="image" accept="image/png, image/jpeg" required/>
+        </label>
+        </br></br>
+        <label for="description">
+            <strong>Description</strong>
+            <textarea name="description" rows="4" cols="100" required></textarea>
+        </label>
+        </br></br>
+        <input id="valider" type="submit" value="AJOUTER">
+        </br></br>
+    </form>
+</div>
 
 <script type="text/javascript">
     //permet de mettre dynamiquement la date limite de naissance d'un pilote pour pas entrer un date trop courte
