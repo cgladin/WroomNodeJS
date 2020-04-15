@@ -1,4 +1,4 @@
-<div id="presentationGestionPilotes">
+<div id="presentationGestion">
     <img src="/image/cat_pilote.png" alt="logo">
     <h1>Gestion des pilotes</h1>
     <a href="pilotes/ajoutPilote"><img src="/image/act_add.png" alt="logoAjout"> Ajouter un pilote</a>
@@ -25,8 +25,8 @@
                         {{formatDate this.PILDATENAIS "DD/MM/YYYY"}}
                     </td>
                     <td>
-                        <img src="/image/act_edit.png" alt="Edit_image" /><a href="/pilotes/modifier/{{this.PILNUM}}">MODIFIER</a>
-                        <img src="/image/act_delete.png" alt="Edit_image" /><a href="/pilotes/supprimer/{{this.PILNUM}}">SUPPRIMER</a>
+                        <a href="/pilotes/modifier/{{this.PILNUM}}"> <img src="/image/act_edit.png" alt="Edit_image" /> MODIFIER</a>
+                        <a href="/pilotes/supprimer/{{this.PILNUM}}"> <img src="/image/act_delete.png" alt="Edit_image" /> SUPPRIMER</a>
                     </td>
                 </tr>
             {{/each}}

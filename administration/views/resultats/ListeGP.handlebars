@@ -1,16 +1,17 @@
-
-<img src="/image/cat_resultat.png" alt="Trophé du résultat" />
-<h1>Resultats</h1>
-<div>
-    <form action="#" method="post">
-        <h3><label for="gpnum"><b>Selectionner un grand prix : </b></label></h3>
-        <select id="gpnum" name="gpnum" id="gp" >
-            {{#each listeGP}}
-                <option  value="{{this.GPNUM}}">{{this.GPNOM}}</option>
-            {{/each}}
-        </select>
-        </br></br>
-        <input type="submit" value="VALIDER">
-        </br></br>
-    </form>
+<div id="presentationGestion">
+    <img src="/image/cat_resultat.png" alt="Trophé du résultat" />
+    <h1>Resultats</h1>
+    <div>
+        <form action="#" method="post">
+            <h3><label for="gpnum"><b>Selectionner un grand prix : </b></label></h3>
+            <select id="gpnum" name="gpnum" id="gp" >
+                {{#each listeGP}}
+                    <option  value="{{this.GPNUM}}">{{this.GPNOM}}</option>
+                {{/each}}
+            </select>
+            </br></br>
+            <input type="submit" value="VALIDER">
+            </br></br>
+        </form>
+    </div>
 </div>
