@@ -9,7 +9,6 @@
             <tr>
                 <th> Nom </th>
                 <th> Nombre de tours </th>
-                <th> Commentaire </th>
                 <th> Actions</th>
             </tr>
             {{#each gps}}
@@ -19,9 +18,6 @@
                     </td>
                     <td>
                         {{ this.GPNBTOURS}}
-                    </td>
-                    <td>
-                        {{this.GPCOMMENTAIRE}}
                     </td>
                     <td>
                         <img src="/image/act_edit.png" alt="Edit_image" /><a href="/grandprix/modifier/{{this.GPNUM}}">MODIFIER</a>
