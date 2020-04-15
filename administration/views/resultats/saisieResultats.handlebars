@@ -1,47 +1,51 @@
-<img src="/image/cat_resultat.png" alt="Trophé du résultat" />
-<h1>Saisie des resultats</h1>
-<table>
-<tr>
-    <th></th>
-    <th>Place</th>
-    <th>Pilotes</th>
-    <th>Temps</th>
-    <th>Points</th>
-    {{#each resultatsGP}}
-        <tr>
-            <td>
-                <form action="/resultats/supprimer/" method="post">
-                    <input type="hidden" name="pilnum" value="{{this.PILNUM}}">
-                    <input type="hidden" name="gpnum" value="{{../gpnum}}">
-                    <input type="image" src="/image/act_delete.png"  alt="supprimer">
-                </form>
-            </td>
-            <td>{{inc @index }}</td>
-            <td>{{this.PILNOM}} {{this.PILPRENOM}}</td>
-            <td>{{this.TEMPSCOURSE}}</td>
+<div class="ajout">
 
-            {{#if this.NBPOINT.PTNBPOINTSPLACE}}
-                <td>{{this.NBPOINT.PTNBPOINTSPLACE}}</td>
-            {{else}}
-                <td>0</td>
-            {{/if}}
-        </tr>
-    {{/each}}
-    <tr>
-        <td></td>
-        <form action="/resultats/saisieResultats/{{gpnum}}" method="post">
-            <td><select id="pilnum" name="pilnum">
-                {{#each pilotes}}
-                    <option value="{{this.PILNUM}}"> {{this.PILNOM}} </option>
-                {{/each}}
-            </select>
-            </td>
-            <td>
-                <input type="number" name="temps" min="0" max="60" required> :
-                <input type="number" name="temps" min="0" max="60" required> :
-                <input type="number" name="temps" min="0" max="60" required>
-            </td>
-            <td><input type="submit" value="OK">
-        </form>
-    </tr>
-</table>
+        <img src="/image/cat_resultat.png" alt="Trophé du résultat" />
+        <h1>Saisie des resultats</h1>
+        <table>
+        <tr>
+            <th></th>
+            <th>Place</th>
+            <th>Pilotes</th>
+            <th>Temps</th>
+            <th>Points</th>
+            {{#each resultatsGP}}
+                <tr>
+                    <td>
+                        <form action="/resultats/supprimer/" method="post">
+                            <input type="hidden" name="pilnum" value="{{this.PILNUM}}">
+                            <input type="hidden" name="gpnum" value="{{../gpnum}}">
+                            <input type="image" src="/image/act_delete.png"  alt="supprimer">
+                        </form>
+                    </td>
+                    <td>{{inc @index }}</td>
+                    <td>{{this.PILNOM}} {{this.PILPRENOM}}</td>
+                    <td>{{this.TEMPSCOURSE}}</td>
+
+                    {{#if this.NBPOINT.PTNBPOINTSPLACE}}
+                        <td>{{this.NBPOINT.PTNBPOINTSPLACE}}</td>
+                    {{else}}
+                        <td>0</td>
+                    {{/if}}
+                </tr>
+            {{/each}}
+            <tr>
+                <td></td>
+                <form action="/resultats/saisieResultats/{{gpnum}}" method="post">
+                    <td><select id="pilnum" name="pilnum">
+                        {{#each pilotes}}
+                            <option value="{{this.PILNUM}}"> {{this.PILNOM}} </option>
+                        {{/each}}
+                    </select>
+                    </td>
+                    <td>
+                        <input type="number" name="temps" min="0" max="60" required> :
+                        <input type="number" name="temps" min="0" max="60" required> :
+                        <input type="number" name="temps" min="0" max="60" required>
+                    </td>
+                    <td><input id="valider" type="submit" value="OK">
+                </form>
+            </tr>
+        </table>
+
+    <div>
