@@ -6,6 +6,7 @@ let PiloteController = require('./../controllers/PiloteController');
 let CircuitController = require('./../controllers/CircuitController');
 let SponsorController = require('./../controllers/SponsorController');
 let GrandprixController = require('./../controllers/GrandPrixControler');
+let FournisseurController = require('./../controllers/FournisseurController');
 // Routes
 module.exports = function(app){
 
@@ -63,6 +64,9 @@ module.exports = function(app){
     app.get('/grandprix/modifier/:GPNUM',verifLogin,GrandprixController.ModifierGP);
     app.post('/grandprix/modifier/:GPNUM',verifLogin,GrandprixController.ModifierInfoGP);
     app.get('/grandprix/supprimer/:GPNUM',verifLogin,GrandprixController.SupprimerGP);
+
+    //fournisseurs
+    app.get('/fournisseurs',verifLogin,FournisseurController.ListerFournisseur);
     // tout le reste
     app.get('*', HomeController.NotFound);
     app.post('*', HomeController.NotFound);

@@ -1,0 +1,29 @@
+<form class="formulaire" action="#" method="post">
+    <h1>Modifier un fournisseur</h1>
+    </br>
+    <label for="nom">
+        <b>Nom</b>
+        <input type="text" name="nom" value="{{fourn.FPNOM}}"required>
+    </label>
+    </br>
+    </br>
+    <label for="adresse">
+        <strong>Adresse</strong>
+        <textarea name="adresse" rows="2" cols="60" required>{{fourn.FPADRESSE}}</textarea>
+    </label>
+    </br></br>
+    <label for="pays">
+        <strong>Pays</strong>
+        <select name="pays" required>
+            <option value="{{fournPays.PAYNUM}}">{{fournPays.PAYNOM}}</option>
+            {{#each pays}}
+                {{#ifCond this.PAYNUM '!=' ../fournPays.PAYNUM}}
+                    <option value="{{this.PAYNUM}}"> {{this.PAYNOM}}</option>
+                {{/ifCond}}
+            {{/each}}
+        </select>
+
+    </label>
+    </br></br>
+    <input type="submit" value="AJOUTER">
+</form>
