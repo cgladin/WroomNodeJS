@@ -97,7 +97,7 @@ a  {
 }
 
 .photoDetailPilote {
-	height: 100px;
+	height: auto;
 	width: 100px;
 }
 
@@ -135,7 +135,7 @@ a  {
 }
 
 .logoEcurie {
-	height: 200px;
+	height: auto;
 	width: 200px;
 }
 
@@ -192,13 +192,11 @@ a  {
 }
 
 .apercuImagePilote {
-	width: 100px;
+	width: auto;
 	height: 150px;
 }
 
 .apercuDescriptionPilote {
-
-	width: 150px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -210,7 +208,7 @@ a  {
 
 .noDecoration {
 	text-decoration: none;
-	color: black;
+	font-weight: bold;
 }
 table {
 	border-collapse: collapse;
