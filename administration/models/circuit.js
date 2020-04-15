@@ -1,4 +1,4 @@
-let db = require('../configDb');
+let db = require('../../configDb');
 
 module.exports.getCircuits= function (callback) { //donne la liste des circuits
     // connection à la base

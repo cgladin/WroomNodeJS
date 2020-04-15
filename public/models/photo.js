@@ -1,4 +1,4 @@
-let db = require('../configDb');
+let db = require('../../configDb');
 
 module.exports.getPhotoOfficiel= function (pilnum, callback){ // Récupère la photo officiel d'un pilote
     // connection à la base

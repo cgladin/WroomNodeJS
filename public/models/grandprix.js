@@ -1,4 +1,4 @@
-let db = require('../configDb');
+let db = require('../../configDb');
 
 module.exports.getListeGrandPrix= function (callback){  // Récupère  la liste des grand prix
     // connection à la base

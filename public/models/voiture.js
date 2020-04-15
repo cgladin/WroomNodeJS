@@ -1,4 +1,4 @@
-let db = require('../configDb');
+let db = require('../../configDb');
 module.exports.getImageVoiture=function (ecunum,callback) { // Récupère les images des voitures d'une écurie
 // connection à la base
     db.getConnection(function(err, connexion){

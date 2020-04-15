@@ -4,7 +4,7 @@ let modelPays = require('../models/pays.js');
 let modelGP = require('../models/grandprix.js');
 let formidable = require('formidable');
 var fs = require('fs');
-// ////////////////////// L I S T E R     C I R C U I T S
+// ////////////////////// L I S T E R     C I R C U I T S /////////////////////
 
 module.exports.ListerCircuit = function(request, response){
     response.title = 'Liste des circuits';
@@ -17,6 +17,8 @@ module.exports.ListerCircuit = function(request, response){
         response.render('circuits/gestionCircuits', response);
     });
 };
+/////////////////////////////AJOUT CIRCUIT ////////////////////////////////////////////
+// affichage de la page
 module.exports.AjoutCircuit = function(request, response){
     response.title = 'Liste des circuits';
     modelPays.getPays(function(err, result) {
@@ -28,6 +30,7 @@ module.exports.AjoutCircuit = function(request, response){
         response.render('circuits/ajoutCircuit', response);
     });
 };
+// Ajout des info
 module.exports.AjoutInfoCircuit = function (request,response) {
     let image = request.files.image;
     image.mv('../public/public/image/circuit/'+image.name);
@@ -47,6 +50,7 @@ module.exports.AjoutInfoCircuit = function (request,response) {
     });
 
 };
+//////////////////////////// SUPPRIMER CIRCUIT ///////////////////////////
 module.exports.SupprimerCircuit = function (request, response) {
     num=request.params.CIRNUM;
     async.parallel([
@@ -82,7 +86,8 @@ module.exports.SupprimerCircuit = function (request, response) {
         }// fin fonction
     );
 };
-
+////////////////////////////////////////////////// MODIFIER CIRCUIT //////////////////////////////////////////
+// modifie les infos du circuit
 module.exports.ModifierInfoCircuit = function (request,response) {
     num=request.params.CIRNUM;
 

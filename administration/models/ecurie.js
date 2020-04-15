@@ -5,7 +5,7 @@
 *
 */
 
-let db = require('../configDb');
+let db = require('../../configDb');
 
 /*
 * Récupérer l'intégralité les écuries avec l'adresse de la photo du pays de l'écurie

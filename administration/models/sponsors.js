@@ -1,4 +1,4 @@
-let db = require('../configDb');
+let db = require('../../configDb');
 
 module.exports.getSponsors= function (callback) { // donne tous les sponsors
     // connection à la base

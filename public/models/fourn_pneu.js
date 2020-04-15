@@ -1,4 +1,4 @@
-let db = require('../configDb');
+let db = require('../../configDb');
 module.exports.getFourn= function (ecunum, callback){ // Récupère le fournisseur d'une écurie
     // connection à la base
     db.getConnection(function(err, connexion){

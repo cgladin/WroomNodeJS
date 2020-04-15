@@ -1,4 +1,4 @@
-let db = require('../configDb');
+let db = require('../../configDb');
 
 module.exports.getListeInitialPilote = function (callback) { // Récupère  la liste d'initiale des pilotes
     // connection à la base
