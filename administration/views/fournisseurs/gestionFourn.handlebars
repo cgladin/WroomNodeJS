@@ -1,0 +1,32 @@
+<div id="presentationGestion">
+    <h1>Gestion des fournisseurs</h1>
+
+    <p><a href="/fournisseurs/ajoutFourn"> <img src="/image/act_add.png" alt="Ajout_image" />AJOUTER UNE FOURNISSEUR </a></p>
+</div>
+{{#if fournisseurs}}
+    <div id="tableauPilote">
+        <table>
+            <tr>
+                <th> Nom </th>
+                <th> Adresse </th>
+                <th> Actions </th>
+            </tr>
+            {{#each fournisseurs}}
+                <tr>
+                    <td>
+                        {{ this.FPNOM}}
+                    </td>
+                    <td>
+                        {{ this.FPADRESSE}}
+                    </td>
+                    <td>
+                        <img src="/image/act_edit.png" alt="Edit_image" /><a  href="/ecuries/modifier/{{this.FPNUM}}">MODIFIER</a>
+                        <img src="/image/act_delete.png" alt="Edit_image" /><a  href="/ecuries/supprimer/{{this.FPNUM}}">SUPPRIMER</a>
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+{{else}}
+    <p>Aucune écurie enregistrée </p>
+{{/if}}

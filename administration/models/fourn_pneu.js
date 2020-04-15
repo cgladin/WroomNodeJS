@@ -6,7 +6,7 @@ module.exports.getFournPneu= function (callback) { //donne la liste des circuits
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "SELECT FPNUM,FPNOM FROM fourn_pneu ORDER BY FPNOM ASC";
+            let sql = "SELECT FPNUM,FPNOM, FPADRESSE FROM fourn_pneu ORDER BY FPNOM ASC";
             //console.log (sql);
             connexion.query(sql, callback);
 
