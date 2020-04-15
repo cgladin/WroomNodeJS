@@ -232,7 +232,6 @@ module.exports.SupprimerSponsorise = function(request, response){
             console.log(err);
             return;
         }
-        response.sponsosupp= 1;
-        response.render('sponsors/redirect', response);
+        response.redirect('/sponsors/gestionSponsorise/'+sponsor);
     });
 };
