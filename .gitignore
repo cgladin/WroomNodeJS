@@ -4,3 +4,9 @@ node_modules/*
 .idea
 ../package-lock.json
 ../configDb.js
+
+.DS_Store
+
+configDb.js
+
+package-lock.json
