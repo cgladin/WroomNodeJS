@@ -68,7 +68,6 @@ module.exports.getPaysEcurie = function (num,callback) { // récupère le pays d
             // execution de la requête SQL
             let sql = "SELECT pays.PAYNUM, PAYNOM FROM pays JOIN ecurie ON pays.PAYNUM=ecurie.PAYNUM WHERE ECUNUM="+num;
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -82,7 +81,6 @@ module.exports.getFournPays = function (num,callback) { // récupère le pays d'
             // execution de la requête SQL
             let sql = "SELECT pays.PAYNUM, PAYNOM FROM pays JOIN fourn_pneu ON pays.PAYNUM=fourn_pneu.PAYNUM WHERE FPNUM="+num;
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }

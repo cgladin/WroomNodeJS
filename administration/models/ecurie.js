@@ -31,7 +31,7 @@ module.exports.getListeEcurie = function (callback) { // Selectionne les écurie
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql ="SELECT ECUNUM, ECUNOM, ECUPOINTS FROM ecurie ORDER BY ECUNOM ASC";
+            let sql ="SELECT ECUNUM, ECUNOM, ECUNOMDIR, ECUPOINTS FROM ecurie ORDER BY ECUNOM ASC";
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool
@@ -76,7 +76,6 @@ module.exports.ajouterNouvelleEcurie= function (nom,directeur,adresse,point,pays
             // execution de la requête SQL
             let sql = 'INSERT INTO ecurie (FPNUM,ECUNOM,ECUNOMDIR,ECUADRSIEGE,ECUPOINTS,PAYNUM,ECUADRESSEIMAGE)';
             sql = sql +' VALUES ('+fournPneu+',"'+nom+'","'+directeur+'","'+adresse+'",'+point+','+pays+',"'+image+'")';
-            //console.log (sql);
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool
@@ -91,7 +90,6 @@ module.exports.getImage= function (num,callback) { // récupère l'image de l'é
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = "SELECT ECUADRESSEIMAGE FROM ecurie WHERE ECUNUM="+num;
-            //console.log (sql);
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool
@@ -106,7 +104,6 @@ module.exports.deleteEcurie = function (num,callback) { // supprime l'écurie
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = "DELETE FROM ecurie WHERE ECUNUM="+num;
-            //console.log (sql);
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool
@@ -122,7 +119,6 @@ module.exports.ModifierEcurie= function (num,nom,directeur,adresse,point,pays,fo
             // execution de la requête SQL
             let sql = 'UPDATE ecurie SET FPNUM='+fournPneu+' ,ECUNOM="'+nom+'",ECUNOMDIR="'+adresse+'" ,ECUADRSIEGE="'+adresse+'",ECUPOINTS='+point+' ,PAYNUM='+pays+' ,ECUADRESSEIMAGE="'+image+
                 '" WHERE ECUNUM='+num;
-            //console.log (sql);
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool
@@ -138,7 +134,6 @@ module.exports.getPoints = function (num,callback) { // récupère les points de
             // execution de la requête SQL
             let sql ="SELECT ecurie.ECUNUM, ECUPOINTS FROM ecurie JOIN pilote ON pilote.ECUNUM=ecurie.ECUNUM WHERE PILNUM="+num;
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -151,9 +146,7 @@ module.exports.modifierPoints = function (num,ecunum,callback) { // modifie les 
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql ="UPDATE ecurie SET ECUPOINTS="+num+" WHERE ECUNUM="+ecunum;
-            console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -169,7 +162,6 @@ module.exports.getEcuriePiloteGP = function (num,callback) { // selectionne les 
             let sql ="SELECT ecurie.ECUNUM, pilote.PILNUM FROM ecurie RIGHT JOIN pilote ON pilote.ECUNUM=ecurie.ECUNUM JOIN course ON course.PILNUM=pilote.PILNUM " +
                 "JOIN grandprix ON grandprix.GPNUM=course.GPNUM WHERE  course.GPNUM ="+num+" ORDER BY TEMPSCOURSE ASC";
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -182,9 +174,7 @@ module.exports.updateEcurieFourn= function (num,callback) { // met fpnum à null
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = 'UPDATE ecurie SET FPNUM=null WHERE FPNUM='+num;
-            //console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }

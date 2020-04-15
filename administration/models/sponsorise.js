@@ -7,9 +7,7 @@ module.exports.deleteSponsorPilote= function (num,callback) { // supprime le spo
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = "DELETE FROM sponsorise WHERE PILNUM="+num;
-            //console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -52,7 +50,6 @@ module.exports.getPiloteSponsorise= function (num,callback) { // récupère le p
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = 'SELECT s.PILNUM, PILNOM, PILPRENOM FROM sponsorise s JOIN pilote p ON s.PILNUM=p.PILNUM WHERE SPONUM='+num;
-            //console.log (sql);
             connexion.query(sql, callback);
             // la connexion retourne dans le pool
             connexion.release();
@@ -66,7 +63,6 @@ module.exports.verifPiloteSponsorise= function (sponum,pilnum,callback) { // vé
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = 'SELECT s.PILNUM FROM sponsorise s JOIN pilote p ON s.PILNUM=p.PILNUM WHERE SPONUM='+sponum+' AND s.PILNUM='+pilnum;
-            //console.log (sql);
             connexion.query(sql, callback);
             // la connexion retourne dans le pool
             connexion.release();

@@ -7,7 +7,6 @@ module.exports.deleteEcurieFinance= function (num,callback) { // supprime les fi
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = "DELETE FROM finance WHERE ECUNUM="+num;
-            //console.log (sql);
             connexion.query(sql, callback);
             // la connexion retourne dans le pool
             connexion.release();
@@ -21,7 +20,6 @@ module.exports.ajoutSponsoriseEcurie= function (num,sponum, callback) { // ajout
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = 'INSERT INTO finance (ECUNUM,SPONUM) VALUES ('+num+','+sponum+')';
-            console.log (sql);
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool
@@ -36,9 +34,7 @@ module.exports.supprimerSponsoriseEcurie= function (num, callback) { // supprime
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = "DELETE FROM finance WHERE SPONUM="+num;
-            console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }

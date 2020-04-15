@@ -162,7 +162,6 @@ module.exports.ModifierEcurie = function(request, response){
             response.ecurie=result[0][0];
             response.ecuPays=result[1][0];
             response.pays=result[2];
-            console.log(result[2]);
             response.fournPneu=result[3];
             response.ecuFP=result[4][0];
             response.image=result[5][0];

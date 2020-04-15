@@ -7,9 +7,7 @@ module.exports.getSponsors= function (callback) { // donne tous les sponsors
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = "SELECT SPONUM,SPONOM,SPOSECTACTIVITE FROM sponsor ORDER BY SPONOM ASC";
-            //console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -22,9 +20,7 @@ module.exports.getSponsor= function (num,callback) { // donne 1 sponsor avec un 
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = "SELECT SPONUM,SPONOM,SPOSECTACTIVITE FROM sponsor WHERE SPONUM="+num;
-            //console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -37,9 +33,7 @@ module.exports.ajouterSponsor= function (nom,sposectactivite, callback) { // ajo
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = 'INSERT INTO sponsor (SPONOM,SPOSECTACTIVITE) VALUES ("'+nom+'","'+sposectactivite+'")';
-            //console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -78,9 +72,7 @@ module.exports.getNomSponsor= function (num,callback) { // donne 1 sponsor avec 
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = "SELECT SPONUM,SPONOM FROM sponsor WHERE SPONUM="+num;
-            //console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }

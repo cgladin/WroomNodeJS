@@ -7,9 +7,7 @@ module.exports.getListeGrandPrix= function (callback){ // récupère la liste de
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = "SELECT GPNUM, GPNOM FROM grandprix ORDER BY GPNOM ASC";
-            //console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -24,7 +22,6 @@ module.exports.getResultatGrandPrix= function (gpnum,callback){ // récupère le
             let sql = "SELECT PILNOM, PILPRENOM, TEMPSCOURSE,p.PILNUM FROM grandprix g JOIN course c ON g.GPNUM=c.GPNUM " +
                 "JOIN pilote p ON p.PILNUM = c.PILNUM " +
                 "WHERE g.GPNUM = " + gpnum +" ORDER BY TEMPSCOURSE ASC";
-            //console.log (sql);
             connexion.query(sql, callback);
             // la connexion retourne dans le pool
             connexion.release();
@@ -38,9 +35,7 @@ module.exports.listerGP= function (callback){ // liste les différents grands pr
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = "SELECT GPNUM, GPNOM, GPNBTOURS, GPCOMMENTAIRE FROM grandprix ORDER BY GPNOM ASC";
-            //console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -69,9 +64,7 @@ module.exports.getGP= function (num,callback){ // sélectionne les infos d'un gr
             // execution de la requête SQL
             let sql = "SELECT GPNUM, GPNOM, YEAR(GPDATE) as ANNEE, MONTH(GPDATE) as MOIS,DAY(GPDATE) as JOUR,GPNBTOURS,GPCOMMENTAIRE" +
                 " FROM grandprix WHERE GPNUM="+num;
-            //console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -87,9 +80,7 @@ module.exports.modifierGP= function (num,nom,cirnum,date,tour,datemaj,commentair
                 'SET CIRNUM='+cirnum+',GPNOM="'+nom+'",GPDATE="'+date[2]+'-'+date[1]+'-'+date[0]+'",' +
                 'GPNBTOURS='+tour+',GPDATEMAJ="'+datemaj+'",GPCOMMENTAIRE="'+commentaire+'"'+
                 ' WHERE GPNUM='+num;
-            console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -103,9 +94,7 @@ module.exports.supprimerGP= function (num,callback){ // supprime un grand prix
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = "DELETE FROM grandprix WHERE GPNUM="+num;
-            //console.log (sql);
             connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
         }
@@ -118,7 +107,6 @@ module.exports.getCirGP= function (num,callback) { // donne le gpnum d'un circui
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
             let sql = "SELECT GPNUM FROM grandprix JOIN circuit ON grandprix.CIRNUM=circuit.CIRNUM WHERE circuit.CIRNUM="+num;
-            //console.log (sql);
             connexion.query(sql, callback);
             // la connexion retourne dans le pool
             connexion.release();

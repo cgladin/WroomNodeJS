@@ -1,4 +1,3 @@
-"use strict";
 let model = require('../models/login.js');
 let Cryptr = require('cryptr');
 let cryptr= new Cryptr('MaSuperCléDeChiffrementDeouF');
