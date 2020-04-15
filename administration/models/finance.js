@@ -1,6 +1,6 @@
 let db = require('../../configDb');
 
-module.exports.deleteEcurieFinance= function (num,callback) {
+module.exports.deleteEcurieFinance= function (num,callback) { // supprime les financements d'une écurie quand lle est supprimée
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -14,7 +14,7 @@ module.exports.deleteEcurieFinance= function (num,callback) {
         }
     });
 };
-module.exports.ajoutSponsoriseEcurie= function (num,sponum, callback) {
+module.exports.ajoutSponsoriseEcurie= function (num,sponum, callback) { // ajoute un sponsor à une écurie
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -29,7 +29,7 @@ module.exports.ajoutSponsoriseEcurie= function (num,sponum, callback) {
         }
     });
 };
-module.exports.supprimerSponsoriseEcurie= function (num, callback) {
+module.exports.supprimerSponsoriseEcurie= function (num, callback) { // supprimer un sponsor d'une écurie
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){

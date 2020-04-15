@@ -15,7 +15,7 @@ module.exports.deleteCoursePilote= function (num,gpnum,callback) {
         }
     });
 };
-module.exports.ajouterResultatPilote= function (gpnum,pilnum,temps,callback){
+module.exports.ajouterResultatPilote= function (gpnum,pilnum,temps,callback){ // ajoute les résultats du pilote à la course
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){

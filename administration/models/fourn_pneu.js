@@ -1,6 +1,6 @@
 let db = require('../../configDb');
 
-module.exports.getFournPneu= function (callback) {
+module.exports.getFournPneu= function (callback) { // récupère la liste des fournisseurs de pneus
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -13,7 +13,7 @@ module.exports.getFournPneu= function (callback) {
         }
     });
 };
-module.exports.getFournPneuEcurie= function (num,callback) {
+module.exports.getFournPneuEcurie= function (num,callback) { // récupère les infos du forunisseur de pneus d'une écurie
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -26,7 +26,7 @@ module.exports.getFournPneuEcurie= function (num,callback) {
         }
     });
 };
-module.exports.ajoutFourn= function (nom,adresse,pays,callback) {
+module.exports.ajoutFourn= function (nom,adresse,pays,callback) { // ajoute un fournisseur de pneus
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -40,7 +40,7 @@ module.exports.ajoutFourn= function (nom,adresse,pays,callback) {
         }
     });
 };
-module.exports.deleteFourn= function (num,callback) {
+module.exports.deleteFourn= function (num,callback) { // supprime un fournisseur
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -53,7 +53,7 @@ module.exports.deleteFourn= function (num,callback) {
         }
     });
 };
-module.exports.getFourn= function (num,callback) {
+module.exports.getFourn= function (num,callback) { // récupère le fournisseur
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
@@ -66,7 +66,7 @@ module.exports.getFourn= function (num,callback) {
         }
     });
 };
-module.exports.modifierFourn= function (num,nom,adresse,pays,callback) {
+module.exports.modifierFourn= function (num,nom,adresse,pays,callback) { // modifie les infos du fournisseur
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
