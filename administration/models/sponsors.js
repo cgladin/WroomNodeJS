@@ -70,4 +70,19 @@ module.exports.modifierSponsor = function(sponom,sposectactivite,sponum, callbac
             connexion.release();
         }
     })
-}
+};
+module.exports.getNomSponsor= function (num,callback) { // donne 1 sponsor avec un numero
+    // connection à la base
+    db.getConnection(function(err, connexion){
+        if(!err){
+            // s'il n'y a pas d'erreur de connexion
+            // execution de la requête SQL
+            let sql = "SELECT SPONUM,SPONOM FROM sponsor WHERE SPONUM="+num;
+            //console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+        }
+    });
+};

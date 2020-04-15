@@ -23,8 +23,11 @@
                         {{ this.SPOSECTACTIVITE}}
                     </td>
                     <td>
-                        <img src="/image/act_edit.png" alt="Edit_image" /><a href="/sponsors/modifier/{{this.SPONUM}}">MODIFIER</a>
-                        <img src="/image/act_delete.png" alt="Edit_image" /><a  href="/sponsors/supprimer/{{this.SPONUM}}">SUPPRIMER</a>
+                        <a href="/sponsors/modifier/{{this.SPONUM}}"><img src="/image/act_edit.png" alt="Edit_image" />MODIFIER</a>
+                        <a  href="/sponsors/supprimer/{{this.SPONUM}}"><img src="/image/act_delete.png" alt="Edit_image" />SUPPRIMER</a>
+                    </td>
+                    <td>
+                        <img src="/image/act_edit.png" alt="Edit_image" /><a href="/sponsors/gestionSponsorise/{{this.SPONUM}}">VOIR</a>
                     </td>
                 </tr>
             {{/each}}

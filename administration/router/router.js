@@ -58,6 +58,8 @@ module.exports = function(app){
     app.post('/sponsors/modifier/:SPONUM',verifLogin,SponsorController.ModifierInfoSponsor);
     app.get('/sponsors/ajoutSponsorise',verifLogin,SponsorController.SponsorisePilote);
     app.post('/sponsors/ajoutSponsorise',verifLogin,SponsorController.AjoutSponsorisePilote);
+    app.get('/sponsors/gestionSponsorise/:SPONUM',verifLogin,SponsorController.GestionSponsorise);
+    app.post('/sponsors/gestionSponsorise/supprimer',verifLogin,SponsorController.SupprimerSponsorise);
 
 
     //grandprix

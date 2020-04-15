@@ -181,7 +181,7 @@ module.exports.SupprimerLigneResultat = function (request, response) {
 			},
 
 			function (table,index,callback) {
-				modelCourse.deleteCoursePilote(pilnum, function (err, result) {
+				modelCourse.deleteCoursePilote(pilnum, gpnum,function (err, result) {
 					callback(null, table,index)
 				});
 			},

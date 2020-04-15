@@ -1,0 +1,31 @@
+<div id="presentationGestion">
+    <img src="/image/cat_sponsor.png" alt="sponsor" />
+    <h1>Gestion des pilotes sponsorisés par {{sponsor.SPONOM}}</h1>
+    <p><a href="sponsors/ajoutSponsorise"> <img  src="/image/act_add.png" alt="Ajout_image" />SPONSORISER UN PILOTE</a></p>
+</div>
+{{#if pilotes}}
+    <div id="tableauPilote">
+        <table>
+            <tr>
+                <th> Nom </th>
+                <th> Actions</th>
+            </tr>
+            {{#each pilotes}}
+                <tr>
+                    <td>
+                        {{ this.PILNOM}} {{ this.PILPRENOM}}
+                    </td>
+                    <td>
+                        <form action="/sponsors/gestionSponsorise/supprimer" method="post">
+                            <input type="hidden" name="pilnum" value="{{this.PILNUM}}">
+                            <input type="hidden" name="sponsor" value="{{../sponsor.SPONUM}}">
+                            <input type="image" src="/image/act_delete.png"  alt="supprimer">
+                        </form>
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+{{else}}
+    <p>Aucun pilote sponsorisé enregistré </p>
+{{/if}}

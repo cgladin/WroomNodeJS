@@ -154,7 +154,7 @@ module.exports.ModifierSponsor= function(request, response){
             response.render('sponsors/modifier', response);
         }  // fin fonction
     );//fin async
-}
+};
 /////////////////////////////////////SPONSORISE UN PILOTE //////////////////////////////////////////////
 //affiche la page
 module.exports.SponsorisePilote = function(request, response){
@@ -192,6 +192,47 @@ module.exports.AjoutSponsorisePilote = function(request, response){
             return;
         }
         response.sponso= 1;
+        response.render('sponsors/redirect', response);
+    });
+};
+///////////////////// lister pilotes sponsorisé /////////////////////////
+module.exports.GestionSponsorise= function(request, response){
+    num=request.params.SPONUM;
+    async.parallel([
+            function (callback) {
+                model.getNomSponsor(num,function (err, result) {
+                    callback(null, result)
+                });
+            },
+            function (callback) {
+                modelSponsorise.getPiloteSponsorise(num,function (err,result) {
+                    callback(null,result)
+                })
+            },
+        ],
+        function (err, result) {
+            if (err) {
+                // gestion de l'erreur
+                console.log(err);
+                return;
+            }
+            response.sponsor=result[0][0];
+            response.pilotes=result[1];
+            response.render('sponsors/gestionSponsorise', response);
+        }  // fin fonction
+    );//fin async
+};
+//////////////////// Supprimer pilote sponsorisé //////////////////////////////////////////////
+module.exports.SupprimerSponsorise = function(request, response){
+    let pilnum = request.body.pilnum;
+    let sponsor = request.body.sponsor;
+    console.log(sponsor);
+    modelSponsorise.deletePiloteSponsor(pilnum,sponsor,function(err, result) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        response.sponsosupp= 1;
         response.render('sponsors/redirect', response);
     });
 };

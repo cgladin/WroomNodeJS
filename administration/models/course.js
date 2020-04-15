@@ -1,13 +1,13 @@
 let db = require('../../configDb');
 
-module.exports.deleteCoursePilote= function (num,callback) {
+module.exports.deleteCoursePilote= function (num,gpnum,callback) {
     // connection à la base
     db.getConnection(function(err, connexion){
         if(!err){
             // s'il n'y a pas d'erreur de connexion
             // execution de la requête SQL
-            let sql = "DELETE FROM course WHERE PILNUM="+num;
-            //console.log (sql);
+            let sql = "DELETE FROM course WHERE PILNUM="+num+" AND GPNUM="+gpnum;
+            console.log (sql);
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool
