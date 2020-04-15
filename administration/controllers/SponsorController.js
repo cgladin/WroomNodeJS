@@ -186,14 +186,17 @@ module.exports.SponsorisePilote = function(request, response){
 module.exports.AjoutSponsorisePilote = function(request, response){
     let pilnum = request.body.pilote;
     let sponsor = request.body.sponsor;
-    modelSponsorise.ajoutSponsorisePilote(pilnum,sponsor,function(err, result) {
-        if (err) {
-            console.log(err);
-            return;
+    modelSponsorise.verifPiloteSponsorise(sponsor,pilnum, function(err, result) { //recu^pere le pilte lier au sponsor et si il existe n'ajoute pas
+        console.log(result);
+        if(result === undefined){
+            modelSponsorise.ajoutSponsorisePilote(pilnum,sponsor);
+            response.sponso= 1;
+        } else{
+            response.sponsoerr=1;
         }
-        response.sponso= 1;
         response.render('sponsors/redirect', response);
     });
+
 };
 ///////////////////// lister pilotes sponsorisé /////////////////////////
 module.exports.GestionSponsorise= function(request, response){
